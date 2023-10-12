@@ -1,8 +1,6 @@
 import { Providers } from '../../providers'
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import { roboto_mono } from './fonts'
 
 export const metadata = {
   title: 'SYL talento | soluciones en selección, reclutamiento y suministros de materiales para las Californias',
@@ -12,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto_mono.className}>
       <Providers>
           {children}
         </Providers>

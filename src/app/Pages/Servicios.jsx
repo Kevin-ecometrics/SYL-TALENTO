@@ -1,14 +1,16 @@
 "use client"
-import React from 'react';
-import { Card, CardBody } from "@nextui-org/react";
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    Typography,
+} from "@material-tailwind/react";
 
 function Servicios() {
 
-    const fadeIn = {
-        hidden: { opacity: 0, y: -20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 1 } }
-    };
+    const [activeCard, setActiveCard] = useState(null);
 
     const serviciosData = [
         {
@@ -36,33 +38,52 @@ function Servicios() {
             description: "Asesoramos en estructuración de perfiles, análisis y descripción de puestos para tu organización y análisis de mercado."
         }
     ];
-    const [zoomState, setZoomState] = React.useState({});
 
 
-    const handleZoom = (index) => {
-        if (zoomState[index] === "initial") {
-            setZoomState(prev => ({ ...prev, [index]: "zoomed" }));
+    const toggleCard = (index) => {
+        if (activeCard === index) {
+            setActiveCard(null);
         } else {
-            setZoomState(prev => ({ ...prev, [index]: "initial" }));
+            setActiveCard(index);
         }
     };
 
     return (
-        <div id='servicios' className="flex flex-col items-center justify-center max-w-6xl min-h-screen py-2 mx-auto bg-white border-t-2 border-black">
-            <main className="flex flex-col items-center w-full px-4 mt-20 space-y-8 text-center bg-white sm:mt-20">
-                <h1 className="mb-8 text-5xl font-bold text-blue-500">Servicios</h1>
-                <div className="flex flex-wrap justify-center gap-8">
+        <div id='servicios' className="flex flex-col items-center justify-center min-h-screen py-2 mx-auto bg-white border-t-2 border-black">
+            <main className="flex flex-col items-center w-full px-4 mt-8 space-y-8 text-center bg-white sm:mt-20">
+                <h1 className="mx-auto mb-6 text-4xl font-bold tracking-normal text-red-500 sm:text-5xl md:text-6xl">Servicios</h1>
+                <div className="flex flex-wrap justify-center gap-4">
                     {serviciosData.map((servicio, index) => (
                         <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={fadeIn}
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0, transition: { delay: 0.5 + (index * 0.1) }}}
+                            exit={{ opacity: 0, y: -20, transition: { delay: 0.5 + (index * 0.1) }}}
                             key={index}
+                            onClick={() => toggleCard(index)}
+                            className={`w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-2 cursor-pointer ${activeCard === index ? 'max-w-xl' : 'max-w-[500px]'}`}
                         >
-                            <Card className="max-w-[400px] flex flex-col justify-between p-2">
+                            <Card className="w-full border shadow-blue-500">
+                                <CardHeader
+                                    variant="gradient"
+                                    color="white"
+                                    className="grid h-24 mt-2 border border-gray-400 place-items-center"
+                                >
+                                    <Typography variant="h5" color="black">
+                                        {servicio.title}
+                                    </Typography>
+                                </CardHeader>
                                 <CardBody>
-                                    <h2 className="mb-2 text-xl font-bold text-center">{servicio.title}</h2>
-                                    <p>{servicio.description}</p>
+                                    <AnimatePresence>
+                                        {activeCard === index && (
+                                            <motion.p
+                                                initial={{ height: 0 }}
+                                                animate={{ height: "auto" }}
+                                                exit={{ height: 0 }}
+                                            >
+                                                {servicio.description}
+                                            </motion.p>
+                                        )}
+                                    </AnimatePresence>
                                 </CardBody>
                             </Card>
                         </motion.div>
