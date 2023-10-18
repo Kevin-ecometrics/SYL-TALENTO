@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'; // Importar Image de 'next/image'
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+
 function HeroSection() {
 
     
@@ -52,7 +53,6 @@ function HeroSection() {
                         animate="visible">
                         <Image src="/logo.png" alt="Logo de la empresa" width={125} height={200} />
                     </motion.div>
-
                 </div>
             </main>
         </div>

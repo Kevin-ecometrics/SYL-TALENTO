@@ -1,4 +1,5 @@
 "use client"
+import { Typography } from "@material-tailwind/react";
 import Image from "next/image";
 import {
   Modal,
@@ -90,89 +91,88 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full mt-8 bg-white border-t border-black">
-      <div className="max-w-screen-xl px-4 mx-auto mt-8 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4">
-          {/* Logo */}
-          <div className="md:col-span-1">
-            <Image src="/SYL.png" width={150} height={100} alt="LOGO" />
-          </div>
-          {/* Enlaces */}
-          {LINKS.map((linkGroup) => (
-            <div key={linkGroup.title}>
-              <h3 className="text-blue-500">{linkGroup.title}</h3>
-              <ul>
-                {linkGroup.items.map((item) => {
-                  if (item.isModal) {
-                    return (
-                      <li
-                        className="text-black hover:text-blue-500"
-                        key={item.name}
-                      >
-                        <button onClick={() => openModal(item.modalContent, item.name)}>
-                          {item.name}
-                        </button>
-                      </li>
-                    );
-                  } else {
-                    return (
-                      <li className="text-black hover:text-blue-500" key={item.name}>
-                        <a href={item.href} target={item.target || "_self"} rel="noopener noreferrer">
-                          {item.name}
-                        </a>
-                      </li>
-                    );
-                  }
-                })}
+    <footer className="relative w-full mt-8 bg-white border-t border-black">
+      <div className="w-full px-8 mx-auto mt-8 max-w-7xl">
+        <div className="grid justify-between grid-cols-1 gap-4 md:grid-cols-2">
+          <Image src="/SYL.png" width={150} height={100} alt="LOGO" />
+          <div className="grid justify-between grid-cols-3 gap-4">
+            {LINKS.map(({ title, items }) => (
+              <ul key={title}>
+                <Typography
+                  variant="small"
+                  color="black"
+                  className="mb-3 font-medium opacity-40"
+                >
+                  {title}
+                </Typography>
+                {items.map(({ name, href, target, modalContent, isModal }) => (
+                  <li key={name}>
+                    <Typography
+                      as="a"
+                      onClick={
+                        isModal ? () => openModal(modalContent, name) : null
+                      } 
+                      href={href}
+                      target={target}
+                      color="gray"
+                      className="py-1.5 font-normal transition-colors hover:text-blue-500"
+                    >
+                      {name}
+                    </Typography>
+                  </li>
+                ))}
               </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        {/* Derechos de autor */}
-        <div className="flex flex-col items-center justify-center w-full py-4 mt-8 border-t border-black md:flex-row md:justify-between">
-          <p className="mb-4 font-normal text-center text-blue-gray-900 md:mb-0">
-            Todos los derechos reservados SYL Talento 2023 &copy;,
-            syltalento.com es desarrollado por{" "}
+        <div className="flex flex-col items-center justify-center w-full py-4 mt-12 border-t border-black md:flex-row md:justify-between">
+          <Typography
+            variant="small"
+            className="mb-4 font-normal text-center text-blue-gray-900 md:mb-0"
+          >
+            Todos los derechos reservados SYL Talento 2023 &copy; ,
+            syltalento.com es desarollado por{" "}
             <a
               className="text-red-500 hover:text-red-700"
               href="https://www.e-commetrics.com/"
             >
               e-commetrics.com
             </a>
-          </p>
+          </Typography>
         </div>
       </div>
-      {/* Modal */}
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        scrollBehavior={scrollBehavior}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                <p className="text-center text-black">{activeModalName}</p>
-              </ModalHeader>
-              <ModalBody className="border border-black rounded-md">
-                <p className="text-black">
-                  {activeModal.split("\n").map((str, index, array) => (
-                    <React.Fragment key={index}>
-                      {str}
-                      {index === array.length - 1 ? null : <br />}
-                    </React.Fragment>
-                  ))}
-                </p>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="primary" onPress={onClose}>
-                  Cerrar
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+      <div className="flex flex-col gap-2">
+        <Modal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          scrollBehavior={scrollBehavior}
+        >
+          <ModalContent>
+            {(onClose) => (
+              <>
+                <ModalHeader className="flex flex-col gap-1">
+                  <p className="text-center text-black">{activeModalName}</p>
+                </ModalHeader>
+                <ModalBody className="border border-black rounded-md">
+                  <p className="text-black">
+                    {activeModal.split("\n").map((str, index, array) => (
+                      <React.Fragment key={index}>
+                        {str}
+                        {index === array.length - 1 ? null : <br />}
+                      </React.Fragment>
+                    ))}
+                  </p>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="primary" onPress={onClose}>
+                    Cerrar
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
+      </div>
     </footer>
   );
 }

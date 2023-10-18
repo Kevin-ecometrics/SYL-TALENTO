@@ -8,8 +8,9 @@ import {
     CardBody,
     Input,
     Button,
+    Typography,
     Textarea,
-} from "@nextui-org/react";
+} from "@material-tailwind/react";
 import facebook from '../../../public/facebook.svg'
 import whatsapp from '../../../public/whatsapp.svg'
 import Link from 'next/link';
@@ -63,27 +64,37 @@ function ContactoSection() {
                         </div>
                     </div>
                     <div className="flex-1 text-xl leading-7 text-black sm:text-black">
-                        <Card className="w-full border max-w-[24rem] shadow-black border-black">
+                        <Card className="w-full border max-w-[24rem] shadow-black">
+                            <CardHeader
+                                color="gray"
+                                floated={false}
+                                shadow={false}
+                                className="grid px-4 py-2 m-0 text-center rounded-b-none place-items-center"
+                            >
+                                <div className="p-6 mb-4 text-white bg-white border border-white rounded-full">
+                                    <Image src='/SYL.png' width={100} height={100} />
+                                </div>
+                            </CardHeader>
                             <CardBody>
                                 <form className="flex flex-col gap-4">
                                     <div>
-                                        <p
+                                        <Typography
                                             variant="small"
                                             color="blue-gray"
-                                            className="mb-4 font-medium text-center text-black"
+                                            className="mb-4 font-medium text-start"
                                         >
                                             Ingresa datos de contacto
-                                        </p>
+                                        </Typography>
                                         <div className="flex flex-col gap-6 mb-4">
-                                            <Input size="lg" label="Nombre" className="border border-blue-500 rounded-xl" />
-                                            <Input size="lg" label="Correo" className="border border-blue-500 rounded-xl"/>
-                                            <Input size="lg" label="Asunto" className="border border-blue-500 rounded-xl"/>
+                                            <Input size="lg" label="Nombre" />
+                                            <Input size="lg" label="Correo" />
+                                            <Input size="lg" label="Asunto" />
                                             <div className="w-82">
-                                                <Textarea size="lg" label="Mensaje" className="border border-blue-500 rounded-xl"/>
+                                                <Textarea label="Message" />
                                             </div>
                                         </div>
                                     </div>
-                                    <Button className="text-white bg-blue-500 hover:bg-blue-700" size="lg">Enviar</Button>
+                                    <Button size="lg">Enviar</Button>
                                 </form>
                             </CardBody>
                         </Card>
