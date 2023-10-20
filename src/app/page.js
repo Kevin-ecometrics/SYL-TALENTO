@@ -1,13 +1,13 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import ClientesSection from "./pages/ClientesSection";
-import ContactoSection from "./pages/ContactoSection";
+import ClientesSection from "./Pages/ClientesSection";
+import ContactoSection from "./Pages/ContactoSection";
 import Nav from "./components/Nav";
-import NosotroSection from "./pages/Nosotros";
-import SomosSection from "./pages/SomosSection";
-import HeroSection from "./pages/herosection";
-import ServicioSection from "./pages/Servicios";
-import Footer from "./pages/FooterSection";
+import NosotroSection from "./Pages/Nosotros";
+import SomosSection from "./Pages/SomosSection";
+import HeroSection from "./Pages/herosection";
+import ServicioSection from "./Pages/Servicios";
+import Footer from "./Pages/FooterSection";
 import Loading from "./components/Loading";
 export default function Home() {
     const [loading, setLoading] = useState(true);
