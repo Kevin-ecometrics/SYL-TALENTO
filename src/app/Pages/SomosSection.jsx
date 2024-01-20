@@ -21,7 +21,7 @@ function SomosSection() {
             className="flex-1"
           >
             <Image
-              src="/ubicaciones.webp"
+              src="/map.png"
               alt="Ubicaciones de SYL Talento"
               width={500}
               height={300}

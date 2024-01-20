@@ -2,7 +2,8 @@
 import React, { useRef } from "react";
 import { Card, CardBody, Accordion, AccordionItem } from "@nextui-org/react";
 import { motion, useInView } from "framer-motion";
-
+import Image from "next/image";
+import Banner from '/public/banner.png';
 function NosotroSection() {
   const [open, setOpen] = React.useState(0);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -88,6 +89,9 @@ function NosotroSection() {
               </Card>
             </motion.div>
           ))}
+        </div>
+        <div>
+          <Image src={Banner} alt="Banner Syl Talento" layout="responsive" width={1920} height={720} />       
         </div>
         <motion.div
           className="w-full mt-8"

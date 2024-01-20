@@ -13,6 +13,7 @@ function Nav() {
     { name: "Servicios", link: "#servicios" },
     { name: "Quienes Somos", link: "#quienesSomos" },
     { name: "Clientes", link: "#clientes" },
+    { name: "Blogs", link: "#blogs"}, 
     { name: "Contacto", link: "#contacto" },
   ];
 
@@ -36,7 +37,7 @@ function Nav() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  });
   
   function handleClick(event, link) {
     event.preventDefault();

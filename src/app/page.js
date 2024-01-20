@@ -5,9 +5,10 @@ import ContactoSection from "./Pages/ContactoSection";
 import Nav from "./components/Nav";
 import NosotroSection from "./Pages/Nosotros";
 import SomosSection from "./Pages/SomosSection";
-import HeroSection from "./Pages/herosection";
+import HeroSection from "./Pages/HeroSection";
 import ServicioSection from "./Pages/Servicios";
 import Footer from "./Pages/FooterSection";
+import Blog from "./Pages/BlogSection";
 import Loading from "./components/Loading";
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -32,6 +33,7 @@ export default function Home() {
         <ServicioSection />
         <SomosSection />
         <ClientesSection />
+        <Blog />
         <ContactoSection />
         <Footer />
       </div>
