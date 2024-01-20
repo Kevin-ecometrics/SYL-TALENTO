@@ -76,9 +76,10 @@ function ContactoSection() {
             <h1 className="mx-auto text-5xl font-bold tracking-normal text-transparent max-w-1xl font-display sm:text-7xl bg-clip-text bg-gradient-to-r from-blue-500 via-red-500 to-orange-500">
               Contacto
             </h1>
-            <h3 className="text-black">
+            <h3 className="text-black text-2xl">
               Confía en SYL Talento para encontrar a los mejores profesionales que
-              impulsarán el éxito de tu empresa. Contáctanos hoy mismo y descubre el
+              impulsarán el éxito de tu empresa. 
+              Contáctanos hoy mismo y descubre el
               futuro del reclutamiento.{" "}
             </h3>
             <div className="flex flex-col items-center justify-between w-full gap-8 space-y-4 sm:flex-row sm:space-y-0">
@@ -100,8 +101,9 @@ function ContactoSection() {
                     <EnvelopeIcon className="w-8 h-8 text-orange-500" />
                     <span>contacto@syltalento.com</span>
                   </div>
+                  <br></br>
                   <div className="flex items-center space-x-4">
-                    <Button className="bg-blue-500 rounded-full hover:bg-blue-800">
+                    <Button className="bg-blue-500 rounded-full hover:bg-orange-800">
                       <Link
                         target="_blank"
                         href="https://www.facebook.com/SYLTalento1"
@@ -109,15 +111,7 @@ function ContactoSection() {
                         <Image src={facebook} className="w-8 h-8 text-white" />
                       </Link>
                     </Button>
-                    <Button className="bg-red-500 rounded-full hover:bg-red-800">
-                      <Link
-                        target="_blank"
-                        href="https://www.facebook.com/profile.php?id=100063574134270&mibextid=ZbWKwL"
-                      >
-                        <Image src={facebook} className="w-8 h-8 text-white" />
-                      </Link>
-                    </Button>
-                    <Button className="bg-orange-300 rounded-full hover:bg-orange-500">
+                    <Button className="bg-300 rounded-full hover:bg-orange-500">
                       <Link
                         target="_blank"
                         href="https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento"

@@ -31,17 +31,17 @@ function ClientesSection() {
   let tabs = [
     {
       id: "Todos",
-      label: "Todos",
+      label: "Nuestros clientes",
       images: allImages,
     },
     {
       id: "Reclutamiento puro",
-      label: "Reclutamiento Puro",
+      label: "Aeroespacial",
       images: allImages.slice(0, 10),
     },
     {
       id: "Administración de Nómina",
-      label: "Nómina",
+      label: "Gasolineras",
       images: allImages.slice(10, 20),
     },
   ];

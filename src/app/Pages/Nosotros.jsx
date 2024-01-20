@@ -81,7 +81,7 @@ function NosotroSection() {
             >
               <Card className="w-full h-full">
                 <CardBody>
-                  <h2 className="mb-2 text-xl font-bold text-center">
+                  <h2 className="mb-2 text-2xl font-bold text-center">
                     {value.title}
                   </h2>
                   <p>{value.description}</p>
@@ -94,17 +94,17 @@ function NosotroSection() {
           <Image src={Banner} alt="Banner Syl Talento" layout="responsive" width={1920} height={720} />       
         </div>
         <motion.div
-          className="w-full mt-8"
+          className="w-full mt-8 "
           variants={cascadeEffect}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           <Accordion>
-            <AccordionItem key="1" aria-label="Accordion 1" title="Mision" className="text-blue-500 text-start">
+            <AccordionItem key="1" aria-label="Accordion 1" title="Misión" className="text-blue-500 text-2xl text-start">
               Crear relaciones positivas entre nuestros clientes y candidatos
               para el éxito de ambos.
             </AccordionItem>
-            <AccordionItem key="2" aria-label="Accordion 2" title="Visión" className="text-red-500 text-start">
+            <AccordionItem key="2" aria-label="Accordion 2" title="Visión" className="text-red-500 text-2xl text-start">
               Ser el proveedor de Talento Humano y asesoría de Recursos Humanos
               a nivel nacional de gran entrega.
             </AccordionItem>
@@ -112,7 +112,7 @@ function NosotroSection() {
               key="3"
               aria-label="Accordion 3"
               title="Cultura de Servicio"
-              className="text-orange-500 text-start"
+              className="text-orange-500 text-2xl text-start"
             >
               Nos dedicamos a dar lo mejor de nosotros, innovando siempre
               nuestros procesos con gran cooperación y trabajo en equipo en

@@ -12,7 +12,7 @@ function BlogSection() {
         <h1 className="text-2xl font-bold sm:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-red-500 to-orange-500">
           BLOGS
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 [&>article]:text-black font-bold gap-8 my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 [&>article]:text-black font gap-8 my-8">
           <article>
             <Image
               src="/banner_blog.webp"
@@ -22,7 +22,7 @@ function BlogSection() {
             />
             <div className="flex justify-between font-semibold font">
               <span>Por: Syl Talento</span>
-              <span>Enero 19, 2024</span>
+              <span> 20 de noviembre de 2023</span>
             </div>
             <div className="text-left mt-2">
               <Link target="_blank" href="/blog-talento/reclutamiento-ejecutivo">
@@ -39,7 +39,7 @@ function BlogSection() {
             <div className="flex mt-4">
               <Link target="_blank" href="/blog-talento/reclutamiento-ejecutivo">
                 <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
-                  Leer este post
+                  Leer este blog
                 </button>
               </Link>
             </div>
@@ -53,7 +53,7 @@ function BlogSection() {
             />
             <div className="flex justify-between font-semibold">
               <span>Por: Syl Talento</span>
-              <span>Enero 19, 2024</span>
+              <span> 11 de diciembre de 2023</span>
             </div>
             <div className="text-left mt-2">
               <Link target="_blank" href="/blog-talento/recursos-empresariales">
@@ -71,13 +71,13 @@ function BlogSection() {
             <div className="flex mt-4">
               <Link target="_blank" href="/blog-talento/recursos-empresariales">
                 <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
-                  Leer este post
+                  Leer este blog
                 </button>
               </Link>
             </div>
           </article>
         </div>
-        <article className="font-bold gap-8 my-8 text-black">
+        <article className="font gap-8 my-8 text-black">
           <Image
             src="/banner_blog3.png"
             width={1200}
@@ -86,12 +86,12 @@ function BlogSection() {
           />
           <div className="flex font-semibold justify-between">
             <span>Por: Syl Talento</span>
-            <span>Enero 19, 2024</span>
+            <span>19 de enero de 2024</span>
           </div>
           <div className="text-left mt-2">
             <Link target="_blank" href="/blog-talento/estructuracion-organizacional">
               <h1 className="text-blue-500 hover:underline hover:text-blue-800 text-3xl">
-                Estructuracion Organizacional Con SYL Talento{" "}
+                Estructuración Organizacional Con SYL Talento{" "}
               </h1>
             </Link>
             <span>
@@ -103,7 +103,7 @@ function BlogSection() {
           <div className="flex mt-4">
             <Link target="_blank" href="/blog-talento/estructuracion-organizacional">
               <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
-                Leer este post
+                Leer este blog
               </button>
             </Link>
           </div>
