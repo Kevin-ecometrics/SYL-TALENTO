@@ -9,7 +9,7 @@ function BlogSection() {
       className="flex flex-col items-center justify-center max-w-6xl py-8 mx-auto bg-white border-t-2 border-black"
     >
       <main className="flex flex-col items-center w-full text-center bg-white mt-5">
-        <h1 className="text-2xl font-bold sm:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-red-500 to-orange-500">
+        <h1 className="text-4xl font-bold sm:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-red-500 to-orange-500">
           BLOGS
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 [&>article]:text-black font gap-8 my-8">

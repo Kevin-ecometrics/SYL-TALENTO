@@ -69,7 +69,10 @@ function Nav() {
                 className={`w-full ${activeSection === item.link ? "text-blue-500" : ""} hover:text-blue-500`}
               href={item.link}
               size="lg"
-              onClick={(event) => handleClick(event, item.link)}
+              onClick={(event) => {
+                handleClick(event, item.link);
+                setIsMenuOpen(false); // Cierra el menú
+              }}
             >
               {item.name}
             </Link>
@@ -77,14 +80,17 @@ function Nav() {
         ))}
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu isOpen={isMenuOpen}>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.name}-${index}`}>
             <Link
               color="foreground"
               className="w-full hover:text-blue-500"
               href={item.link}
-              onClick={(event) => handleClick(event, item.link)}
+              onClick={(event) => {
+                handleClick(event, item.link);
+                setIsMenuOpen(false); // Cierra el menú
+              }}
             >
               {item.name}
             </Link>

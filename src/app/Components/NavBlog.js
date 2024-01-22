@@ -34,7 +34,7 @@ function NavBlog() {
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <NavbarItem>
           <Link href="/" className="text-black hover:text-blue-500">
-            Regeresar al inicio
+            Regresar al inicio
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -42,7 +42,7 @@ function NavBlog() {
       <NavbarMenu>
         <NavbarMenuItem>
           <Link href="/" className="text-black hover:text-blue-500">
-            Regeresar al inicio
+            Regresar al inicio
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>
