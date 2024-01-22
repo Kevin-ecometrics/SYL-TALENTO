@@ -20,7 +20,7 @@ function HeroSection() {
       className="flex flex-col items-center justify-center max-w-6xl h-[1000px] py-2 mx-auto bg-white"
     >
       <main className="flex flex-col items-center w-full px-4 mt-20 space-y-8 text-center bg-white sm:mt-20">
-        <div className="mx-auto mb-16 tracking-normal text-blue-500 text-md max-w-1xl font-display sm:text-7xl">
+        <div className="mx-auto mb-16 tracking-normal text-blue-500 text-4xl max-w-1xl font-display sm:text-7xl">
           <TypeAnimation
             sequence={[
               // Same substring at the start will only be typed out once, initially

@@ -86,7 +86,7 @@ function Servicios() {
                   color="white"
                   className="grid h-24 mt-2 text-center border place-items-center"
                 >
-                  <h6 className="text-2xl text-black">{servicio.title}</h6>
+                  <h6 className="text-md md:text-2xl text-black">{servicio.title}</h6>
                 </CardBody>
                 <CardFooter>
                   <AnimatePresence>
