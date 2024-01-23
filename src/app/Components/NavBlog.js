@@ -33,7 +33,7 @@ function NavBlog() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+      <NavbarContent className="hidden gap-4 sm:flex font-bold" justify="center">
         <NavbarItem>
           <Link href="/" className="text-black hover:text-blue-500">
             Regresar al inicio

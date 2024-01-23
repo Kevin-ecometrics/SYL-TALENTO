@@ -61,7 +61,7 @@ function Nav() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+      <NavbarContent className="hidden gap-4 sm:flex font-bold" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={index}>
             <Link

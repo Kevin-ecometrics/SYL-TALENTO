@@ -15,12 +15,12 @@ function RecursosEmpresariales() {
           alt="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
-          <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-3xl [&>h2]:text-justify">
+          <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-4xl [&>h2]:text-justify [&>h2]:text-2xl [&>h3]:text-2xl">
             <h1 className="text-center text-2xl text-black font-extrabold">
               Optimizando Recursos Empresariales
             </h1>
             <br />
-            <h3 className="font-bold text-center">
+            <h3 className="text-center">
               Descubre Como la Subcontratación Especializada de SYL Talento
               Reduce Costos y Tiempos
             </h3>

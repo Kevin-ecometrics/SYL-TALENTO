@@ -6,7 +6,7 @@ import { Roboto } from "next/font/google";
 export const metadata = {
   canonycal: "https://syltalento.com",
   title:
-    "SYL talento | soluciones en selección, reclutamiento y suministros de materiales para las Californias",
+    "SYL talento | soluciones en reclutamiento de personal y suministros de materiales para las Californias",
   description:
     "En SYL Talento, nos dedicamos a brindar soluciones de reclutamiento y selección de personal, así como suministros de materiales en Baja California y en toda la República Mexicana. Somos una empresa 100% comprometida con la innovación, la integridad y la calidad.",
   publisher: "Ecommetrica",

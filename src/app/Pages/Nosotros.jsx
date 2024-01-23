@@ -135,7 +135,8 @@ function NosotroSection() {
         >
           <Accordion>
             <AccordionItem key="1" aria-label="Accordion 1" title="Misión" className="text-blue-500 text-2xl text-start">
-            Nuestra misión es ser el socio estratégico preferido de empresas de alto nivel que buscan talento excepcional. Trabajamos en estrecha colaboración con nuestros clientes para identificar candidatos que se alineen no solo con sus necesidades técnicas, sino también con su cultura y valores. 
+            <div className="flex flex-col"><span>Nuestra misión es ser el socio estratégico preferido de empresas de alto nivel que buscan talento excepcional. </span>
+            <span>Trabajamos en estrecha colaboración con nuestros clientes para identificar candidatos que se alineen no solo con sus necesidades técnicas, sino también con su cultura y valores. </span></div>
             </AccordionItem>
             <AccordionItem key="2" aria-label="Accordion 2" title="Visión" className="text-red-500 text-2xl text-start">
               Ser el proveedor de Talento Humano y asesoría de Recursos Humanos
