@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Footer from "../../Pages/FooterSection";
 import NavBlog from "../../components/NavBlog";
+import FooterBlog from "../../components/FooterBlog";
 function EstructuraOrganizacional() {
   return (
     <main className="flex flex-col px-4 bg-white">
@@ -14,8 +14,8 @@ function EstructuraOrganizacional() {
           alt="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
-          <article className="mt-8 w-auto md:w-[700px] [&>h2]:text-justify">
-            <h1 className="text-center text-2xl text-black font-extrabold">
+          <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-3xl [&>h2]:text-justify">
+            <h1 className="text-center text-black font-extrabold">
               Estructuracion Organizacional Con SYL Talento{" "}
             </h1>
             <br />
@@ -40,7 +40,7 @@ function EstructuraOrganizacional() {
             <br />
             <Image
               src="/blog_image_7.webp"
-              className="h-80"
+              className="h-96"
               width={700}
               height={50}
               alt="blog image"
@@ -237,7 +237,7 @@ function EstructuraOrganizacional() {
             />
           </div>
         </div>
-        <Footer />
+        <FooterBlog />
       </div>
     </main>
   );

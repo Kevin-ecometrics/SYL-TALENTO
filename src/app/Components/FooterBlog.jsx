@@ -37,15 +37,6 @@ const LINKS = [
   },
 
   {
-    title: "Secciones",
-    items: [
-      { name: "Nosotros", href: "#nosotros" },
-      { name: "Servicios", href: "#servicios" },
-      { name: "Quiénes somos", href: "#quienesSomos" },
-      { name: "Clientes", href: "#clientes" },
-    ],
-  },
-  {
     title: "Recursos",
     items: [
       {
@@ -77,7 +68,7 @@ const LINKS = [
   },
 ];
 
-export default function Footer() {
+export default function FooterBlog() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [activeModal, setActiveModal] = React.useState(null);
   const [activeModalName, setActiveModalName] = React.useState(null);
@@ -92,7 +83,7 @@ export default function Footer() {
   return (
     <footer className="w-full mt-8 bg-white border-t border-black">
       <div className="max-w-screen-xl px-4 mx-auto mt-8 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-3">
           {/* Logo */}
           <div className="md:col-span-1">
             <Image src="/SYL.png" width={150} height={100} alt="LOGO" />

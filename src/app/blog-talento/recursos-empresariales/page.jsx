@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Footer from "../../Pages/FooterSection";
 import NavBlog from "../../components/NavBlog";
+import FooterBlog from "../../components/FooterBlog";
 
 function RecursosEmpresariales() {
   return (
@@ -15,7 +15,7 @@ function RecursosEmpresariales() {
           alt="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
-          <article className="mt-8 w-auto md:w-[700px] [&>h2]:text-justify">
+          <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-3xl [&>h2]:text-justify">
             <h1 className="text-center text-2xl text-black font-extrabold">
               Optimizando Recursos Empresariales
             </h1>
@@ -257,7 +257,7 @@ function RecursosEmpresariales() {
             />
           </div>
         </div>
-        <Footer />
+        <FooterBlog />
       </div>
     </main>
   );
