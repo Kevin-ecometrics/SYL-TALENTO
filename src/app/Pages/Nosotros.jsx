@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef } from "react";
-import { Card, CardBody, Accordion, AccordionItem } from "@nextui-org/react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { Card, CardBody, Accordion, AccordionItem, CardFooter } from "@nextui-org/react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Banner from '/public/banner.png';
 function NosotroSection() {
@@ -26,9 +26,42 @@ function NosotroSection() {
 
   const ref = useRef(null);
   const isInView = useInView(ref);
+  const [activeCard, setActiveCard] = useState(null);
 
-  const cardStyle = {
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+  const valores = [
+    {
+      title: "Dedicación",
+      description:
+        "Es cuando nos consagramos a una causa que nos motiva a poner todo de nosotros en todo lo que hacemos. Significa estar comprometido con un objetivo y hacer un gran esfuerzo para lograrlo. Se refleja en nuestro compromiso con la excelencia, nuestro esfuerzo por superar las expectativas y nuestra voluntad de ir más allá de lo que se espera de nosotros."
+    },
+    {
+      title: "Innovación",
+        description:
+        
+        "Es mantener una actitud vanguardista y proactiva que nos, impulsa a buscar nuevas formas de hacer las cosas. Siempre, abiertos a nuevas ideas, dispuestos a experimentar y correr, riesgos. Está en nuestro trabajo cuando buscamos formas, de mejorar nuestros productos y servicios, nuestros, procesos y nuestras prácticas."
+    },
+    {
+      title: "Cooperación",
+      description:
+      "Implica colaborar e involucrar al equipo, y nos impulsa a trabajar juntos para alcanzar un objetivo común. Significa ser respetuosos, colaborativos y dispuestos a ayudar a los demás. En nuestro trabajo, la cooperación se refleja en nuestra capacidad de trabajar en equipo, de compartir información y de resolver problemas juntos."
+    },
+    {
+      title: "Integridad",
+      description:
+        "Es cuando las acciones corresponden con nuestras palabras siendo éticos y honestos en todo lo que hacemos. Significa tener coherencia entre lo que decimos y lo que hacemos. La integridad la proyectamos siendo honestos con nuestros clientes."
+    },
+    {
+      title: "Calidad",
+      description:
+      "Significa cumplir con los estándares establecidos, superar las expectativas de los clientes y buscar constantemente la mejora que se refleja en nuestra atención al detalle, nuestro compromiso con la excelencia y nuestra búsqueda de la mejora continua."
+    },
+  ]
+  const toggleCard = (index) => {
+    if (activeCard === index) {
+      setActiveCard(null);
+    } else {
+      setActiveCard(index);
+    }
   };
   return (
     <div
@@ -43,49 +76,50 @@ function NosotroSection() {
           Nuestros Valores
         </h1>
         <div className="flex flex-wrap justify-center gap-4">
-          {[
-            {
-              title: "Dedicación",
-              description:
-                "Es cuando nos consagramos a una causa. Esta involucra dar lo mejor de nosotros y hacer nuestro mayor esfuerzo.",
-            },
-            {
-              title: "Innovación",
-              description:
-                "Mantener una actitud vanguardista y proactiva ante las oportunidades en un proceso de desarrollo continuo.",
-            },
-            {
-              title: "Cooperación",
-              description:
-                "Colaborar e involucrar el trabajo en equipo. Incluso las tareas más difíciles pueden hacerse rápidamente cuando se coopera.",
-            },
-            {
-              title: "Integridad",
-              description:
-                "Es cuando las acciones corresponden con nuestras palabras y cuando estas mismas se rigen por valores éticos.",
-            },
-            {
-              title: "Calidad",
-              description:
-                "La forma en que nuestros clientes perciben, definen y miden nuestros productos y servicios.",
-            },
-          ].map((value, index) => (
+        {valores.map((valores, index) => (
             <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { delay: 0.5 + index * 0.1 },
+              }}
+              exit={{
+                opacity: 0,
+                y: -20,
+                transition: { delay: 0.5 + index * 0.1 },
+              }}
               key={index}
-              className="w-full sm:w-1/2 lg:w-1/4 max-w-[400px] p-2"
-              variants={zoomEffect}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              whileHover="hover"
-              style={cardStyle}
+              onClick={() => toggleCard(index)}
+              className={`w-full sm:w-1/2 lg:w-72 xl:w-96 p-2 cursor-pointer ${
+                activeCard === index ? "max-w-xl" : "max-w-[500px]"
+              }`}
             >
-              <Card className="w-full h-full">
-                <CardBody>
-                  <h2 className="mb-2 text-2xl font-bold text-center">
-                    {value.title}
-                  </h2>
-                  <p>{value.description}</p>
+              <Card
+                isFooterBlurred
+                radius="lg"
+                className="w-full text-center border-4 border-blue-200 shadow-blue-500"
+              >
+                <CardBody
+                  variant="gradient"
+                  color="white"
+                  className="grid h-24 mt-2 text-center border place-items-center"
+                >
+                  <h6 className="text-md md:text-2xl text-black font-bold">{valores.title}</h6>
                 </CardBody>
+                <CardFooter>
+                  <AnimatePresence>
+                    {activeCard === index && (
+                      <motion.p
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                      >
+                        {valores.description}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </CardFooter>
               </Card>
             </motion.div>
           ))}
@@ -101,8 +135,7 @@ function NosotroSection() {
         >
           <Accordion>
             <AccordionItem key="1" aria-label="Accordion 1" title="Misión" className="text-blue-500 text-2xl text-start">
-              Crear relaciones positivas entre nuestros clientes y candidatos
-              para el éxito de ambos.
+            Nuestra misión es ser el socio estratégico preferido de empresas de alto nivel que buscan talento excepcional. Trabajamos en estrecha colaboración con nuestros clientes para identificar candidatos que se alineen no solo con sus necesidades técnicas, sino también con su cultura y valores. 
             </AccordionItem>
             <AccordionItem key="2" aria-label="Accordion 2" title="Visión" className="text-red-500 text-2xl text-start">
               Ser el proveedor de Talento Humano y asesoría de Recursos Humanos

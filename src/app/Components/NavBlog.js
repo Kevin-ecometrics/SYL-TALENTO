@@ -27,7 +27,9 @@ function NavBlog() {
           style={{ color: "#000" }}
         />
         <NavbarBrand>
-          <Image src="/SYL.png" width={150} height={100} alt="Logo" />
+          <Link href="/">
+            <Image src="/SYL.png" width={150} height={100} alt="Logo" />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
