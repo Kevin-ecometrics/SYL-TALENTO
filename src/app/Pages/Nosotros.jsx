@@ -9,7 +9,6 @@ import {
 } from "@nextui-org/react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Banner from "/public/Somos SYL talento especialistas en plataformas de empleo para cualquier área que necesite tu empresa.png"
 function NosotroSection() {
   const [open, setOpen] = React.useState(0);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -133,7 +132,7 @@ function NosotroSection() {
         </div>
         <div>
           <Image
-            src={Banner}
+            src="/Somos SYL talento especialistas en plataformas de empleo para cualquier área que necesite tu empresa.png"
             alt="Conoce quienes somos SYL talento agencia especializada plataformas de empleo para tu empresa facilitando el proceso de selección de personal para todas las áreas."
             layout="responsive"
             width={1920}

@@ -95,7 +95,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4">
           {/* Logo */}
           <div className="md:col-span-1">
-            <Image src="/SYL.png" width={150} height={100} alt="LOGO" />
+            <Image src="/SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México.png" width={150} height={100} alt="LOGO" />
           </div>
           {/* Enlaces */}
           {LINKS.map((linkGroup) => (

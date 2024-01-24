@@ -26,11 +26,11 @@ function RecursosEmpresariales() {
             </h3>
             <br />
             <Image
-              src="/blog_image_4.webp"
+              src="/SYL Talento inicia creando estrategias para el proceso de reclutamiento y selección de una manera óptima.webp"
               className="h-80"
               width={700}
               height={50}
-              alt="blog image"
+              alt="La estructuración y gestión de los procesos nuestro reclutamiento de personal de SYL pueden ayudar a agilizar el proceso de integración de nuevos candidatos gracias a sus métodos del proceso reclutamiento de personal."
             />
             <br />
             <h2 className="text-black font-bold text-justify">
@@ -68,11 +68,11 @@ function RecursosEmpresariales() {
             </h1>
             <br />
             <Image
-              src="/blog_image_5.webp"
+              src="/Reducción y optimización de los recursos publicar vacantes generando una mejor planeación y estructuración de candidatos.webp"
               className="h-80"
               width={700}
               height={50}
-              alt="blog image"
+              alt="Un rendimiento y ahorro de recursos de forma rápida y segura. Con orientación de SYL y su búsqueda de profesionales de acorde al rol necesario para tu empresa, ayuda a optimizar eficazmente los recursos y el tiempo para tu empresa, sin necesidad de una búsqueda extensiva o publicar vacantes. "
             />
             <br />
             <h2>
@@ -125,11 +125,11 @@ function RecursosEmpresariales() {
             </h1>
             <br />
             <Image
-              src="/blog_image_6.webp"
+              src="/La optimización de tiempo y recursos del reclutamiento de personal es posible con la experiencia adecuada.webp"
               className="h-80"
               width={700}
               height={50}
-              alt="blog image"
+              alt="SYL se encarga de optimizar las plataformas de empleo y agilizar los recursos y medios disponibles para poder ahorrar tiempo y no tener perdidas en el proceso de reclutamiento de personal y selección.   "
             />
             <br />
             <h1 className="text-center font-bold">
@@ -238,19 +238,19 @@ function RecursosEmpresariales() {
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
             <Image
-              src="/icons/facebook.svg"
+              src="/facebook.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/twitter.svg"
+              src="/twitter.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/gmail.svg"
+              src="/gmail.svg"
               width={32}
               height={32}
               alt="icon logo"

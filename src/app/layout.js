@@ -4,12 +4,29 @@ import "./globals.css";
 import { Roboto } from "next/font/google";
 
 export const metadata = {
-  canonycal: "https://syltalento.com",
   title:
-    "SYL talento | soluciones en reclutamiento de personal y suministros de materiales para las Californias",
+    "SYL talento soluciones en reclutamiento y suministros en la baja.",
   description:
     "En SYL Talento, nos dedicamos a brindar soluciones de reclutamiento y selección de personal, así como suministros de materiales en Baja California y en toda la República Mexicana. Somos una empresa 100% comprometida con la innovación, la integridad y la calidad.",
   publisher: "Ecommetrica",
+  authors: [{ name: 'Ecommetrica', url: 'https://e-commetrics.com/' }],
+  keywords: [
+    "Reclutamiento de personal", "publicar vacantes", "páginas de reclutamiento", "plataformas de empleo "
+  ],
+  alternates: {
+    canonical: 'https://syltalento.com/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 const font = Roboto({ subsets: ["latin"], weight: ["300"] });
 
@@ -18,8 +35,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={font.className}>
         <Providers>{children}</Providers>
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <GoogleTagManager gtmId="GTM-N6HSR8RW" />
+        <GoogleAnalytics gaId="G-YC3STY07FX" />
       </body>
     </html>
   );

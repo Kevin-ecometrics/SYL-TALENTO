@@ -14,10 +14,10 @@ function BlogSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 [&>article]:text-black font gap-8 my-8">
           <article>
             <Image
-              src="/banner_blog.webp"
+              src="/SYL especialistas en publicar vacantes globalmente para buscar y conseguir el talento necesario hacia tu empresa.webp"
               width={700}
               height={50}
-              alt="banner blog"
+              alt="En SYL nos especializamos en publicar vacantes globalmente, ayudando a la búsqueda del talento que estas buscando para tu empresa."
             />
             <div className="flex justify-between font-semibold font">
               <span>Por: Syl Talento</span>
@@ -45,10 +45,10 @@ function BlogSection() {
           </article>
           <article>
             <Image
-              src="/banner_blog2.png"
+              src="/Nuestras páginas de reclutamiento se enfocan en una selección de personal altamente especializada para cualquier ámbito.png"
               width={900}
               height={50}
-              alt="banner blog"
+              alt="Nuestras páginas de reclutamiento facilitan el proceso de selección de personal masivo, ahorrando tiempo y recursos, siendo más eficaz. "
             />
             <div className="flex justify-between font-semibold">
               <span>Por: Syl Talento</span>
@@ -78,10 +78,10 @@ function BlogSection() {
         </div>
         <article className="font gap-8 my-8 text-black">
           <Image
-            src="/banner_blog3.png"
+            src="/Con nuestras plataformas de empleo manejamos el tiempo y recursos del proceso de selección de personal.png"
             width={1200}
             height={10}
-            alt="banner blog"
+            alt="SYL talento agiliza y organiza los medios necesarios para gestionar una   contratación eficaz. La estructuración de los procesos de reclutamiento de personal de SYL agilizan los procesos y ahorran gastos."
           />
           <div className="flex font-semibold justify-between">
             <span>Por: Syl Talento</span>

@@ -11,7 +11,6 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react";
 import Image from "next/image";
-
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -70,7 +69,7 @@ function Nav() {
         />
         <NavbarBrand>
           <Image
-            src="/Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa.png"
+            src="SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México.png"
             alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
             width={150}
             height={100}

@@ -67,8 +67,8 @@ function Reclutamiento() {
             </h2>
             <br />
             <Image
-              src="/blog_image_1.webp"
-              alt="blog image"
+              src="/Nuestro reclutamiento de personal encuentra el candidato más adecuado para el puesto elegido, ahorrando tiempo y recursos.webp"
+              alt="SYL se encarga de tomar todos los candidatos, para hacer su reclutamiento de personal para la empresa seleccionando a los mejores calificados para los roles que se busca llenar."
               className="h-80 "
               width={700}
               height={10}
@@ -135,8 +135,8 @@ function Reclutamiento() {
             </h1>
             <br />
             <Image
-              src="/blog_image_2.webp"
-              alt="blog image"
+              src="/SYL se encarga del reclutamiento de personal para gestionar a los mejores candidatos para la empresa.webp"
+              alt="En SYL el control y gestión del proceso de reclutamiento de personal, es organizado y eficaz. Ahorrando tiempo y recursos para tu empresa."
               className="h-80 "
               width={700}
               height={10}
@@ -176,8 +176,8 @@ function Reclutamiento() {
             </h1>
             <br />
             <Image
-              src="/blog_image_3.webp"
-              alt="blog image"
+              src="/En SYL las páginas de reclutamiento son muy importantes de nuestro proceso, agilizando y ahorrando recursos.webp"
+              alt="El Reclutamiento de manera objetiva buscando al candidato más apto y acelerando los procesos de selección para tu empresa. SYL talento puede ahorrar recursos y tiempo crucial para la empresa, asegurando a candidatos profesionales calificados desde nuestras páginas de reclutamiento."
               className="h-80 "
               width={700}
               height={10}
@@ -221,19 +221,19 @@ function Reclutamiento() {
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
             <Image
-              src="/icons/facebook.svg"
+              src="/facebook.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/twitter.svg"
+              src="/twitter.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/gmail.svg"
+              src="/gmail.svg"
               width={32}
               height={32}
               alt="icon logo"

@@ -8,8 +8,6 @@ import {
   ClockIcon,
 } from "@heroicons/react/24/solid";
 import { Card, CardBody, Input, Button, Textarea } from "@nextui-org/react";
-import facebook from "../../../public/facebook.svg";
-import whatsapp from "../../../public/whatsapp.svg";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -98,30 +96,30 @@ function ContactoSection() {
                 <span>contacto@syltalento.com</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
-                <Button className="bg-blue-500 rounded-full hover:bg-orange-800">
                   <Link
                     target="_blank"
                     href="https://www.facebook.com/SYLTalento1"
                   >
                     <Image
                       alt="Facebook icon"
-                      src={facebook}
+                      src="/icons/facebook.svg"
+                      width={24}
+                      height={24}
                       className="w-8 h-8 text-white"
                     />
                   </Link>
-                </Button>
-                <Button className="bg-300 rounded-full hover:bg-orange-500">
                   <Link
                     target="_blank"
                     href="https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento"
                   >
                     <Image
                       alt="WhatsApp icon"
-                      src={whatsapp}
+                      src="/icons/whatsapp.svg"
+                      width={24}
+                      height={24}
                       className="w-8 h-8 text-white"
                     />
                   </Link>
-                </Button>
               </div>
             </div>
           </div>

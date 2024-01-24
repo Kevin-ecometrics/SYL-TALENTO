@@ -39,11 +39,11 @@ function EstructuraOrganizacional() {
             </h2>
             <br />
             <Image
-              src="/blog_image_7.webp"
+              src="/La estructuración y agilización de los procesos para un óptimo proceso de reclutamiento de la empresa.webp"
               className="h-96"
               width={700}
               height={50}
-              alt="blog image"
+              alt="SYL talento agiliza y organiza los medios necesarios para gestionar una   contratación eficaz. La estructuración de los procesos de reclutamiento de personal de SYL agilizan los procesos y ahorran gastos.   "
             />
             <br />
             <h1 className="text-center font-bold">
@@ -137,11 +137,11 @@ function EstructuraOrganizacional() {
             </h1>
             <br />
             <Image
-              src="/blog_image_8.webp"
+              src="/El reclutamiento de personal ayuda a generar empleos y el crecimiento laboral de los candidatos elegidos.webp"
               className="h-80"
               width={700}
               height={50}
-              alt="blog image"
+              alt="En nuestras páginas de reclutamiento de personal se ofrece todo lo necesario para postularse, así creando los puestos con las especiaciones necesarias para el candidato asegurándose que solo los más aptos para el puesto y la empresa son los seleccionados.  "
             />
             <br />
             <h2>
@@ -189,11 +189,11 @@ function EstructuraOrganizacional() {
             </h2>
             <br />
             <Image
-              src="/blog_image_9.webp"
+              src="/Publicar vacantes genera una mejor variedad de personal homogénea. Una variedad de talento para la empresa.webp"
               className="h-80"
               width={700}
               height={50}
-              alt="blog image"
+              alt="Publicar vacantes son lo que se muestra a los candidatos para que sean atraídos por las propuestas generadas por SYL haciendo que el proceso de reclutamiento se agilice, siendo los candidatos quienes buscan y optan por la solicitud de las vacantes publicadas.  "
             />
             <br />
             <h1 className="text-center font-bold">
@@ -218,19 +218,19 @@ function EstructuraOrganizacional() {
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
             <Image
-              src="/icons/facebook.svg"
+              src="/facebook.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/twitter.svg"
+              src="/twitter.svg"
               width={32}
               height={32}
               alt="icon logo"
             />
             <Image
-              src="/icons/gmail.svg"
+              src="/gmail.svg"
               width={32}
               height={32}
               alt="icon logo"
