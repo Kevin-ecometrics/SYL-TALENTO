@@ -6,8 +6,8 @@ export default function Loading() {
     return (
         <div className="fixed top-0 left-0 z-50 flex flex-col items-center justify-center w-screen h-screen bg-white">
             <motion.img
-                src="/SYL.png"
-                alt="Loading Logo"
+                src="/Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa.png"
+                alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
                 initial="out"
                 transition={{
                     duration: 0.5,

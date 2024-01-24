@@ -28,7 +28,7 @@ function NavBlog() {
         />
         <NavbarBrand>
           <Link href="/">
-            <Image src="/SYL.png" width={150} height={100} alt="Logo" />
+            <Image src="/Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa.png" alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. " width={150} height={100} />
           </Link>
         </NavbarBrand>
       </NavbarContent>

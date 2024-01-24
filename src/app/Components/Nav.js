@@ -1,6 +1,15 @@
-"use client"
-import React, {useState, useEffect} from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+"use client";
+import React, { useState, useEffect } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
 import Image from "next/image";
 
 function Nav() {
@@ -13,13 +22,13 @@ function Nav() {
     { name: "Servicios", link: "#servicios" },
     { name: "Quienes Somos", link: "#quienesSomos" },
     { name: "Clientes", link: "#clientes" },
-    { name: "Blogs", link: "#blogs"}, 
+    { name: "Blogs", link: "#blogs" },
     { name: "Contacto", link: "#contacto" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuItems.map(item => item.link);
+      const sections = menuItems.map((item) => item.link);
       let currentSection = "";
 
       sections.forEach((section, i) => {
@@ -38,18 +47,21 @@ function Nav() {
       window.removeEventListener("scroll", handleScroll);
     };
   });
-  
+
   function handleClick(event, link) {
     event.preventDefault();
     const element = document.querySelector(link);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   }
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-white border-b border-black">
+    <Navbar
+      onMenuOpenChange={setIsMenuOpen}
+      className="bg-white border-b border-black"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -57,16 +69,26 @@ function Nav() {
           style={{ color: "#000" }}
         />
         <NavbarBrand>
-          <Image src="/SYL.png" width={150} height={100} alt="Logo" />
+          <Image
+            src="/Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa.png"
+            alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
+            width={150}
+            height={100}
+          />
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden gap-4 sm:flex font-bold" justify="center">
+      <NavbarContent
+        className="hidden gap-4 sm:flex font-bold"
+        justify="center"
+      >
         {menuItems.map((item, index) => (
           <NavbarItem key={index}>
             <Link
               color="foreground"
-                className={`w-full ${activeSection === item.link ? "text-blue-500" : ""} hover:text-blue-500`}
+              className={`w-full ${
+                activeSection === item.link ? "text-blue-500" : ""
+              } hover:text-blue-500`}
               href={item.link}
               size="lg"
               onClick={(event) => {

@@ -1,9 +1,15 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { Card, CardBody, Accordion, AccordionItem, CardFooter } from "@nextui-org/react";
+import {
+  Card,
+  CardBody,
+  Accordion,
+  AccordionItem,
+  CardFooter,
+} from "@nextui-org/react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Banner from '/public/banner.png';
+import Banner from "/public/Somos SYL talento especialistas en plataformas de empleo para cualquier área que necesite tu empresa.png"
 function NosotroSection() {
   const [open, setOpen] = React.useState(0);
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -32,30 +38,29 @@ function NosotroSection() {
     {
       title: "Dedicación",
       description:
-        "Es cuando nos consagramos a una causa que nos motiva a poner todo de nosotros en todo lo que hacemos. Significa estar comprometido con un objetivo y hacer un gran esfuerzo para lograrlo. Se refleja en nuestro compromiso con la excelencia, nuestro esfuerzo por superar las expectativas y nuestra voluntad de ir más allá de lo que se espera de nosotros."
+        "Es cuando nos consagramos a una causa que nos motiva a poner todo de nosotros en todo lo que hacemos. Significa estar comprometido con un objetivo y hacer un gran esfuerzo para lograrlo. Se refleja en nuestro compromiso con la excelencia, nuestro esfuerzo por superar las expectativas y nuestra voluntad de ir más allá de lo que se espera de nosotros.",
     },
     {
       title: "Innovación",
-        description:
-        
-        "Es mantener una actitud vanguardista y proactiva que nos, impulsa a buscar nuevas formas de hacer las cosas. Siempre, abiertos a nuevas ideas, dispuestos a experimentar y correr, riesgos. Está en nuestro trabajo cuando buscamos formas, de mejorar nuestros productos y servicios, nuestros, procesos y nuestras prácticas."
+      description:
+        "Es mantener una actitud vanguardista y proactiva que nos, impulsa a buscar nuevas formas de hacer las cosas. Siempre, abiertos a nuevas ideas, dispuestos a experimentar y correr, riesgos. Está en nuestro trabajo cuando buscamos formas, de mejorar nuestros productos y servicios, nuestros, procesos y nuestras prácticas.",
     },
     {
       title: "Cooperación",
       description:
-      "Implica colaborar e involucrar al equipo, y nos impulsa a trabajar juntos para alcanzar un objetivo común. Significa ser respetuosos, colaborativos y dispuestos a ayudar a los demás. En nuestro trabajo, la cooperación se refleja en nuestra capacidad de trabajar en equipo, de compartir información y de resolver problemas juntos."
+        "Implica colaborar e involucrar al equipo, y nos impulsa a trabajar juntos para alcanzar un objetivo común. Significa ser respetuosos, colaborativos y dispuestos a ayudar a los demás. En nuestro trabajo, la cooperación se refleja en nuestra capacidad de trabajar en equipo, de compartir información y de resolver problemas juntos.",
     },
     {
       title: "Integridad",
       description:
-        "Es cuando las acciones corresponden con nuestras palabras siendo éticos y honestos en todo lo que hacemos. Significa tener coherencia entre lo que decimos y lo que hacemos. La integridad la proyectamos siendo honestos con nuestros clientes."
+        "Es cuando las acciones corresponden con nuestras palabras siendo éticos y honestos en todo lo que hacemos. Significa tener coherencia entre lo que decimos y lo que hacemos. La integridad la proyectamos siendo honestos con nuestros clientes.",
     },
     {
       title: "Calidad",
       description:
-      "Significa cumplir con los estándares establecidos, superar las expectativas de los clientes y buscar constantemente la mejora que se refleja en nuestra atención al detalle, nuestro compromiso con la excelencia y nuestra búsqueda de la mejora continua."
+        "Significa cumplir con los estándares establecidos, superar las expectativas de los clientes y buscar constantemente la mejora que se refleja en nuestra atención al detalle, nuestro compromiso con la excelencia y nuestra búsqueda de la mejora continua.",
     },
-  ]
+  ];
   const toggleCard = (index) => {
     if (activeCard === index) {
       setActiveCard(null);
@@ -76,7 +81,7 @@ function NosotroSection() {
           Nuestros Valores
         </h1>
         <div className="flex flex-wrap justify-center gap-4">
-        {valores.map((valores, index) => (
+          {valores.map((valores, index) => (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{
@@ -105,7 +110,9 @@ function NosotroSection() {
                   color="white"
                   className="grid h-24 mt-2 text-center border place-items-center"
                 >
-                  <h6 className="text-md md:text-2xl text-black font-bold">{valores.title}</h6>
+                  <h6 className="text-md md:text-2xl text-black font-bold">
+                    {valores.title}
+                  </h6>
                 </CardBody>
                 <CardFooter>
                   <AnimatePresence>
@@ -125,7 +132,13 @@ function NosotroSection() {
           ))}
         </div>
         <div>
-          <Image src={Banner} alt="Banner Syl Talento" layout="responsive" width={1920} height={720} />       
+          <Image
+            src={Banner}
+            alt="Conoce quienes somos SYL talento agencia especializada plataformas de empleo para tu empresa facilitando el proceso de selección de personal para todas las áreas."
+            layout="responsive"
+            width={1920}
+            height={720}
+          />
         </div>
         <motion.div
           className="w-full mt-8 "
@@ -134,11 +147,30 @@ function NosotroSection() {
           animate={isInView ? "visible" : "hidden"}
         >
           <Accordion>
-            <AccordionItem key="1" aria-label="Accordion 1" title="Misión" className="text-blue-500 text-2xl text-start">
-            <div className="flex flex-col"><span>Nuestra misión es ser el socio estratégico preferido de empresas de alto nivel que buscan talento excepcional. </span>
-            <span>Trabajamos en estrecha colaboración con nuestros clientes para identificar candidatos que se alineen no solo con sus necesidades técnicas, sino también con su cultura y valores. </span></div>
+            <AccordionItem
+              key="1"
+              aria-label="Accordion 1"
+              title="Misión"
+              className="text-blue-500 text-2xl text-start"
+            >
+              <div className="flex flex-col">
+                <span>
+                  Nuestra misión es ser el socio estratégico preferido de
+                  empresas de alto nivel que buscan talento excepcional.{" "}
+                </span>
+                <span>
+                  Trabajamos en estrecha colaboración con nuestros clientes para
+                  identificar candidatos que se alineen no solo con sus
+                  necesidades técnicas, sino también con su cultura y valores.{" "}
+                </span>
+              </div>
             </AccordionItem>
-            <AccordionItem key="2" aria-label="Accordion 2" title="Visión" className="text-red-500 text-2xl text-start">
+            <AccordionItem
+              key="2"
+              aria-label="Accordion 2"
+              title="Visión"
+              className="text-red-500 text-2xl text-start"
+            >
               Ser el proveedor de Talento Humano y asesoría de Recursos Humanos
               a nivel nacional de gran entrega.
             </AccordionItem>
