@@ -121,7 +121,9 @@ function NosotroSection() {
                         animate={{ height: "auto" }}
                         exit={{ height: 0 }}
                       >
-                        {valores.description}
+                        <span className="flex text-justify">
+                          {valores.description}
+                        </span>
                       </motion.p>
                     )}
                   </AnimatePresence>

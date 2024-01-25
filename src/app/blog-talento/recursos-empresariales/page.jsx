@@ -34,9 +34,12 @@ function RecursosEmpresariales() {
             />
             <br />
             <h2 className="text-black font-bold text-justify">
-              La subcontratación especializada es una excelente manera de
-              reducir costos, mejorar la eficiencia y liberar recursos internos
-              para que se concentren en las actividades principales del negocio.
+              La subcontratación especializada es el proceso de contratar a un
+              proveedor externo para realizar tareas o servicios específicos,
+              Pero va más allá de solo publicar vacantes, en plataformas de
+              empleo. Esta puede ser una excelente manera de reducir costos,
+              mejorar la eficiencia y liberar recursos internos para que se
+              concentren en las actividades principales del negocio.{" "}
             </h2>
             <br />
             <h2>
@@ -103,7 +106,7 @@ function RecursosEmpresariales() {
               interno al encargar tareas especializadas a nuestro equipo. Esto
               no solo ahorra dinero, sino que también libera recursos
               financieros que puede invertir en aspectos importantes de su
-              empresa.
+              empresa, para el reclutamiento de personal.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -174,8 +177,9 @@ function RecursosEmpresariales() {
             <br />
             <ul class="space-y-1 list-disc list-inside ">
               <li>
-                Reclutamiento y selección: Podemos ayudarle a encontrar y
-                contratar a los mejores candidatos para sus puestos vacantes.
+                Reclutamiento de personal y selección: Podemos ayudarle a
+                encontrar y contratar a los mejores candidatos para sus puestos,
+                y publicar vacantes.
               </li>
               <li>
                 Capacitación y desarrollo: Podemos proporcionar capacitación y
@@ -201,8 +205,8 @@ function RecursosEmpresariales() {
               Gestionamos aspectos críticos de recursos humanos, desde la
               selección y contratación hasta la administración de nóminas y la
               gestión del talento. Libera a tu equipo interno para que se
-              enfoque en tareas estratégicas mientras nosotros nos encargamos de
-              los detalles.{" "}
+              enfoque en tareas estratégicas mientras nosotros nos encargamos
+              del reclutamiento de personal.
             </h2>
             <br />
             <h1 className="text-center font-bold">
@@ -213,8 +217,8 @@ function RecursosEmpresariales() {
               Nuestros expertos en TI están listos para brindarte soluciones
               innovadoras que impulsen la eficiencia de tu infraestructura
               tecnológica. Desde el soporte técnico hasta el desarrollo de
-              páginas web, tenemos las habilidades necesarias para satisfacer
-              tus necesidades.{" "}
+              páginas de reclutamiento y plataformas de empleo, tenemos las
+              habilidades necesarias para satisfacer tus necesidades.
             </h2>
             <br />
             <h1 className="text-center font-bold">El Impacto en Tu Empresa </h1>
@@ -237,24 +241,9 @@ function RecursosEmpresariales() {
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image
-              src="/facebook.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/twitter.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/gmail.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
           </div>
         </div>
         <FooterBlog />

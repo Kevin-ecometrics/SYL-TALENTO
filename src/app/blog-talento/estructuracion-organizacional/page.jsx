@@ -72,10 +72,11 @@ function EstructuraOrganizacional() {
               se presenta como un elemento crucial para el éxito a largo plazo.
               En SYL Talento, entendemos que cada empresa es única, y por eso
               ofrecemos soluciones personalizadas que se adaptan a tus
-              necesidades específicas. En este blog, exploraremos cómo la
-              estructuración organizacional puede transformar tu empresa,
-              centrándonos en aspectos clave como la definición de perfiles, el
-              análisis de puestos y el estudio de mercado.{" "}
+              necesidades específicas del reclutamiento de personal. En este
+              blog, exploraremos cómo la estructuración organizacional puede
+              transformar tu empresa, centrándonos en aspectos clave como la
+              definición de perfiles, el análisis de puestos y el estudio de
+              mercado.{" "}
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -90,7 +91,8 @@ function EstructuraOrganizacional() {
               persona que lo desempeñará. Al comprender los perfiles en
               profundidad, podemos ayudarte a contratar y retener a los talentos
               que realmente se alineen con la visión y los valores de tu
-              empresa.{" "}
+              empresa. Todo esto se considera para poder publicar vacantes en
+              nuestras plataformas de empleo o en páginas de reclutamiento.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -105,7 +107,7 @@ function EstructuraOrganizacional() {
               requeridas y cómo contribuyen a los objetivos de la empresa. Este
               método exhaustivo mejora la eficiencia interna y facilita la toma
               de decisiones estratégicas sobre la asignación de recursos y el
-              desarrollo del personal.{" "}
+              desarrollo del reclutamiento de personal.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -145,11 +147,12 @@ function EstructuraOrganizacional() {
             />
             <br />
             <h2>
-              Tu empresa verá una mejora significativa en la eficiencia
-              operativa al tener perfiles bien definidos y un análisis de
-              puestos detallado. Las responsabilidades estarán claramente
-              establecidas, lo que reducirá el número de tareas duplicadas y
-              mejorará la colaboración interna.
+              Tu empresa se destacará como un lugar deseado para trabajar con
+              perfiles atractivos y un análisis de puestos claro en una
+              plataforma de empleo. Esto no solo atraerá talento de alta
+              calidad, sino que también aumentará la retención al asegurarse de
+              que los empleados estén conscientes de su contribución a los
+              objetivos organizacionales.
             </h2>
             <br />
             <h1 className="text-center font-bold">
@@ -183,9 +186,10 @@ function EstructuraOrganizacional() {
             <h2>
               El estudio de mercado que realizamos te ayuda a comprender mejor
               las dinámicas laborales en tu industria. Esto facilita la toma de
-              decisiones estratégicas, la predicción de los cambios en la
-              demanda de habilidades y la garantía de que su empresa siempre
-              esté un paso adelante en la competencia.{" "}
+              decisiones estratégicas, la predicción de cambios en la demanda de
+              habilidades y la garantía de que su empresa siga adelante en la
+              competencia, y sea atractiva la propuesta para los candidatos al
+              publicar vacantes en nuestras páginas de reclutamiento.
             </h2>
             <br />
             <Image
@@ -217,24 +221,9 @@ function EstructuraOrganizacional() {
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image
-              src="/facebook.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/twitter.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/gmail.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
           </div>
         </div>
         <FooterBlog />

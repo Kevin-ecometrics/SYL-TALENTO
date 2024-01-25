@@ -38,10 +38,11 @@ function Reclutamiento() {
             <h2>
               Encontrar el candidato adecuado para un puesto específico puede
               ser un desafío, especialmente para las empresas que no tienen
-              tiempo o recursos para dedicar al reclutamiento. SYL Talento puede
+              tiempo o recursos para dedicar al reclutamiento de personal o para
+              publicar vacantes en plataformas de empleo. SYL Talento puede
               ayudar a las empresas de Tijuana a encontrar a los mejores
               candidatos para sus puestos, independientemente de la industria o
-              el nivel de experiencia.{" "}
+              el nivel de experiencia.
             </h2>
             <br />
             <h2>
@@ -61,9 +62,9 @@ function Reclutamiento() {
             </h2>
             <br />
             <h2>
-              SYL Talento va más allá del reclutamiento; estamos construyendo
-              asociaciones duraderas que transforman la forma en que las
-              empresas atraen y evalúan el talento de alto nivel.{" "}
+              SYL Talento va más allá del reclutamiento de personal; estamos
+              construyendo asociaciones duraderas que transforman la forma en
+              que las empresas atraen y evalúan el talento de alto nivel.
             </h2>
             <br />
             <Image
@@ -83,10 +84,11 @@ function Reclutamiento() {
               En el mundo empresarial actual, donde la competencia por el
               talento excepcional es más feroz que nunca, la elección de socios
               estratégicos en el proceso de reclutamiento se convierte en un
-              punto crucial. En este escenario, SYL Talento emerge como un líder
+              punto crucial. Las distintas plataformas de empleo o páginas de
+              reclutamiento. En este escenario, SYL Talento emerge como un líder
               en el ámbito del reclutamiento ejecutivo, destacándose por su
               enfoque innovador y centrado en las necesidades específicas de sus
-              clientes.{" "}
+              clientes.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -94,12 +96,13 @@ function Reclutamiento() {
             </h1>
             <br />
             <h2>
-              En SYL Talento, no vemos el reclutamiento como una simple
-              transacción laboral, sino como la construcción de relaciones
-              estratégicas a largo plazo. Nuestra misión va más allá de llenar
-              puestos vacantes; se trata de encontrar talento que no solo posea
-              las habilidades técnicas necesarias, sino que también se alinee
-              con la cultura y los valores de la empresa cliente.{" "}
+              En SYL Talento, no vemos el reclutamiento de personal como una
+              simple transacción laboral, sino como la construcción de
+              relaciones estratégicas a largo plazo. Nuestra misión va más allá
+              de llenar puestos y publicar vacantes; se trata de encontrar
+              talento que no solo posea las habilidades técnicas necesarias,
+              sino que también se alinee con la cultura y los valores de la
+              empresa cliente.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -110,10 +113,11 @@ function Reclutamiento() {
               En SYL Talento, creemos que el talento excepcional no tiene
               fronteras. Nuestra plataforma emplea tecnologías avanzadas y un
               equipo altamente capacitado para identificar a candidatos
-              potenciales en diversas industrias. No nos limitamos a quienes
-              buscan nuevas oportunidades, sino también a profesionales
-              altamente cualificados que puedan convencerse por las
-              oportunidades únicas de nuestros clientes.{" "}
+              potenciales en diversas industrias. No nos limitamos a publicar
+              vacantes para quienes buscan nuevas oportunidades en páginas de
+              reclutamiento, sino también a profesionales altamente cualificados
+              que puedan convencerse por las oportunidades únicas de nuestros
+              clientes.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -153,7 +157,8 @@ function Reclutamiento() {
               desafíos específicos que enfrentan y las habilidades y cualidades
               que buscan en un líder ejecutivo. Esta atención personalizada nos
               permite ofrecer soluciones de reclutamiento adaptadas a cada
-              situación.{" "}
+              situación, más allá de publicar vacantes en páginas de
+              reclutamiento.
             </h2>
             <br />
             <h1 className="font-bold text-center">
@@ -211,33 +216,18 @@ function Reclutamiento() {
             </h1>
             <br />
             <h2>
-              SYL Talento no es simplemente una agencia de reclutamiento; somos
-              sus socios estratégicos en la construcción del liderazgo ejecutivo
-              que su empresa necesita para prosperar en un mundo empresarial
-              dinámico. Con nuestro enfoque integral y compromiso con la
-              excelencia, estamos listos para llevar su empresa al siguiente
-              nivel.{" "}
+              SYL Talento no es simplemente una agencia de reclutamiento en
+              plataformas de empleo; somos sus socios estratégicos en la
+              construcción del liderazgo ejecutivo que su empresa necesita para
+              prosperar en un mundo empresarial dinámico. Con nuestro enfoque
+              integral y compromiso con la excelencia, estamos listos para
+              llevar su empresa al siguiente nivel.
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image
-              src="/facebook.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/twitter.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
-            <Image
-              src="/gmail.svg"
-              width={32}
-              height={32}
-              alt="icon logo"
-            />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
           </div>
         </div>
         <FooterBlog />

@@ -96,7 +96,9 @@ function Servicios() {
                         animate={{ height: "auto" }}
                         exit={{ height: 0 }}
                       >
-                        {servicio.description}
+                        <span className="flex text-justify">
+                          {servicio.description}
+                        </span>
                       </motion.p>
                     )}
                   </AnimatePresence>

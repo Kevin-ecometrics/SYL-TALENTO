@@ -96,30 +96,30 @@ function ContactoSection() {
                 <span>contacto@syltalento.com</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
-                  <Link
-                    target="_blank"
-                    href="https://www.facebook.com/SYLTalento1"
-                  >
-                    <Image
-                      alt="Facebook icon"
-                      src="/icons/facebook.svg"
-                      width={24}
-                      height={24}
-                      className="w-8 h-8 text-white"
-                    />
-                  </Link>
-                  <Link
-                    target="_blank"
-                    href="https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento"
-                  >
-                    <Image
-                      alt="WhatsApp icon"
-                      src="/icons/whatsapp.svg"
-                      width={24}
-                      height={24}
-                      className="w-8 h-8 text-white"
-                    />
-                  </Link>
+                <Link
+                  target="_blank"
+                  href="https://www.facebook.com/SYLTalento1"
+                >
+                  <Image
+                    alt="Facebook icon"
+                    src="/facebook.svg"
+                    width={24}
+                    height={24}
+                    className="w-8 h-8 text-white"
+                  />
+                </Link>
+                <Link
+                  target="_blank"
+                  href="https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento"
+                >
+                  <Image
+                    alt="WhatsApp icon"
+                    src="/whatsapp.svg"
+                    width={24}
+                    height={24}
+                    className="w-8 h-8 text-white"
+                  />
+                </Link>
               </div>
             </div>
           </div>
