@@ -71,6 +71,7 @@ function Nav() {
           <Image
             src="SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México.png"
             alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
+            title="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
             width={150}
             height={100}
           />

@@ -13,6 +13,7 @@ function RecursosEmpresariales() {
           width={1700}
           height={100}
           alt="banner blog"
+          title="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
           <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-4xl [&>h2]:text-justify [&>h2]:text-2xl [&>h3]:text-2xl">
@@ -30,6 +31,7 @@ function RecursosEmpresariales() {
               className="h-80"
               width={700}
               height={50}
+              title="La estructuración y gestión de los procesos nuestro reclutamiento de personal de SYL pueden ayudar a agilizar el proceso de integración de nuevos candidatos gracias a sus métodos del proceso reclutamiento de personal."
               alt="La estructuración y gestión de los procesos nuestro reclutamiento de personal de SYL pueden ayudar a agilizar el proceso de integración de nuevos candidatos gracias a sus métodos del proceso reclutamiento de personal."
             />
             <br />
@@ -75,6 +77,7 @@ function RecursosEmpresariales() {
               className="h-80"
               width={700}
               height={50}
+              title="Un rendimiento y ahorro de recursos de forma rápida y segura. Con orientación de SYL y su búsqueda de profesionales de acorde al rol necesario para tu empresa, ayuda a optimizar eficazmente los recursos y el tiempo para tu empresa, sin necesidad de una búsqueda extensiva o publicar vacantes. "
               alt="Un rendimiento y ahorro de recursos de forma rápida y segura. Con orientación de SYL y su búsqueda de profesionales de acorde al rol necesario para tu empresa, ayuda a optimizar eficazmente los recursos y el tiempo para tu empresa, sin necesidad de una búsqueda extensiva o publicar vacantes. "
             />
             <br />
@@ -133,6 +136,7 @@ function RecursosEmpresariales() {
               width={700}
               height={50}
               alt="SYL se encarga de optimizar las plataformas de empleo y agilizar los recursos y medios disponibles para poder ahorrar tiempo y no tener perdidas en el proceso de reclutamiento de personal y selección.   "
+              title="SYL se encarga de optimizar las plataformas de empleo y agilizar los recursos y medios disponibles para poder ahorrar tiempo y no tener perdidas en el proceso de reclutamiento de personal y selección.   "
             />
             <br />
             <h1 className="text-center font-bold">
@@ -241,9 +245,9 @@ function RecursosEmpresariales() {
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" title="icon logo" />
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" title="icon logo" />
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" title="icon logo" />
           </div>
         </div>
         <FooterBlog />

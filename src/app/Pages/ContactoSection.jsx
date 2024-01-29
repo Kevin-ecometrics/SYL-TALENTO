@@ -103,6 +103,7 @@ function ContactoSection() {
                   <Image
                     alt="Facebook icon"
                     src="/facebook.svg"
+                    title="Facebook icon"
                     width={24}
                     height={24}
                     className="w-8 h-8 text-white"
@@ -115,6 +116,7 @@ function ContactoSection() {
                   <Image
                     alt="WhatsApp icon"
                     src="/whatsapp.svg"
+                    title="WhatsApp icon"
                     width={24}
                     height={24}
                     className="w-8 h-8 text-white"

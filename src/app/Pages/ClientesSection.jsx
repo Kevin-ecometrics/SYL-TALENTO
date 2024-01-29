@@ -2,72 +2,79 @@
 import React from "react";
 import Image from "next/image";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
-import { motion } from "framer-motion";
 
 function ClientesSection() {
   let allImages = [
-    "/benchmark.png",
-    "/ricoh.png",
-    "/safa.png",
-    "/jacuzzi.png",
-    "/cardinal.png",
-    "/ceva.png",
-    "/eaton.png",
-    "/calinor.png",
-    "/fisher.png",
-    "/oxxo.png",
-    "/int.png",
-    "/honey.png",
-    "/cm.png",
-    "/cemex.png",
-    "/linde.png",
-    "/arco.png",
-    "/mac.png",
-    "/silza.png",
-    "/sds.png",
-    "/us.png",
+    "/Benchmark trabaja con Syl talento.svg",
+    "/Ricoh trabaja con Syl talento.svg",
+    "/Safariland trabaja con Syl talento.svg",
+    "/Jacuzzi trabaja con Syl talento.png",
+    "/Calinor trabaja con Syl talento.svg",
+    "/Ceva trabaja con Syl talento.svg",
+    "/Eaton trabaja junto a syl talento.svg",
+    "/Calinor trabaja con Syl talento.svg",
+    "/Fisher&oaykel trabaja con syl talento.svg",
+    "/Oxxo cedis trabaja con syl talento.svg",
+    "/Integer trabaja con syl talento.svg",
+    "/Honeywell trabaja con syltalento.svg",
+    "/CM PARTNER TRABAJA CON SYL TALENTO.png",
+    "/Cemex trabaja con syl talento.svg",
+    "/linde trabaja con syl talento.svg",
+    "/Arco junto con syl talento.svg",
+    "/maclin con syl talento.png",
+    "/Silza trabaja con syl talento.png",
+    "/sds de mexico con syl talento.svg",
+    "/us comtech advanced con syl talento.svg",
   ];
 
   let tabs = [
     {
       id: "Todos",
       label: "Nuestros Clientes",
-      images: allImages
+      images: allImages,
+      alt: ["Client logo"]
     },
     {
       id: "Electronica",
       label: "Electronica",
-      images: ["/benchmark.png", "/ricoh.png", "/honey.png", "/safa.png", "/int.png", "/cm.png", "us.png"]
+      images: ["/Benchmark trabaja con Syl talento.svg", "/Ricoh trabaja con Syl talento.svg", "/Honeywell trabaja con syltalento.svg", "/Safariland trabaja con Syl talento.svg", "/Integer trabaja con syl talento.svg", "/CM PARTNER TRABAJA CON SYL TALENTO.png", "/us comtech advanced con syl talento.svg"]
+      ,alt: ["Benchmark trabaja con Syl talento.svg", "Ricoh trabaja con Syl talento.svg", "Honeywell trabaja con syltalento.svg", "Safariland trabaja con Syl talento.svg", "Integer trabaja con syl talento.svg", "CM PARTNER TRABAJA CON SYL TALENTO.png", "us comtech advanced con syl talento.svg"]
     },
     {
       id: "Medica",
       label: "Medica",
-      images: ["/cardinal.png", "/int.png", "sds.png", "/fisher.png"]
+      images: ["/CardinalHealth trabaja con Syl talento.svg", "/Integer trabaja con syl talento.svg", "sds de mexico con syl talento.svg", "/Fisher&oaykel trabaja con syl talento.svg"],
+      alt: ["CardinalHealth trabaja con Syl talento.svg", "Integer trabaja con syl talento.svg", "sds de mexico con syl talento.svg", "Fisher&oaykel trabaja con syl talento.svg"]
     },
     {
       id: "Energeticos",
       label: "Energeticos",
-      images: ["/arco.png", "/silza.png"]
+      images: ["/Arco junto con syl talento.svg", "/Silza trabaja con syl talento.png"],
+      alt: ["Arco junto con syl talento.svg", "Silza trabaja con syl talento.png"]
     },
     {
       id: "Aeroespacial",
       label: "Aeroespacial",
-      images: ["/eaton.png"]
+      images: ["/Eaton trabaja junto a syl talento.svg"],
+      alt: ["Eaton trabaja junto a syl talento.svg"]
     },
     {
       id: "Cedis y Logistica",
       label: "Cedis y Logistica",
-      images: ["/oxxo.png", "/ceva.png"]
+      images: ["/Oxxo cedis trabaja con syl talento.svg", "/Ceva trabaja con Syl talento.svg"],
+      alt: ["Oxxo cedis trabaja con syl talento.svg", "Ceva trabaja con Syl talento.svg"]
     },
     {
       id: "Costura y Tapiceria",
       label: "Costura y Tapiceria",
-      images: ["/safa.png", "/calinor.png", "/mac.png" ,"/jacuzzi.png"]
+      images: ["/Safariland trabaja con Syl talento.svg", "/Calinor trabaja con Syl talento.svg", "/maclin con syl talento.png" ,"/Jacuzzi trabaja con Syl talento.png"],
+      alt: ["Safariland trabaja con Syl talento.svg", "Calinor trabaja con Syl talento.svg", "maclin con syl talento.png" ,"Jacuzzi trabaja con Syl talento.png"]
     },
     {
       id: "Servicios y Conexos",
       label: "Servicios y Conexos",
-      images: ["/arco.png", "/cemex.png", "/silza.png"]
+      images: ["/Arco junto con syl talento.svg", "/Cemex trabaja con syl talento.svg", "/Silza trabaja con syl talento.png"],
+      alt:["Arco junto con syl talento.svg", "Cemex trabaja con syl talento.svg", "Silza trabaja con syl talento.png"]
     }
   ];
 
@@ -88,7 +95,7 @@ function ClientesSection() {
               <CardBody>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {item.images.map((image, index) => (
-                    <Image key={index} src={image} width={120} height={40} alt="image-clients" />
+                    <Image key={index} src={image} width={160} height={80} alt={item.alt} title={item.alt} />
                   ))}
                 </div>
               </CardBody>

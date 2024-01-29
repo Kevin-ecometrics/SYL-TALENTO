@@ -136,6 +136,7 @@ function NosotroSection() {
           <Image
             src="/Somos SYL talento especialistas en plataformas de empleo para cualquier área que necesite tu empresa.png"
             alt="Conoce quienes somos SYL talento agencia especializada plataformas de empleo para tu empresa facilitando el proceso de selección de personal para todas las áreas."
+            title="Conoce quienes somos SYL talento agencia especializada plataformas de empleo para tu empresa facilitando el proceso de selección de personal para todas las áreas."
             layout="responsive"
             width={1920}
             height={720}

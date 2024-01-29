@@ -12,6 +12,7 @@ function EstructuraOrganizacional() {
           width={1700}
           height={100}
           alt="banner blog"
+          title="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
           <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-4xl [&>h2]:text-justify [&>h2]:text-2xl [&>h3]:text-2xl">
@@ -43,6 +44,7 @@ function EstructuraOrganizacional() {
               className="h-96"
               width={700}
               height={50}
+              title="SYL talento agiliza y organiza los medios necesarios para gestionar una   contratación eficaz. La estructuración de los procesos de reclutamiento de personal de SYL agilizan los procesos y ahorran gastos."
               alt="SYL talento agiliza y organiza los medios necesarios para gestionar una   contratación eficaz. La estructuración de los procesos de reclutamiento de personal de SYL agilizan los procesos y ahorran gastos.   "
             />
             <br />
@@ -143,6 +145,7 @@ function EstructuraOrganizacional() {
               className="h-80"
               width={700}
               height={50}
+              title="En nuestras páginas de reclutamiento de personal se ofrece todo lo necesario para postularse, así creando los puestos con las especiaciones necesarias para el candidato asegurándose que solo los más aptos para el puesto y la empresa son los seleccionados.  "
               alt="En nuestras páginas de reclutamiento de personal se ofrece todo lo necesario para postularse, así creando los puestos con las especiaciones necesarias para el candidato asegurándose que solo los más aptos para el puesto y la empresa son los seleccionados.  "
             />
             <br />
@@ -198,6 +201,7 @@ function EstructuraOrganizacional() {
               width={700}
               height={50}
               alt="Publicar vacantes son lo que se muestra a los candidatos para que sean atraídos por las propuestas generadas por SYL haciendo que el proceso de reclutamiento se agilice, siendo los candidatos quienes buscan y optan por la solicitud de las vacantes publicadas.  "
+              title="Publicar vacantes son lo que se muestra a los candidatos para que sean atraídos por las propuestas generadas por SYL haciendo que el proceso de reclutamiento se agilice, siendo los candidatos quienes buscan y optan por la solicitud de las vacantes publicadas.  "
             />
             <br />
             <h1 className="text-center font-bold">
@@ -221,9 +225,9 @@ function EstructuraOrganizacional() {
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" title="icon logo" />
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" title="icon logo" />
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" title="icon logo" />
           </div>
         </div>
         <FooterBlog />

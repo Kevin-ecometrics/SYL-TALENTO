@@ -12,6 +12,7 @@ function Reclutamiento() {
           width={1700}
           height={100}
           alt="banner blog"
+          title="banner blog"
         />
         <div className="flex justify-between w-full md:w-[700px] h-full">
           <article className="mt-8 w-auto md:w-[700px] [&>h1]:text-4xl [&>h2]:text-justify [&>h2]:text-2xl [&>h3]:text-2xl">
@@ -73,6 +74,7 @@ function Reclutamiento() {
               className="h-80 "
               width={700}
               height={10}
+              title="SYL se encarga de tomar todos los candidatos, para hacer su reclutamiento de personal para la empresa seleccionando a los mejores calificados para los roles que se busca llenar."
             />
             <br />
             <h1 className="text-center font-bold">
@@ -144,6 +146,7 @@ function Reclutamiento() {
               className="h-80 "
               width={700}
               height={10}
+              title="En SYL el control y gestión del proceso de reclutamiento de personal, es organizado y eficaz. Ahorrando tiempo y recursos para tu empresa."
             />
             <br />
             <h1 className="text-center font-bold">
@@ -186,6 +189,7 @@ function Reclutamiento() {
               className="h-80 "
               width={700}
               height={10}
+              title="El Reclutamiento de manera objetiva buscando al candidato más apto y acelerando los procesos de selección para tu empresa. SYL talento puede ahorrar recursos y tiempo crucial para la empresa, asegurando a candidatos profesionales calificados desde nuestras páginas de reclutamiento."
             />
             <br />
             <h1 className="text-center font-bold">
@@ -225,9 +229,9 @@ function Reclutamiento() {
             </h2>
           </article>
           <div className="hidden xl:block  p-4 flex-col items-center space-y-4 fixed top-[525px] right-48">
-            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" />
-            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" />
+            <Image src="/facebook.svg" width={32} height={32} alt="icon logo" title="icon logo"/>
+            <Image src="/twitter.svg" width={32} height={32} alt="icon logo" title="icon logo"/>
+            <Image src="/gmail.svg" width={32} height={32} alt="icon logo" title="icon logo"/>
           </div>
         </div>
         <FooterBlog />

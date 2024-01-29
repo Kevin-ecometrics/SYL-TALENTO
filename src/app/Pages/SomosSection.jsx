@@ -17,6 +17,7 @@ function SomosSection() {
             <Image
               src="/SYL en Baja California y parte de Sonora para publicar vacantes por zona personal.png"
               alt="Estamos en toda Baja California y parte de Sonora enfocados en publicar vacantes para estas zonas, abarcando más áreas de oportunidad. Ubicaciones de SYL Talento."
+              title="Estamos en toda Baja California y parte de Sonora enfocados en publicar vacantes para estas zonas, abarcando más áreas de oportunidad. Ubicaciones de SYL Talento."
               width={500}
               height={300}
             />

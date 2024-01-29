@@ -32,6 +32,8 @@ function NavBlog() {
             src={logo}
             alt="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
               width={150}
+              title="Encuentre las mejores prácticas de reclutamiento de personal en México con SYL talento para ayudar a encontrar el candidato perfecto para tu empresa. "
+
               height={100}
             />
           </Link>
