@@ -98,7 +98,7 @@ export default function FooterBlog() {
                     return (
                       <li
                         className="text-black hover:text-blue-500"
-                        key={item.name}
+                        key={item.name} 
                       >
                         <button onClick={() => openModal(item.modalContent, item.name)}>
                           {item.name}
@@ -108,7 +108,7 @@ export default function FooterBlog() {
                   } else {
                     return (
                       <li className="text-black hover:text-blue-500" key={item.name}>
-                        <a href={item.href} target={item.target || "_self"} rel="noopener noreferrer">
+                        <a  href={item.href} target={item.target || "_self"} rel="noopener noreferrer">
                           {item.name}
                         </a>
                       </li>
@@ -128,7 +128,7 @@ export default function FooterBlog() {
               className="text-red-500 hover:text-red-700"
               href="https://www.ecommetrica.com/"
             >
-              e-commetrics.com
+              ecommetrica.com
             </a>
           </p>
         </div>

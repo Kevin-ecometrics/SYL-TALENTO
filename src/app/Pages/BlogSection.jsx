@@ -26,7 +26,7 @@ function BlogSection() {
               <span> 20 de noviembre de 2023</span>
             </div>
             <div className="text-left mt-2">
-              <Link target="_blank" href="/blog-talento/reclutamiento-ejecutivo">
+              <Link target="_blank" title="Reclutamiento Ejecutivo" href="/blog-talento/reclutamiento-ejecutivo">
                 <h1 className="text-blue-500 hover:underline hover:text-blue-800 text-3xl">
                   Reclutamiento Ejecutivo
                 </h1>
@@ -38,7 +38,7 @@ function BlogSection() {
               </span>
             </div>
             <div className="flex mt-4">
-              <Link target="_blank" href="/blog-talento/reclutamiento-ejecutivo">
+              <Link target="_blank" title="Reclutamiento Ejecutivo" href="/blog-talento/reclutamiento-ejecutivo">
                 <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
                   Leer este blog
                 </button>
@@ -58,7 +58,7 @@ function BlogSection() {
               <span> 11 de diciembre de 2023</span>
             </div>
             <div className="text-left mt-2">
-              <Link target="_blank" href="/blog-talento/recursos-empresariales">
+              <Link target="_blank" title="Recursos Empresariales" href="/blog-talento/recursos-empresariales">
                 <h1 className="text-blue-500 hover:underline hover:text-blue-800 text-3xl">
                   Optimizando Recursos Empresariales
                 </h1>
@@ -71,7 +71,7 @@ function BlogSection() {
               </span>
             </div>
             <div className="flex mt-4">
-              <Link target="_blank" href="/blog-talento/recursos-empresariales">
+              <Link target="_blank" title="Recursos Empresariales" href="/blog-talento/recursos-empresariales">
                 <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
                   Leer este blog
                 </button>
@@ -92,7 +92,7 @@ function BlogSection() {
             <span>19 de enero de 2024</span>
           </div>
           <div className="text-left mt-2">
-            <Link target="_blank" href="/blog-talento/estructuracion-organizacional">
+            <Link target="_blank" title="Estructuracion Organizacional" href="/blog-talento/estructuracion-organizacional">
               <h1 className="text-blue-500 hover:underline hover:text-blue-800 text-3xl">
                 Estructuración Organizacional Con SYL Talento{" "}
               </h1>
@@ -104,7 +104,7 @@ function BlogSection() {
             </span>
           </div>
           <div className="flex mt-4">
-            <Link target="_blank" href="/blog-talento/estructuracion-organizacional">
+            <Link target="_blank" title="Estructuracion Organizacional" href="/blog-talento/estructuracion-organizacional">
               <button className="bg-orange-500 text-white p-2 hover:bg-orange-700 rounded-lg">
                 Leer este blog
               </button>

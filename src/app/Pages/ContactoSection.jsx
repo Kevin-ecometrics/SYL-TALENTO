@@ -99,11 +99,11 @@ function ContactoSection() {
                 <Link
                   target="_blank"
                   href="https://www.facebook.com/SYLTalento1"
+                  title="Facebook de Syl Talento"
                 >
                   <Image
                     alt="Facebook icon"
                     src="/facebook.svg"
-                    title="Facebook icon"
                     width={24}
                     height={24}
                     className="w-8 h-8 text-white"
@@ -112,11 +112,11 @@ function ContactoSection() {
                 <Link
                   target="_blank"
                   href="https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento"
+                  title="WhatsApp De Syl Talento"
                 >
                   <Image
                     alt="WhatsApp icon"
                     src="/whatsapp.svg"
-                    title="WhatsApp icon"
                     width={24}
                     height={24}
                     className="w-8 h-8 text-white"

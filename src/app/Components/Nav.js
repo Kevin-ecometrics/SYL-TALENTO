@@ -16,13 +16,13 @@ function Nav() {
   const [activeSection, setActiveSection] = useState("");
 
   const menuItems = [
-    { name: "Inicio", link: "#inicio" },
-    { name: "Nosotros", link: "#nosotros" },
-    { name: "Servicios", link: "#servicios" },
-    { name: "Quienes Somos", link: "#quienesSomos" },
-    { name: "Clientes", link: "#clientes" },
-    { name: "Blogs", link: "#blogs" },
-    { name: "Contacto", link: "#contacto" },
+    { name: "Inicio", link: "#inicio", title:"Inicio"},
+    { name: "Nosotros", link: "#nosotros",title:"Nosotros" },
+    { name: "Servicios", link: "#servicios", title:"Servicios" },
+    { name: "Quienes Somos", link: "#quienesSomos", title:"Quienes Somos" },
+    { name: "Clientes", link: "#clientes", title:"Clientes" },
+    { name: "Blogs", link: "#blogs", title:"Blogs"},
+    { name: "Contacto", link: "#contacto", title:"Contacto"},
   ];
 
   useEffect(() => {
@@ -91,6 +91,7 @@ function Nav() {
               } hover:text-blue-500`}
               href={item.link}
               size="lg"
+              title={item.title}
               onClick={(event) => {
                 handleClick(event, item.link);
                 setIsMenuOpen(false); // Cierra el menú
@@ -109,6 +110,7 @@ function Nav() {
               color="foreground"
               className="w-full hover:text-blue-500"
               href={item.link}
+              title={item.title}
               onClick={(event) => {
                 handleClick(event, item.link);
                 setIsMenuOpen(false); // Cierra el menú

@@ -52,26 +52,31 @@ const LINKS = [
         name: "FB-Syl Talento1",
         href: "https://www.facebook.com/SYLTalento1",
         target: "_blank",
+        title: "Facebook de Syl Talento"
       },
       {
         name: "Syl Talento mexicali",
         href: "https://www.facebook.com/profile.php?id=100063574134270&mibextid=ZbWKwL",
         target: "_blank",
+        title: "Facebook de Syl Talento de Mexicali"
       },
       {
         name: "Whatsapp",
         href: "https://api.whatsapp.com/send?phone=5216642145977&text=Hola%20Syltalento",
         target: "_blank",
+        title: "WhatsApp De Syl Talento"
       },
       {
         name: "Tijuana",
         href: "https://www.google.com/maps/place/SYL+TALENTO/@32.5265676,-117.0379149,19z/data=!3m1!4b1!4m6!3m5!1s0x80d9496b1dc83891:0x624ffaf809fcd4a1!8m2!3d32.5265665!4d-117.0366985!16s%2Fg%2F11s3xwnk7q?entry=ttu",
         target: "_blank",
+        title: "Mapa de Syl Talento en Tijuana"
       },
       {
         name: "Mexicali",
         href: "https://www.google.com/maps/place/SYL+TALENTO+MEXICALI/@32.6081827,-115.3850134,17z/data=!3m1!4b1!4m6!3m5!1s0x80d77786cb034bc9:0xd47058a0e5a7d5a4!8m2!3d32.6081782!4d-115.3824331!16s%2Fg%2F11t_q_47jg?entry=ttu",
         target: "_blank",
+        title: "Mapa de Syl Talento en Mexicali"
       },
     ],
   },
@@ -119,7 +124,7 @@ export default function Footer() {
                   } else {
                     return (
                       <li className="text-black hover:text-blue-500" key={item.name}>
-                        <a href={item.href} target={item.target || "_self"} rel="noopener noreferrer">
+                        <a href={item.href} title={item.title} target={item.target || "_self"} rel="noopener noreferrer">
                           {item.name}
                         </a>
                       </li>
@@ -138,6 +143,7 @@ export default function Footer() {
             <a
               className="text-red-500 hover:text-red-700"
               href="https://www.ecommetrica.com/"
+              title="E-Commetrics"
             >
               e-commetrics.com
             </a>
