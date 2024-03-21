@@ -1,7 +1,24 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+
 function Hero() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [size, setSize] = useState("full");
+  const handleOpen = (size) => {
+    setSize(size);
+    onOpen();
+  };
+
   const [valor, setValor] = useState([]);
   const [page, setPage] = useState(0);
   const itemsPerPage = 9;
@@ -12,9 +29,18 @@ function Hero() {
   }, []);
 
   const getVacantes = () => {
-    axios
-      .get("http://localhost:3001/vacantes")
-      .then((response) => setValor(response.data));
+    axios.get("http://localhost:3001/vacantes").then((response) => {
+      const vacantesWithPdfUrl = response.data.map((vacante) => {
+        // Convertir el Buffer a un Blob y luego a una URL de objeto
+        const pdfBlob = new Blob([new Uint8Array(vacante.pdf.data)], {
+          type: "application/pdf",
+        });
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        return { ...vacante, pdfUrl };
+      });
+
+      setValor(vacantesWithPdfUrl);
+    });
   };
 
   return (
@@ -237,9 +263,42 @@ function Hero() {
                       <path d="M15 8l4 4" />
                     </svg>
                   </div>
-                  <p className="text-black text-start underline font-medium cursor-pointer">
+                  <p className="text-black text-start underline font-medium cursor-pointer mb-4">
                     Ofertas de empleo
                   </p>
+                  <div className="flex justify-start items-center">
+                    <Button
+                      key={size}
+                      onPress={() => handleOpen(size)}
+                      color="primary"
+                    >
+                      Ver Vacante
+                    </Button>
+                  </div>
+                  <Modal size={size} isOpen={isOpen} onClose={onClose}>
+                    <ModalContent>
+                      {(onClose) => (
+                        <>
+                          <ModalHeader className="flex flex-col gap-1">
+                            Modal Title
+                          </ModalHeader>
+                          <ModalBody>
+                            <embed
+                              src={vacante.pdfUrl}
+                              type="application/pdf"
+                              width="100%"
+                              height="100%"
+                            />
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button color="danger" onPress={onClose}>
+                              Cerrar
+                            </Button>
+                          </ModalFooter>
+                        </>
+                      )}
+                    </ModalContent>
+                  </Modal>
                 </div>
               ))
           ) : (

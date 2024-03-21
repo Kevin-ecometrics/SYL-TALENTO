@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const mysql = require("mysql");
-
+const multer = require("multer");
+const upload = multer();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -59,7 +60,35 @@ app.get("/vacantes", (req, res) => {
 
   db.query(sql, (err, results) => {
     if (err) throw err;
-    res.send(results);
+
+    const vacantes = results.map((vacante) => {
+      // Convertir el PDF a un Buffer
+      const pdfBuffer = Buffer.from(vacante.pdf);
+      return { ...vacante, pdf: pdfBuffer };
+    });
+
+    res.send(vacantes);
+  });
+});
+
+app.post("/crear-vacantes", upload.single("file_input"), (req, res) => {
+  const { vacante, sueldo } = req.body;
+  const file = req.file;
+
+  if (!vacante || !sueldo || !file) {
+    return res.status(400).send("Missing fields");
+  }
+
+  const sql = "INSERT INTO vacantes (puesto, sueldo, pdf) VALUES (?, ?, ?)";
+  const values = [vacante, sueldo, file.buffer];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error inserting into database");
+    }
+
+    res.status(200).send("Vacante added successfully");
   });
 });
 
