@@ -246,6 +246,7 @@ function Hero() {
                   <h5 className="mb-4 text-start text-base md:text-xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">
                     {vacante.puesto}
                   </h5>
+                  <hr className="mb-4" />
                   <div className="flex justify-between items-center mb-4">
                     <p className="font-bold text-[#2557A7] text-start">
                       Sueldo promedio ${vacante.sueldo} por semana
@@ -322,13 +323,15 @@ function Hero() {
           }`}
         >
           {/* Contenido del Drawer */}
-          <h1 className="text-black">{selectedVacancy?.puesto}</h1>
-          <button
-            onClick={toggleDrawer}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          >
+          <h1 className="text-black mb-4 text-start">
+            Vacante: {selectedVacancy?.puesto}
+          </h1>
+          <p className="text-black text-start">
+            Sueldo {selectedVacancy?.sueldo}
+          </p>
+          <Button onClick={toggleDrawer} color="danger" className="w-full">
             Cerrar
-          </button>
+          </Button>
         </div>
         <div className="flex justify-center items-center gap-8 py-8 px-4">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
