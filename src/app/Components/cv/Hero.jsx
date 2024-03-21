@@ -19,6 +19,12 @@ function Hero() {
     onOpen();
   };
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedVacancy, setSelectedVacancy] = useState(null);
+  const toggleDrawer = (vacante) => {
+    setIsDrawerOpen(!isDrawerOpen);
+    setSelectedVacancy(vacante);
+  };
   const [valor, setValor] = useState([]);
   const [page, setPage] = useState(0);
   const itemsPerPage = 9;
@@ -228,7 +234,7 @@ function Hero() {
       <div class="p-4 sm:ml-64 bg-white text-center">
         <h1 className="mb-4 font-bold text-3xl text-black">Vacantes</h1>
         <hr className="mb-8" />
-        <div className="grid grid-cols-1 md:grid-cols-3 w-[70%] mx-auto gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:w-[70%] mx-auto gap-8">
           {valor.length > 0 ? (
             valor
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
@@ -237,42 +243,47 @@ function Hero() {
                   key={index}
                   className="rounded-xl border shadow shadow-black border-gray-300 px-4 py-8"
                 >
-                  <h5 className="mb-4 text-start text-xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-4 text-start text-base md:text-xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">
                     {vacante.puesto}
                   </h5>
                   <div className="flex justify-between items-center mb-4">
                     <p className="font-bold text-[#2557A7] text-start">
                       Sueldo promedio ${vacante.sueldo} por semana
                     </p>
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="icon icon-tabler icon-tabler-arrow-narrow-right hover:bg-[#2557A7] rounded-full hover:stroke-white cursor-pointer"
-                      width="44"
-                      height="44"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="#000000"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M5 12l14 0" />
-                      <path d="M15 16l4 -4" />
-                      <path d="M15 8l4 4" />
-                    </svg>
+                    <a href={`vacante/${vacante.puesto}`}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-arrow-narrow-right hover:bg-[#2557A7] rounded-full hover:stroke-white cursor-pointer"
+                        width="44"
+                        height="44"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#000000"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l14 0" />
+                        <path d="M15 16l4 -4" />
+                        <path d="M15 8l4 4" />
+                      </svg>
+                    </a>
                   </div>
-                  <p className="text-black text-start underline font-medium cursor-pointer mb-4">
-                    Ofertas de empleo
-                  </p>
-                  <div className="flex justify-start items-center">
+                  <div className="flex justify-start items-center gap-4">
                     <Button
                       key={size}
                       onPress={() => handleOpen(size)}
                       color="primary"
                     >
                       Ver Vacante
+                    </Button>
+                    <Button
+                      color="warning"
+                      className="text-white"
+                      onClick={() => toggleDrawer(vacante)}
+                    >
+                      Aplicar Vacante
                     </Button>
                   </div>
                   <Modal size={size} isOpen={isOpen} onClose={onClose}>
@@ -304,6 +315,20 @@ function Hero() {
           ) : (
             <p className="text-black">Cargando...</p>
           )}
+        </div>
+        <div
+          className={`fixed top-0 right-0 w-64 h-full bg-white border border-black p-6 transform transition-transform duration-200 ease-in-out ${
+            isDrawerOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Contenido del Drawer */}
+          <h1 className="text-black">{selectedVacancy?.puesto}</h1>
+          <button
+            onClick={toggleDrawer}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Cerrar
+          </button>
         </div>
         <div className="flex justify-center items-center gap-8 py-8 px-4">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (

@@ -1,5 +1,26 @@
 export function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+  return [
+    { id: "Programador" },
+    { id: "Contador" },
+    { id: "Ingeniero Civil" },
+    { id: "Arquitecto" },
+    { id: "Medico" },
+    { id: "Enfermero" },
+    { id: "Dentista" },
+    { id: "Farmacéutico" },
+    { id: "Psicólogo" },
+    { id: "Veterinario" },
+    { id: "Profesor" },
+    { id: "Policía" },
+    { id: "Bombero" },
+    { id: "Chef" },
+    { id: "Piloto" },
+    { id: "Abogado" },
+    { id: "Periodista" },
+    { id: "Fotógrafo" },
+    { id: "Diseñador Gráfico" },
+    { id: "Traductor" },
+  ];
 }
 
 // Three versions of this page will be statically generated
@@ -9,5 +30,6 @@ export function generateStaticParams() {
 // - /product/3
 export default function Page({ params }) {
   const { id } = params;
-  return <h1 className="text-black bg-white ">{id}</h1>;
+  return <div className="bg-white text-black ">{id}</div>;
+  // ...
 }
