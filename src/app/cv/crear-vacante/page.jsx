@@ -1,9 +1,9 @@
 import React from "react";
-import Hero from "../../Components/cv/Hero";
+import Vacante from "../../Components/cv/Vacante";
 function page() {
   return (
     <div>
-      <Hero />
+      <Vacante />
     </div>
   );
 }
