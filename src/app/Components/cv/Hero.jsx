@@ -1,22 +1,52 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+import Link from "next/link";
+import { Button } from "@nextui-org/react";
+import toast, { Toaster } from "react-hot-toast";
 
 function Hero() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [size, setSize] = useState("full");
-  const handleOpen = (size) => {
-    setSize(size);
-    onOpen();
+  const formRef = useRef();
+
+  const [totalItems, setTotalItems] = useState(0);
+
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [celular, setCelular] = useState("");
+  const [vacantepdf, setVacantepdf] = useState(null);
+  const handleSumbit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("nombre", nombre);
+    formData.append("correo", correo);
+    formData.append("celular", celular);
+    formData.append("vacantepdf", vacantepdf);
+    formData.append("vacanteId", selectedVacancy.id);
+
+    try {
+      await axios.post("http://localhost:3001/solicitudes", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      // Resetear los campos
+      setNombre("");
+      setCorreo("");
+      setCelular("");
+      setVacantepdf(null);
+      formRef.current.reset(); // Restablecer el formulario
+
+      // Mostrar un toast
+      toast.success("Informacion de la vacante enviada exitosamente");
+
+      // Cerrar el drawer
+      setIsDrawerOpen(false);
+    } catch (error) {
+      console.error(error);
+      toast.error("Hubo un error al enviar la información");
+    }
   };
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -28,6 +58,14 @@ function Hero() {
   const [valor, setValor] = useState([]);
   const [page, setPage] = useState(0);
   const itemsPerPage = 9;
+  const firstItemIndex = page * itemsPerPage + 1;
+  const lastItemIndex = Math.min((page + 1) * itemsPerPage, totalItems);
+  let displayRange;
+  if (firstItemIndex === lastItemIndex) {
+    displayRange = `${firstItemIndex}`;
+  } else {
+    displayRange = `${firstItemIndex}-${lastItemIndex}`;
+  }
   const totalPages = Math.ceil(valor.length / itemsPerPage);
 
   useEffect(() => {
@@ -36,16 +74,8 @@ function Hero() {
 
   const getVacantes = () => {
     axios.get("http://localhost:3001/vacantes").then((response) => {
-      const vacantesWithPdfUrl = response.data.map((vacante) => {
-        // Convertir el Buffer a un Blob y luego a una URL de objeto
-        const pdfBlob = new Blob([new Uint8Array(vacante.pdf.data)], {
-          type: "application/pdf",
-        });
-        const pdfUrl = URL.createObjectURL(pdfBlob);
-        return { ...vacante, pdfUrl };
-      });
-
-      setValor(vacantesWithPdfUrl);
+      setValor(response.data);
+      setTotalItems(response.data.length);
     });
   };
 
@@ -109,9 +139,9 @@ function Hero() {
                 <span class="ms-3">INICIO</span>
               </a>
             </li>
-            {/* <li>
+            <li>
               <a
-                href="#"
+                href="ver-vacante"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -123,12 +153,14 @@ function Hero() {
                 >
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                 </svg>
-                <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full  dark:text-gray-300">
-                  Pro
+                <span class="flex-1 ms-3 whitespace-nowrap uppercase">
+                  Ver Vacantes
                 </span>
+                {/* <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full  dark:text-gray-300">
+                  Pro
+                </span> */}
               </a>
-            </li> */}
+            </li>
             <li>
               <a
                 href="crear-vacante"
@@ -272,13 +304,12 @@ function Hero() {
                     </a>
                   </div>
                   <div className="flex justify-start items-center gap-4">
-                    <Button
-                      key={size}
-                      onPress={() => handleOpen(size)}
-                      color="primary"
+                    <Link
+                      href={`http://localhost:3001/syl-talento/vacante-pdf/${vacante.id}`}
+                      target="_blank"
                     >
-                      Ver Vacante
-                    </Button>
+                      <Button color="primary">Ver Vacante</Button>
+                    </Link>
                     <Button
                       color="warning"
                       className="text-white"
@@ -287,30 +318,6 @@ function Hero() {
                       Aplicar Vacante
                     </Button>
                   </div>
-                  <Modal size={size} isOpen={isOpen} onClose={onClose}>
-                    <ModalContent>
-                      {(onClose) => (
-                        <>
-                          <ModalHeader className="flex flex-col gap-1">
-                            Modal Title
-                          </ModalHeader>
-                          <ModalBody>
-                            <embed
-                              src={vacante.pdfUrl}
-                              type="application/pdf"
-                              width="100%"
-                              height="100%"
-                            />
-                          </ModalBody>
-                          <ModalFooter>
-                            <Button color="danger" onPress={onClose}>
-                              Cerrar
-                            </Button>
-                          </ModalFooter>
-                        </>
-                      )}
-                    </ModalContent>
-                  </Modal>
                 </div>
               ))
           ) : (
@@ -318,32 +325,129 @@ function Hero() {
           )}
         </div>
         <div
-          className={`fixed top-0 right-0 w-64 h-full bg-white border border-black p-6 transform transition-transform duration-200 ease-in-out ${
+          className={`fixed top-0 right-0 w-96 h-full bg-white border border-black p-6 transform transition-transform duration-200 ease-in-out ${
             isDrawerOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {/* Contenido del Drawer */}
           <h1 className="text-black mb-4 text-start">
             Vacante: {selectedVacancy?.puesto}
           </h1>
-          <p className="text-black text-start">
+          <p className="text-black text-start mb-4">
             Sueldo {selectedVacancy?.sueldo}
           </p>
+          <hr className="mb-4" />
+          <form ref={formRef} onSubmit={handleSumbit}>
+            <div className="mb-4">
+              <label
+                for="nombre"
+                class="block mb-2 text-xl font-medium text-gray-900 text-start dark:text-white"
+              >
+                Nombre
+              </label>
+              <input
+                type="text"
+                id="nombre"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                for="correo"
+                class="block mb-2 text-lg font-medium text-gray-900 text-start dark:text-white"
+              >
+                Correo electronico
+              </label>
+              <input
+                type="email"
+                id="correo"
+                value={correo}
+                onChange={(e) => setCorreo(e.target.value)}
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                for="celular"
+                class="block mb-2 text-lg font-medium text-gray-900 text-start dark:text-white"
+              >
+                Numero de telefono
+              </label>
+              <input
+                type="number"
+                id="celular"
+                value={celular}
+                onChange={(e) => setCelular(e.target.value)}
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                required
+              />
+            </div>
+            <label
+              class="block mb-2 text-lg font-medium text-start text-gray-900 dark:text-white"
+              for="file_input"
+            >
+              Subir Archivo
+            </label>
+
+            <input
+              class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+              id="vacantepdf"
+              type="file"
+              name="vacantepdf"
+              onChange={(e) => setVacantepdf(e.target.files[0])}
+              accept=".pdf"
+            />
+            <p
+              class="mt-1 mb-4 text-sm text-gray-500 text-start dark:text-gray-300"
+              id="file"
+            >
+              Solo se admite archivos .pdf
+            </p>
+            <button
+              type="submit"
+              className="bg-blue-500 w-full rounded-xl px-2 py-2 mb-4"
+            >
+              Enviar informacion
+            </button>
+          </form>
+
           <Button onClick={toggleDrawer} color="danger" className="w-full">
             Cerrar
           </Button>
         </div>
-        <div className="flex justify-center items-center gap-8 py-8 px-4">
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
-            <button
-              className="bg-blue-500 px-8 py-4 rounded-lg text-white font-bold hover:bg-blue-600 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-400"
-              key={num}
-              onClick={() => setPage(num - 1)}
-            >
-              {num}
-            </button>
-          ))}
-        </div>
+        <nav
+          className="flex items-center flex-wrap justify-between pt-4 sm:ml-52 sm:mr-52"
+          aria-label="Table navigation"
+        >
+          <span className="text-sm font-normal text-gray-500 mb-4 block w-full md:inline md:w-auto">
+            Mostrando{" "}
+            <span className="font-semibold text-gray-900">{displayRange}</span>{" "}
+            de <span className="font-semibold text-gray-900">{totalItems}</span>
+          </span>
+          <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+              <li key={num}>
+                <button
+                  className={`flex items-center justify-center px-6 h-8 leading-tight ${
+                    page === num - 1
+                      ? "text-blue-800 border rounded-xl border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700"
+                      : "text-gray-500 bg-white border rounded-xl border-gray-300 hover:bg-gray-100 hover:text-gray-700"
+                  } dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                  onClick={() => setPage(num - 1)}
+                >
+                  {num}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <Toaster position="top-right" />
       </div>
     </div>
   );

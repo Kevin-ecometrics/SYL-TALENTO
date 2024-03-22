@@ -56,18 +56,12 @@ app.post("/send-email", (req, res) => {
 });
 
 app.get("/vacantes", (req, res) => {
-  const sql = "SELECT id, puesto, sueldo, pdf FROM vacantes";
+  const sql = "SELECT id, puesto, sueldo FROM vacantes";
 
   db.query(sql, (err, results) => {
     if (err) throw err;
 
-    const vacantes = results.map((vacante) => {
-      // Convertir el PDF a un Buffer
-      const pdfBuffer = Buffer.from(vacante.pdf);
-      return { ...vacante, pdf: pdfBuffer };
-    });
-
-    res.send(vacantes);
+    res.send(results);
   });
 });
 
@@ -92,10 +86,86 @@ app.post("/crear-vacantes", upload.single("file_input"), (req, res) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log("Server started on port 3001");
+app.get("/syl-talento/vacante-pdf/:id", (req, res) => {
+  const sql = `SELECT pdf FROM vacantes WHERE id = ?`;
+
+  db.query(sql, [req.params.id], (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error fetching PDF from database");
+    }
+
+    res.contentType("application/pdf");
+    res.send(results[0].pdf);
+  });
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello, world!");
+app.post("/solicitudes", upload.single("vacantepdf"), (req, res) => {
+  const { nombre, correo, celular, vacanteId } = req.body; // Usa 'vacanteId' en lugar de 'vacante.id'
+  const vacantepdf = req.file.buffer;
+
+  if (!nombre || !correo || !celular || !vacantepdf || !vacanteId) {
+    return res.status(400).send("Missing fields");
+  }
+
+  const sql =
+    "INSERT INTO solicitudes (nombre, correo, celular, pdf, vacante_id, created_at) VALUES (?, ?, ?, ?, ?, NOW())";
+  const values = [nombre, correo, celular, vacantepdf, vacanteId];
+
+  db.query(sql, values, (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error inserting into database");
+    }
+
+    const solicitudId = results.insertId;
+    const sqlRelational =
+      "INSERT INTO solicitudes_vacantes (solicitud_id, vacante_id) VALUES (?, ?)";
+    const valuesRelational = [solicitudId, vacanteId];
+
+    db.query(sqlRelational, valuesRelational, (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).send("Error inserting into relational database");
+      }
+
+      res.status(200).send("Solicitud added successfully");
+    });
+  });
+});
+
+app.get("/solicitudes_vacantes", (req, res) => {
+  const sql = `
+    SELECT *
+    FROM solicitudes_vacantes sv
+    INNER JOIN solicitudes s ON sv.solicitud_id = s.id
+    INNER JOIN vacantes v ON sv.vacante_id = v.id
+  `;
+
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error fetching data from database");
+    }
+
+    res.status(200).json(results);
+  });
+});
+
+app.get("/syl-talento/ver-pdf/:id", (req, res) => {
+  const sql = `SELECT pdf FROM solicitudes WHERE id = ?`;
+
+  db.query(sql, [req.params.id], (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error fetching PDF from database");
+    }
+
+    res.contentType("application/pdf");
+    res.send(results[0].pdf);
+  });
+});
+
+app.listen(3001, () => {
+  console.log("Server started on port 3001");
 });
