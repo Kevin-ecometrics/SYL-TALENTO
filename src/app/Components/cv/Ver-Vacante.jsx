@@ -36,8 +36,15 @@ function Page() {
   }, []);
 
   return (
-    <div className="bg-white py-24">
-      <section className="text-black w-screen md:w-[1050px] mx-auto">
+    <div className="bg-white">
+      <section className="bg-[#2557A7] h-[250px] rounded-br-[1200px]">
+        <div className="flex items-center justify-center h-full">
+          <h1 className="text-white text-4xl font-bold">
+            Mostrar Postulaciones de nuestras vacantes
+          </h1>
+        </div>
+      </section>
+      <section className="text-black w-screen md:w-[1050px] py-8 mx-auto">
         <div className="flex justify-end items-center">
           <select
             className="border border-gray-600 rounded-lg py-2 px-4 mb-4 cursor-pointer"
