@@ -16,13 +16,13 @@ function Nav() {
   const [activeSection, setActiveSection] = useState("");
 
   const menuItems = [
-    { name: "Inicio", link: "#inicio", title:"Inicio"},
-    { name: "Nosotros", link: "#nosotros",title:"Nosotros" },
-    { name: "Servicios", link: "#servicios", title:"Servicios" },
-    { name: "Quienes Somos", link: "#quienesSomos", title:"Quienes Somos" },
-    { name: "Clientes", link: "#clientes", title:"Clientes" },
-    { name: "Blogs", link: "#blogs", title:"Blogs"},
-    { name: "Contacto", link: "#contacto", title:"Contacto"},
+    { name: "Inicio", link: "#inicio", title: "Inicio" },
+    { name: "Nosotros", link: "#nosotros", title: "Nosotros" },
+    { name: "Servicios", link: "#servicios", title: "Servicios" },
+    { name: "Quienes Somos", link: "#quienesSomos", title: "Quienes Somos" },
+    { name: "Clientes", link: "#clientes", title: "Clientes" },
+    { name: "Blogs", link: "#blogs", title: "Blogs" },
+    { name: "Contacto", link: "#contacto", title: "Contacto" },
   ];
 
   useEffect(() => {

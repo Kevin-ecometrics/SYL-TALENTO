@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import Vacante from "../../Components/cv/Crear-Vacante";
-import Vervacante from "../../Components/cv/Ver-Vacante";
-import HeroVacante from "../../Components/cv/Hero-Vacante";
+import Vervacante from "../../Components/cv/Admin-Vacante";
+import HeroVacante from "../../Components/cv/Chart-Vacante";
 
 import Image from "next/image";
 function Aside() {
