@@ -8,11 +8,6 @@ function Servicios() {
 
   const serviciosData = [
     {
-      title: "Subcontratación Especializada STPS: 17155",
-      description:
-        "Personal directo, indirecto y administrativo. Coordinamos los servicios profesionales y especializados que se requieran en la empresa. ¡Con ello, tu compañía reducirá costos y tiempo!",
-    },
-    {
       title: "Reclutamiento Masivo",
       description:
         "Facilitamos el proceso de selección de capital humano para los puestos que requieren. Esto te permite ahorrar tiempo y esfuerzo.",
@@ -21,6 +16,16 @@ function Servicios() {
       title: "Reclutamiento Ejecutivo",
       description:
         "Atracción de talento ejecutivo y posiciones de alta especialidad en el mercado laboral y aplicación de psicometrías.",
+    },
+    {
+      title: "Reclutamiento Puro",
+      description:
+        "Brindamos obtención directa de talento con perfil adecuado mediante análisis y filtros estipulados por la empresa",
+    },
+    {
+      title: "Subcontratación Especializada STPS: 17155",
+      description:
+        "Personal directo, indirecto y administrativo. Coordinamos los servicios profesionales y especializados que se requieran en la empresa. ¡Con ello, tu compañía reducirá costos y tiempo!",
     },
     {
       title: "Maquila de Nómina",
@@ -86,7 +91,9 @@ function Servicios() {
                   color="white"
                   className="grid h-24 mt-2 text-center border place-items-center"
                 >
-                  <h6 className="text-md md:text-2xl text-black font-bold">{servicio.title}</h6>
+                  <h6 className="text-md md:text-2xl text-black font-bold">
+                    {servicio.title}
+                  </h6>
                 </CardBody>
                 <CardFooter>
                   <AnimatePresence>
