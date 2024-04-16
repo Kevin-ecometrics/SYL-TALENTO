@@ -24,7 +24,7 @@ function Page() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/solicitudes_vacantes"
+          "https://syltalento.com/solicitudes_vacantes"
         );
         setData(response.data);
       } catch (error) {
@@ -106,7 +106,7 @@ function Page() {
                   </td>
                   <td className="px-4 py-4">
                     <a
-                      href={`http://localhost:3001/syl-talento/ver-pdf/${item.solicitud_id}`}
+                      href={`https://syltalento.com/syl-talento/ver-pdf/${item.solicitud_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="rounded-md bg-blue-500 hover:bg-blue-700 text-white px-4 py-2"

@@ -166,6 +166,99 @@ app.get("/syl-talento/ver-pdf/:id", (req, res) => {
   });
 });
 
+app.post("/api/solicitudes_empleo", (req, res) => {
+  const formData = req.body;
+  const sql = `
+  INSERT INTO solicitudes_empleo (
+    calle, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rcf, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?)
+`;
+
+  db.query(
+    sql,
+    [
+      formData.calle,
+      formData.celular,
+      formData.ciudad,
+      formData.civil,
+      formData.colonia,
+      formData.correo,
+      formData.cp,
+      formData.curp,
+      formData.documento,
+      formData.edad,
+      formData.elector,
+      formData.emergencia,
+      formData.enfermedad,
+      formData.escolaridad,
+      formData.estado,
+      formData.estatura,
+      formData.fecha_nacimiento,
+      formData.fin_semana,
+      formData.genero,
+      formData.imss,
+      formData.infonavit,
+      formData.lugar_nacimiento,
+      formData.materno,
+      formData.militar,
+      formData.nacionalidad,
+      formData.nombre,
+      formData.numero,
+      formData.numero_cartilla,
+      formData.numero_credencial,
+      formData.paterno,
+      formData.peso,
+      formData.rcf,
+      formData.tratamiento,
+      formData.turno_rotativo,
+      formData.puesto,
+      formData.empresa,
+      formData.empresa_direccion,
+      formData.empresa_telefono,
+      formData.empresa_puesto,
+      formData.ingreso,
+      formData.baja,
+      formData.sueldo,
+      formData.empresa_jefe,
+      formData.motivo,
+    ],
+    (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).send("Error saving data to database");
+      }
+
+      res.status(201).send("Data saved successfully");
+    }
+  );
+});
+
+app.get("/api/solicitudes_empleo", (req, res) => {
+  const sql = `
+  SELECT solicitudes_empleo.*, vacantes.puesto AS puesto
+  FROM solicitudes_empleo
+  LEFT JOIN vacantes ON solicitudes_empleo.vacante_id = vacantes.id
+`;
+  db.query(sql, (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).send("Error fetching data from database");
+    }
+
+    res.status(200).json(results);
+  });
+});
+
+app.delete("/api/solicitudes_empleo/:id", (req, res) => {
+  const sql = "DELETE FROM solicitudes_empleo WHERE id = ?";
+
+  db.query(sql, [req.params.id], (err, result) => {
+    if (err) throw err;
+
+    res.send(`Solicitud de empleo con id ${req.params.id} fue eliminada.`);
+  });
+});
+
 app.listen(3001, () => {
   console.log("Server started on port 3001");
 });

@@ -7,9 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 function Hero() {
   const formRef = useRef();
-
   const [totalItems, setTotalItems] = useState(0);
-
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [celular, setCelular] = useState("");
@@ -25,7 +23,7 @@ function Hero() {
     formData.append("vacanteId", selectedVacancy.id);
 
     try {
-      await axios.post("http://localhost:3001/solicitudes", formData, {
+      await axios.post("https://syltalento.com/solicitudes", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -73,7 +71,7 @@ function Hero() {
   }, []);
 
   const getVacantes = () => {
-    axios.get("http://localhost:3001/vacantes").then((response) => {
+    axios.get("https://syltalento.com/vacantes").then((response) => {
       setValor(response.data);
       setTotalItems(response.data.length);
     });
@@ -101,7 +99,9 @@ function Hero() {
                     <p className="font-bold text-[#2557A7] text-start">
                       Sueldo promedio ${vacante.sueldo} por semana
                     </p>
-                    <a href={`vacante/${vacante.puesto}`}>
+                    {/* <a href={`vacante/${vacante.puesto}`}> */}
+                    <a onClick={() => toggleDrawer(vacante)}>
+                      {" "}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="icon icon-tabler icon-tabler-arrow-narrow-right hover:bg-[#2557A7] rounded-full hover:stroke-white cursor-pointer"
@@ -123,7 +123,7 @@ function Hero() {
                   </div>
                   <div className="flex justify-start items-center gap-4">
                     <Link
-                      href={`http://localhost:3001/syl-talento/vacante-pdf/${vacante.id}`}
+                      href={`https://syltalento.com/vacante-pdf/${vacante.id}`}
                       target="_blank"
                     >
                       <Button color="primary">Ver Vacante</Button>

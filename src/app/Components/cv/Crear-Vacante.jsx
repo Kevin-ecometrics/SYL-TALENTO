@@ -16,7 +16,7 @@ function Vacante() {
     if (vacante && sueldo && file_input) {
       try {
         const response = await axios.post(
-          "http://localhost:3001/crear-vacantes",
+          "https://syltalento.com/crear-vacantes",
           data
         );
         console.log(response.data);
