@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { pdf } from "@react-pdf/renderer";
+import MyDocument from "./Admin-Pdf";
+
 function ClienteSolicitud() {
   const [solicitud, setSolicitud] = useState([]);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
@@ -78,6 +81,15 @@ function ClienteSolicitud() {
       }
     }
   };
+
+  function handleClick(solicitudData) {
+    pdf(<MyDocument solicitud={solicitudData} />)
+      .toBlob()
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+      });
+  }
 
   return (
     <div className="flex flex-row-reverse">
@@ -160,6 +172,12 @@ function ClienteSolicitud() {
                       >
                         Eliminar Solicitud
                       </button>
+                      <button
+                        onClick={() => handleClick(solicitud)}
+                        className=" text-black font-bold py-2 px-4 rounded mr-2 border"
+                      >
+                        PDF
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -234,7 +252,7 @@ function ClienteSolicitud() {
                 <span className="font-bold">CURP: </span>
                 {selectedSolicitud && <p>{selectedSolicitud.curp}</p>}
                 <span className="font-bold">RFC: </span>
-                {selectedSolicitud && <p>{selectedSolicitud.rcf}</p>}
+                {selectedSolicitud && <p>{selectedSolicitud.rfc}</p>}
               </div>
               <div className="flex gap-2 bg-white px-4 mb-2">
                 <span className="font-bold">Fecha de nacimiento: </span>

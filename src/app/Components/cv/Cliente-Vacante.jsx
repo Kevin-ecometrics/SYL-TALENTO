@@ -123,7 +123,7 @@ function Hero() {
                   </div>
                   <div className="flex justify-start items-center gap-4">
                     <Link
-                      href={`https://syltalento.com/vacante-pdf/${vacante.id}`}
+                      href={`https://syltalento.com/syl-talento/vacante-pdf/${vacante.id}`}
                       target="_blank"
                     >
                       <Button color="primary">Ver Vacante</Button>

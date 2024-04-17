@@ -170,7 +170,7 @@ app.post("/api/solicitudes_empleo", (req, res) => {
   const formData = req.body;
   const sql = `
   INSERT INTO solicitudes_empleo (
-    calle, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rcf, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo
+    calle, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rfc, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo
   ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `;
 
@@ -208,7 +208,7 @@ app.post("/api/solicitudes_empleo", (req, res) => {
       formData.numero_credencial,
       formData.paterno,
       formData.peso,
-      formData.rcf,
+      formData.rfc,
       formData.tratamiento,
       formData.turno_rotativo,
       formData.puesto,
@@ -256,6 +256,55 @@ app.delete("/api/solicitudes_empleo/:id", (req, res) => {
     if (err) throw err;
 
     res.send(`Solicitud de empleo con id ${req.params.id} fue eliminada.`);
+  });
+});
+
+app.put("/vacantes/:id", (req, res) => {
+  let sql = "UPDATE vacantes SET ? WHERE id = ?";
+  let data = [req.body, req.params.id];
+
+  db.query(sql, data, (err, result) => {
+    if (err) throw err;
+    res.send("Vacante actualizada con éxito");
+  });
+});
+
+app.get("/puestos", (req, res) => {
+  const sql = "SELECT * FROM puestos";
+
+  db.query(sql, (err, results) => {
+    if (err) throw err;
+
+    res.send(results);
+  });
+});
+
+app.post("/puestos", (req, res) => {
+  const { puesto } = req.body;
+
+  if (!puesto) {
+    return res.status(400).send("Missing fields");
+  }
+
+  const sql = "INSERT INTO puestos (puesto) VALUES (?)";
+
+  db.query(sql, [puesto], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error inserting into database");
+    }
+
+    res.status(200).send("Puesto added successfully");
+  });
+});
+
+app.put("/puestos/:id", (req, res) => {
+  let sql = "UPDATE puestos SET ? WHERE id = ?";
+  let data = [req.body, req.params.id];
+
+  db.query(sql, data, (err, result) => {
+    if (err) throw err;
+    res.send("Puesto actualizado con éxito");
   });
 });
 

@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 function Vacante() {
+  const [puestos, setPuestos] = useState([]);
+
   const handleSumbit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -31,6 +33,19 @@ function Vacante() {
     }
   };
 
+  useEffect(() => {
+    const getPuestos = async () => {
+      try {
+        const response = await axios.get("https://syltalento.com/puestos");
+        setPuestos(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getPuestos();
+  }, []);
+
   return (
     <main>
       <section className="bg-[#2557A7] h-[250px] rounded-br-[1200px]">
@@ -54,31 +69,13 @@ function Vacante() {
               name="vacante"
               id="vacante"
               required
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option value="" selected>
-                Elige un puesto
-              </option>
-              <option value="Programador">Programador</option>
-              <option value="Contador">Contador</option>
-              <option value="Ingeniero Civil">Ingeniero Civil</option>
-              <option value="Arquitecto">Arquitecto</option>
-              <option value="Medico">Médico</option>
-              <option value="Enfermero">Enfermero</option>
-              <option value="Dentista">Dentista</option>
-              <option value="Farmacéutico">Farmacéutico</option>
-              <option value="Psicólogo">Psicólogo</option>
-              <option value="Veterinario">Veterinario</option>
-              <option value="Profesor">Profesor</option>
-              <option value="Policía">Policía</option>
-              <option value="Bombero">Bombero</option>
-              <option value="Chef">Chef</option>
-              <option value="Piloto">Piloto</option>
-              <option value="Abogado">Abogado</option>
-              <option value="Periodista">Periodista</option>
-              <option value="Fotógrafo">Fotógrafo</option>
-              <option value="Diseñador Gráfico">Diseñador Gráfico</option>
-              <option value="Traductor">Traductor</option>
+              {puestos.map((puestos) => (
+                <option key={puestos.id} value={puestos.puesto}>
+                  {puestos.puesto}
+                </option>
+              ))}
             </select>
           </div>
           <div class="relative z-0 w-full mb-5 group">

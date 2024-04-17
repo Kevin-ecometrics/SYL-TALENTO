@@ -4,7 +4,9 @@ import Vacante from "../../Components/cv/Crear-Vacante";
 import Vervacante from "../../Components/cv/Admin-Vacante";
 import HeroVacante from "../../Components/cv/Chart-Vacante";
 import VerSolicitud from "../../Components/cv/Admin-Solicitud";
-import EditarVacante from "../../Components/cv/Editar-vacante";
+import EditarVacante from "../../Components/cv/Editar-Vacante";
+import Puesto from "../../Components/cv/Crear-Puesto";
+import EditarPuesto from "../../Components/cv/Editar-Puesto";
 import Image from "next/image";
 function Aside() {
   const [selectedOption, setSelectedOption] = useState("Inicio");
@@ -87,6 +89,25 @@ function Aside() {
               </div>
             </li>
             <li
+              onClick={() => setSelectedOption("puesto")}
+              className={selectedOption === "puesto" ? "bg-gray-200" : ""}
+            >
+              <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+                <span class="flex-1 uppercase ms-3 whitespace-nowrap text-black">
+                  Crear Puestos
+                </span>
+              </div>
+            </li>
+            <li
               onClick={() => setSelectedOption("ver")}
               className={selectedOption === "ver" ? "bg-gray-200" : ""}
             >
@@ -145,6 +166,30 @@ function Aside() {
                 </span>
               </div>
             </li>
+            <li
+              onClick={() => setSelectedOption("editarPuesto")}
+              className={selectedOption === "editarPuesto" ? "bg-gray-200" : ""}
+            >
+              <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg
+                  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M13.586 3.586a2 2 0 0 1 2.828 0l2 2a2 2 0 0 1 0 2.828l-10 10a2 2 0 0 1-1.414.586H5a2 2 0 0 1-2-2v-1.172c0-.53.21-1.039.586-1.414l10-10zm0 2.828L6.172 14.828l-.707.707v.586h.586l.707-.707L16.414 6.414l-2.828-2.828z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M13 4a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span class="flex-1 uppercase ms-3 whitespace-nowrap text-black">
+                  Editar Puesto
+                </span>
+              </div>
+            </li>
           </ul>
         </div>
         <footer className="absolute bottom-0 w-full p-4 bg-gray-100">
@@ -159,6 +204,8 @@ function Aside() {
         {selectedOption === "ver" && <Vervacante />}
         {selectedOption === "verSolicitud" && <VerSolicitud />}
         {selectedOption === "editarVacante" && <EditarVacante />}
+        {selectedOption === "puesto" && <Puesto />}
+        {selectedOption === "editarPuesto" && <EditarPuesto />}
       </section>
     </div>
   );

@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
-function EditarVacante() {
-  const [vacante, setVacante] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [editingVacante, setEditingVacante] = useState(null);
+function EditarPuesto() {
   const [puestos, setPuestos] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [editingPuesto, setEditingPuesto] = useState(null);
 
-  const fetchVacante = async () => {
+  const fetchPuestos = async () => {
     try {
-      const response = await axios.get("https://syltalento.com/vacantes");
-      setVacante(response.data);
+      const response = await axios.get("https://syltalento.com/puestos");
+      setPuestos(response.data);
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -19,45 +18,32 @@ function EditarVacante() {
   };
 
   useEffect(() => {
-    fetchVacante();
+    fetchPuestos();
   }, []);
 
-  const handleUpdateClick = (vacante) => {
-    setEditingVacante(vacante);
+  const handleUpdateClick = (puesto) => {
+    setEditingPuesto(puesto);
     setIsSidebarOpen(true);
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setEditingVacante({ ...editingVacante, [name]: value });
+    setEditingPuesto({ ...editingPuesto, [name]: value });
   };
 
   const handleSaveClick = async () => {
     try {
       await axios.put(
-        `https://syltalento.com/vacantes/${editingVacante.id}`,
-        editingVacante
+        `https://syltalento.com/puestos/${editingPuesto.id}`,
+        editingPuesto
       );
       setIsSidebarOpen(false);
-      toast.success("Vacante actualizada con éxito");
-      fetchVacante();
+      toast.success("Puesto actualizado con éxito");
+      fetchPuestos();
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    const getPuestos = async () => {
-      try {
-        const response = await axios.get("https://syltalento.com/puestos");
-        setPuestos(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getPuestos();
-  }, []);
 
   return (
     <div className="flex text-black">
@@ -65,7 +51,7 @@ function EditarVacante() {
         <section className="bg-[#2557A7] h-[250px] mb-4 rounded-br-[1200px]">
           <div className="flex items-center justify-center h-full">
             <h1 className="text-white text-4xl font-bold">
-              Editar vacantes disponibles
+              Editar puestos disponibles
             </h1>
           </div>
         </section>
@@ -76,25 +62,17 @@ function EditarVacante() {
                 Puestos
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Sueldos
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Acciones
               </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {vacante.map((vacante) => (
-              <tr key={vacante.id}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {vacante.puesto}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {vacante.sueldo}
-                </td>
+            {puestos.map((puesto) => (
+              <tr key={puesto.id}>
+                <td className="px-6 py-4 whitespace-nowrap">{puesto.puesto}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
-                    onClick={() => handleUpdateClick(vacante)}
+                    onClick={() => handleUpdateClick(puesto)}
                     className="bg-blue-600 text-white px-4 py-2 border rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
                   >
                     Actualizar
@@ -107,23 +85,11 @@ function EditarVacante() {
       </div>
       {isSidebarOpen && (
         <div className="w-64 h-full bg-white p-4 shadow-lg">
-          <h2 className="text-xl font-bold mb-4">Actualizar Vacante</h2>
-          <select
-            name="puesto"
-            value={editingVacante.puesto}
-            onChange={handleInputChange}
-            className="border rounded-lg px-3 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          >
-            {puestos.map((puesto) => (
-              <option key={puesto.id} value={puesto.puesto}>
-                {puesto.puesto}
-              </option>
-            ))}
-          </select>
+          <h2 className="text-xl font-bold mb-4">Actualizar Puesto</h2>
           <input
             type="text"
-            name="sueldo"
-            value={editingVacante.sueldo}
+            name="puesto"
+            value={editingPuesto.puesto}
             onChange={handleInputChange}
             className="border rounded-lg px-3 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
@@ -140,4 +106,4 @@ function EditarVacante() {
   );
 }
 
-export default EditarVacante;
+export default EditarPuesto;
