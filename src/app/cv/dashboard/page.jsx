@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Vacante from "../../Components/cv/Crear-Vacante";
 import Vervacante from "../../Components/cv/Admin-Vacante";
 import HeroVacante from "../../Components/cv/Chart-Vacante";
@@ -8,9 +8,70 @@ import EditarVacante from "../../Components/cv/Editar-Vacante";
 import Puesto from "../../Components/cv/Crear-Puesto";
 import EditarPuesto from "../../Components/cv/Editar-Puesto";
 import Image from "next/image";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 function Aside() {
   const [selectedOption, setSelectedOption] = useState("Inicio");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
+  const logout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:3001/logout",
+        {},
+        { withCredentials: true }
+      );
+      setUser(null);
+      router.push("/login");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/api/user", {
+          withCredentials: true,
+        });
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getUser();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center items-center text-black text-4xl bg-white">
+        Cargando...
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="flex text-xl md:text-4xl flex-col justify-center items-center h-screen bg-white text-black">
+        <img
+          src="/SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México.png"
+          alt=""
+          className="w-64 h-32 md:w-64 md:h-64"
+        />
+        <p className="mb-12">
+          Por favor, inicia sesión para acceder a más contenido.
+        </p>
+        <button className="bg-blue-500 px-4 py-2 text-white rounded-xl hover:bg-blue-700">
+          <a href="/login">Iniciar sesión</a>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -187,6 +248,22 @@ function Aside() {
                 </svg>
                 <span class="flex-1 uppercase ms-3 whitespace-nowrap text-black">
                   Editar Puesto
+                </span>
+              </div>
+            </li>
+            <li onClick={logout}>
+              <div class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <svg
+                  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 9.9 12.96 10 12.5 10H10v2h2.5c.33 0 .67-.1.92-.26l1.58-1.59L18 13V8l-2.93 2.25z" />
+                </svg>
+                <span class="flex-1 uppercase ms-3 whitespace-nowrap text-black">
+                  Cerrar Sesión
                 </span>
               </div>
             </li>

@@ -46,6 +46,28 @@ const styles = StyleSheet.create({
     fontSize: 10,
     padding: 5,
   },
+  recuadroContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  recuadro: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#000",
+    padding: 10,
+    marginTop: 10,
+    marginRight: 2,
+    marginBottom: 10,
+    marginLeft: 2,
+    fontSize: 9,
+  },
+  titleRecuadro: {
+    fontSize: 10,
+    textAlign: "center",
+    marginBottom: 4,
+    fontWeight: "bold",
+    color: "#000", // Hace que el color del texto sea negro
+  },
 });
 
 // Create Document Component
@@ -155,6 +177,7 @@ const MyDocument = ({ solicitud }) => {
         <View style={styles.section}>
           <Text>Nivel de escolaridad: {solicitud.escolaridad}</Text>
           <Text>Documento: {solicitud.documento}</Text>
+          <Text>Carrera: {solicitud.carrera}</Text>
         </View>
         <View style={styles.element}>
           <Text style={styles.title}>DISPONIBILIDAD</Text>
@@ -182,6 +205,38 @@ const MyDocument = ({ solicitud }) => {
           <Text>Sueldo semanal: {solicitud.sueldo} </Text>
           <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe}</Text>
           <Text>Motivo de su separacion: {solicitud.motivo} </Text>
+        </View>
+        <View style={styles.recuadroContainer}>
+          <View style={styles.recuadro}>
+            <Text style={styles.titleRecuadro}>INFORMACION VERIDICA</Text>
+            <Text>
+              Bajo protesta de decir verdad, declaro que la información que les
+              estoy proporcionando es total y completamente veridica, toda vez
+              que estoy consciente de que en caso de brindar informacion falsa y
+              ser contratado, la empresa se reserva el derecho de rescindirme de
+              mis labores de manera y justificada segun lo estipulado en el
+              articulo 47 de la Ley Federal del Trabajo vigente.
+            </Text>
+          </View>
+          <View style={styles.recuadro}>
+            <Text style={styles.titleRecuadro}>AVISO DE PRIVACIDAD</Text>
+            <Text>
+              SYL TALENTO S.A. DE C.V. y las empresas que pertenecen al grupo,
+              Declara la empresa en este acto que es responsable de recabar los
+              datos personales del Titular, para que les de seguridad
+              administrativas, tecnicas y fusucas que permiten proteger los
+              datos personales contra daño, informacion personal sera utilizada
+              para los procesos de Reclutamiento, Seleccion y Evaluaciones los
+              departamentos de Recursos Humanos de los clientes de esta empresa.
+            </Text>
+            <Text>
+              Asimismo, le informamos que sus datos personales pueden ser
+              transferidos y tratados dentro y fuera del país, por personas
+              distintas a esta empresa. En ese sentido, su información puede ser
+              compartida con los clientes de esta empresa exclusivamente para
+              los fines ya indicados
+            </Text>
+          </View>
         </View>
       </Page>
     </Document>

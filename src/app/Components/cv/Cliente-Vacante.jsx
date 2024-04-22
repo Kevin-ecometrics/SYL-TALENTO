@@ -121,7 +121,7 @@ function Hero() {
                       </svg>
                     </a>
                   </div>
-                  <div className="flex justify-start items-center gap-4">
+                  <div className="flex justify-start items-center gap-4 flex-wrap">
                     <Link
                       href={`https://syltalento.com/syl-talento/vacante-pdf/${vacante.id}`}
                       target="_blank"

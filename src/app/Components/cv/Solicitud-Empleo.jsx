@@ -9,15 +9,27 @@ const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
 });
+import Estado from "../datos/estados";
 
 function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [estado, setEstado] = useState("");
+  const [ciudades, setCiudades] = useState([]);
+
+  const handleEstadoChange = (e) => {
+    const estadoSeleccionado = e.target.value;
+    setEstado(estadoSeleccionado);
+    setCiudades(Estado[estadoSeleccionado] || []);
+  }; // eslint-disable-next-line react-hooks/rules-of-hooks
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [formData, setFormData] = useState({}); // Nuevo estado para los datos del formulario
   const [options, setOptions] = useState([]);
   const [showCartilla, setShowCartilla] = useState("");
   const [showTratamiento, setShowTratamiento] = useState("");
+  const [showPadre, setShowPadre] = useState("");
+  const [showMadre, setShowMadre] = useState("");
+  const [showEsposa, setShowEsposa] = useState("");
+  const [showHijos, setShowHijos] = useState("");
   const [elector, setElector] = useState("");
   const [nacionalidad, setNacionalidad] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +41,7 @@ function page() {
   const sections = [
     "Datos personales",
     "Escolaridad",
+    // "Experiencia laboral",
     "Disponibilidad",
     "Empleos anteriores",
   ];
@@ -56,7 +69,7 @@ function page() {
       if (activeSectionIndex === sections.length - 1) {
         try {
           await axios.post(
-            "https://syltalento.com/api/solicitudes_empleo",
+            "http://localhost:3001/api/solicitudes_empleo",
             updatedFormData
           );
           // console.log(response.data);
@@ -74,7 +87,7 @@ function page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("https://syltalento.com/vacantes");
+      const response = await axios.get("http://localhost:3001/vacantes");
       setOptions(response.data);
     };
 
@@ -465,39 +478,41 @@ function page() {
                           </label>
                         </div>{" "}
                         <div className="relative z-0 w-full group mb-4">
-                          <input
-                            type="text"
+                          <select
+                            defaultValue={formData.estado || ""}
+                            value={estado}
+                            required
+                            onChange={handleEstadoChange}
+                            name="estado"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          >
+                            <option disabled value="">
+                              Selecciona un estado
+                            </option>
+                            {Object.keys(Estado).map((estado) => (
+                              <option key={estado} value={estado}>
+                                {estado}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="relative z-0 w-full group mb-4">
+                          <select
                             name="ciudad"
-                            id="ciudad"
-                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" "
+                            disabled={!estado}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required
                             defaultValue={formData.ciudad || ""}
-                          />
-                          <label
-                            htmlFor="ciudad"
-                            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            Ciudad
-                          </label>
-                        </div>{" "}
-                        <div className="relative z-0 w-full group mb-4">
-                          <input
-                            type="text"
-                            name="estado"
-                            id="estado"
-                            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                            placeholder=" "
-                            required
-                            defaultValue={formData.estado || ""}
-                          />
-                          <label
-                            htmlFor="estado"
-                            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                          >
-                            Estado
-                          </label>
-                        </div>{" "}
+                            <option value="">Selecciona una ciudad</option>
+                            {Array.isArray(ciudades) &&
+                              ciudades.map((ciudad) => (
+                                <option key={ciudad} value={ciudad}>
+                                  {ciudad}
+                                </option>
+                              ))}
+                          </select>
+                        </div>
                         <div className="relative z-0 w-full group mb-4">
                           <input
                             type="text"
@@ -846,7 +861,7 @@ function page() {
                             htmlFor="estatura"
                             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                           >
-                            Estatura en cm
+                            Estatura en Metros
                           </label>
                         </div>
                         <div className="relative z-0 w-full mb-5 group">
@@ -904,6 +919,469 @@ function page() {
                           <input type="hidden" name="tratamiento" value="No" />
                         )}
                       </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 py-2 gap-2">
+                        <div className="relative z-0 w-full mb-5 group">
+                          <select
+                            id="padre"
+                            name="padre"
+                            defaultValue={formData.padre || ""}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value={showPadre}
+                            onChange={(e) => setShowPadre(e.target.value)}
+                          >
+                            <option disabled value="">
+                              Tienes Padre
+                            </option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                          </select>
+                        </div>
+                        {showPadre === "Si" ? (
+                          <>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="nombre_padre"
+                                id="nombre_padre"
+                                defaultValue={formData.nombre_padre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="nombre_padre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Nombre del Padre
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="vive_padre"
+                                id="vive_padre"
+                                defaultValue={formData.vive_padre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="vive_padre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Vive Padre
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="finado_padre"
+                                id="finado_padre"
+                                defaultValue={formData.finado_padre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="finado_padre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Finado
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="domicilio_padre"
+                                id="domicilio_padre"
+                                defaultValue={formData.domicilio_padre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="domicilio_padre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Domicilio
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="ocupacion_padre"
+                                id="ocupacion_padre"
+                                defaultValue={formData.ocupacion_padre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="ocupacion_padre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Ocupacion
+                              </label>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <input
+                              type="hidden"
+                              name="nombre_padre"
+                              value="No"
+                            />
+                            <input type="hidden" name="vive_padre" value="No" />
+                            <input
+                              type="hidden"
+                              name="finado_padre"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="domicilio_padre"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="ocupacion_padre"
+                              value="No"
+                            />
+                          </>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 py-2 gap-2">
+                        <div className="relative z-0 w-full mb-5 group">
+                          <select
+                            id="madre"
+                            name="madre"
+                            defaultValue={formData.madre || ""}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value={showMadre}
+                            onChange={(e) => setShowMadre(e.target.value)}
+                          >
+                            <option disabled value="">
+                              Tienes Madre
+                            </option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                          </select>
+                        </div>
+                        {showMadre === "Si" ? (
+                          <>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="nombre_madre"
+                                id="nombre_madre"
+                                defaultValue={formData.nombre_madre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="nombre_madre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Nombre de la madre
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="vive_madre"
+                                id="vive_madre"
+                                defaultValue={formData.vive_madre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="vive_madre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Vive Madre
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="finado_madre"
+                                id="finado_madre"
+                                defaultValue={formData.finado_madre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="finado_madre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Finado
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="domicilio_madre"
+                                id="domicilio_madre"
+                                defaultValue={formData.domicilio_madre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="domicilio_madre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Domicilio
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="ocupacion_madre"
+                                id="ocupacion_madre"
+                                defaultValue={formData.ocupacion_madre || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="ocupacion_madre"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Ocupacion
+                              </label>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <input
+                              type="hidden"
+                              name="nombre_madre"
+                              value="No"
+                            />
+                            <input type="hidden" name="vive_madre" value="No" />
+                            <input
+                              type="hidden"
+                              name="finado_madre"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="domicilio_madre"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="ocupacion_madre"
+                              value="No"
+                            />
+                          </>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 py-2 gap-2">
+                        <div className="relative z-0 w-full mb-5 group">
+                          <select
+                            id="esposa"
+                            name="esposa"
+                            defaultValue={formData.esposa || ""}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value={showEsposa}
+                            onChange={(e) => setShowEsposa(e.target.value)}
+                          >
+                            <option disabled value="">
+                              Tienes Esposa (o)
+                            </option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                          </select>
+                        </div>
+                        {showEsposa === "Si" ? (
+                          <>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="nombre_esposa"
+                                id="nombre_esposa"
+                                defaultValue={formData.nombre_esposa || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="nombre_esposa"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Nombre del esposa
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="vive_esposa"
+                                id="vive_esposa"
+                                defaultValue={formData.vive_esposa || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="vive_esposa"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Vive esposa
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="finado_esposa"
+                                id="finado_esposa"
+                                defaultValue={formData.finado_esposa || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="finado_esposa"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Finado
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="domicilio_esposa"
+                                id="domicilio_esposa"
+                                defaultValue={formData.domicilio_esposa || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="domicilio_esposa"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Domicilio
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="ocupacion_esposa"
+                                id="ocupacion_esposa"
+                                defaultValue={formData.ocupacion_esposa || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="ocupacion_esposa"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Ocupacion
+                              </label>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <input
+                              type="hidden"
+                              name="nombre_esposa"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="vive_esposa"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="finado_esposa"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="domicilio_esposa"
+                              value="No"
+                            />
+                            <input
+                              type="hidden"
+                              name="ocupacion_esposa"
+                              value="No"
+                            />
+                          </>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-6 py-2 gap-2">
+                        <div className="relative z-0 w-full mb-5 group">
+                          <select
+                            id="hijos"
+                            name="hijos"
+                            defaultValue={formData.hijos || ""}
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            value={showHijos}
+                            onChange={(e) => setShowHijos(e.target.value)}
+                          >
+                            <option disabled value="">
+                              Tienes Hijos
+                            </option>
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                          </select>
+                        </div>
+                        {showHijos === "Si" ? (
+                          <>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="nombre_hijos"
+                                id="nombre_hijos"
+                                defaultValue={formData.nombre_hijos || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="nombre_hijos"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Nombre de los hijos
+                              </label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                              <input
+                                type="text"
+                                name="edad_hijos"
+                                id="edad_hijos"
+                                defaultValue={formData.edad_hijos || ""}
+                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" "
+                                required
+                              />
+                              <label
+                                htmlFor="edad_hijos"
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                              >
+                                Edad de los hijos
+                              </label>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <input
+                              type="hidden"
+                              name="nombre_hijos"
+                              value="No"
+                            />
+                            <input type="hidden" name="edad_hijos" value="No" />
+                          </>
+                        )}
+                      </div>
+
                       <button
                         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-xl w-full"
                         type="submit"
@@ -951,6 +1429,21 @@ function page() {
                         <option value="Constancia">Constancia</option>
                       </select>
                     </div>{" "}
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        name="carrera"
+                        id="carrera"
+                        defaultValue={formData.documento || ""}
+                        required
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      />
+                      <label
+                        htmlFor="carrera"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Carrera
+                      </label>
+                    </div>{" "}
                     <button
                       className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl"
                       type="submit"
@@ -960,6 +1453,7 @@ function page() {
                   </form>{" "}
                 </section>
               )}
+              {/* {activeSectionIndex === 2 && <section></section>} */}
               {activeSectionIndex === 2 && (
                 <section>
                   <h1 className="text-4xl text-center mb-2">Disponibilidad</h1>

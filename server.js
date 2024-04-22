@@ -5,6 +5,8 @@ const cors = require("cors");
 const mysql = require("mysql");
 const multer = require("multer");
 const upload = multer();
+const bcrypt = require("bcrypt");
+const session = require("express-session");
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -18,11 +20,24 @@ db.connect((err) => {
 });
 
 const app = express();
-app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({ origin: "http://localhost:3000" }));
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+app.use(
+  session({
+    secret: "my super secret key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // set to true if your using https
+  })
+);
 
 app.post("/send-email", (req, res) => {
   const { name, email, subject, message } = req.body;
@@ -170,14 +185,31 @@ app.post("/api/solicitudes_empleo", (req, res) => {
   const formData = req.body;
   const sql = `
   INSERT INTO solicitudes_empleo (
-    calle, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rfc, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    calle, carrera, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rfc, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo,       nombre_padre,
+    vive_padre,
+    finado_padre,
+    domicilio_padre,
+    ocupacion_padre,
+    nombre_madre,
+    vive_madre,
+    finado_madre,
+    domicilio_madre,
+    ocupacion_madre,
+    nombre_esposa,
+    vive_esposa,
+    finado_esposa,
+    domicilio_esposa,
+    ocupacion_esposa,
+    nombre_hijos,
+    edad_hijos
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `;
 
   db.query(
     sql,
     [
       formData.calle,
+      formData.carrera,
       formData.celular,
       formData.ciudad,
       formData.civil,
@@ -221,6 +253,23 @@ app.post("/api/solicitudes_empleo", (req, res) => {
       formData.sueldo,
       formData.empresa_jefe,
       formData.motivo,
+      formData.nombre_padre,
+      formData.vive_padre,
+      formData.finado_padre,
+      formData.domicilio_padre,
+      formData.ocupacion_padre,
+      formData.nombre_madre,
+      formData.vive_madre,
+      formData.finado_madre,
+      formData.domicilio_madre,
+      formData.ocupacion_madre,
+      formData.nombre_esposa,
+      formData.vive_esposa,
+      formData.finado_esposa,
+      formData.domicilio_esposa,
+      formData.ocupacion_esposa,
+      formData.nombre_hijos,
+      formData.edad_hijos,
     ],
     (error, results) => {
       if (error) {
@@ -306,6 +355,86 @@ app.put("/puestos/:id", (req, res) => {
     if (err) throw err;
     res.send("Puesto actualizado con éxito");
   });
+});
+
+app.post("/api/create", (req, res) => {
+  const { email, password } = req.body;
+
+  // Check if the email already exists
+  db.query("SELECT * FROM usuarios WHERE email = ?", [email], (err, result) => {
+    if (err) throw err;
+
+    if (result.length > 0) {
+      // The email already exists
+      res.send("El correo electrónico ya está en uso");
+    } else {
+      // The email does not exist, so create a new user
+      const hashedPassword = bcrypt.hashSync(password, 10);
+
+      let sql = "INSERT INTO usuarios (email, password) VALUES (?, ?)";
+      let data = [email, hashedPassword];
+
+      db.query(sql, data, (err, result) => {
+        if (err) throw err;
+        res.send("Usuario creado con éxito");
+      });
+    }
+  });
+});
+
+app.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+
+  // Check if the user exists
+  db.query("SELECT * FROM usuarios WHERE email = ?", [email], (err, result) => {
+    if (err) throw err;
+
+    if (result.length > 0) {
+      // The user exists, now we need to check the password
+      const user = result[0];
+
+      bcrypt.compare(password, user.password, (err, isMatch) => {
+        if (err) throw err;
+
+        if (isMatch) {
+          // The password is correct
+          req.session.user = user;
+          res.json({ message: "Usuario autenticado con éxito", user: user });
+        } else {
+          // The password is incorrect
+          res.send("Correo electrónico o contraseña incorrectos");
+        }
+      });
+    } else {
+      // The user does not exist
+      res.send("Correo electrónico o contraseña incorrectos");
+    }
+  });
+});
+
+app.get("/api/user", (req, res) => {
+  if (req.session.user) {
+    res.send(req.session.user);
+  } else {
+    res.status(401).send("No autorizado");
+  }
+});
+
+app.post("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        return res
+          .status(500)
+          .send({ message: "Error al cerrar la sesión", error: err });
+      }
+
+      res.clearCookie("session-id");
+      return res.send({ message: "Sesión cerrada exitosamente" });
+    });
+  } else {
+    res.send({ message: "No hay sesión activa" });
+  }
 });
 
 app.listen(3001, () => {

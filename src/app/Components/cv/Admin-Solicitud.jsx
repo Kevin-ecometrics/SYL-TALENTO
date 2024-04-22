@@ -35,7 +35,7 @@ function ClienteSolicitud() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://syltalento.com/api/solicitudes_empleo"
+          "http://localhost:3001/api/solicitudes_empleo"
         );
         setSolicitud(response.data);
       } catch (error) {
@@ -49,7 +49,7 @@ function ClienteSolicitud() {
   useEffect(() => {
     const fetchPuestos = async () => {
       try {
-        const response = await axios.get("https://syltalento.com/vacantes");
+        const response = await axios.get("http://localhost:3001/vacantes");
         setPuestos(response.data);
       } catch (error) {
         console.error(error);
@@ -73,7 +73,7 @@ function ClienteSolicitud() {
     ) {
       try {
         await axios.delete(
-          `https://syltalento.com/api/solicitudes_empleo/${id}`
+          `htttp://localhost:3001/api/solicitudes_empleo/${id}`
         );
         setSolicitud(solicitud.filter((solicitud) => solicitud.id !== id));
       } catch (error) {
@@ -343,6 +343,8 @@ function ClienteSolicitud() {
                 {selectedSolicitud && <p>{selectedSolicitud.escolaridad}</p>}
                 <span className="font-bold">Documento: </span>
                 {selectedSolicitud && <p>{selectedSolicitud.documento}</p>}
+                <span className="font-bold">Carrera: </span>
+                {selectedSolicitud && <p>{selectedSolicitud.carrera}</p>}
               </div>
               <div className="flex gap-2 bg-white px-4 mb-2">
                 <span className="font-bold">Ultimo trabajo: </span>
