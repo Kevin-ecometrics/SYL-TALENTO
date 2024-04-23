@@ -6,8 +6,18 @@ import {
   Document,
   StyleSheet,
   Image,
+  Font,
 } from "@react-pdf/renderer";
 
+Font.register({
+  family: "Poppins",
+  src: "https://fonts.gstatic.com/s/poppins/v1/TDTjCH39JjVycIF24TlO-Q.ttf", // URL de la fuente Poppins
+});
+
+Font.register({
+  family: "Bebas Neue",
+  src: "/BebasNeue-Regular.ttf", // URL de la fuente Acme
+});
 // Create styles
 const styles = StyleSheet.create({
   container: {
@@ -31,14 +41,16 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 100,
-    height: 100,
+    marginTop: 10,
+    height: 50,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: "left",
     marginBottom: 10,
     marginTop: 10,
     color: "#000", // Hace que el color del texto
+    fontFamily: "Bebas Neue",
   },
   section: {
     flexDirection: "row",
@@ -51,13 +63,14 @@ const styles = StyleSheet.create({
     fontSize: 8,
     color: "gray",
     padding: 5,
+    fontFamily: "Poppins",
   },
   recuadroContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   recuadro: {
-    flex: 1,
+    flex: 0.4, // Cambiado de 1 a 0.4
     borderWidth: 1,
     borderColor: "#000",
     padding: 10,
@@ -65,19 +78,31 @@ const styles = StyleSheet.create({
     marginRight: 2,
     marginBottom: 10,
     marginLeft: 2,
-    fontSize: 8,
+    fontSize: 7,
+  },
+  recuadro2: {
+    flex: 0.6, // Cambiado de 1 a 0.4
+    borderWidth: 1,
+    borderColor: "#000",
+    padding: 10,
+    marginTop: 10,
+    marginRight: 2,
+    marginBottom: 10,
+    marginLeft: 2,
+    fontSize: 7,
   },
   titleRecuadro: {
-    fontSize: 16,
+    fontSize: 12,
     textAlign: "center",
     marginBottom: 4,
     fontWeight: "bold",
     color: "#000", // Hace que el color del texto sea negro
+    fontFamily: "Bebas Neue",
   },
   sectionEmpleos: {
     flex: 1,
     padding: 10,
-    flexDirection: "row", // Cambiado de 'column' a 'row'
+    flexDirection: "column",
     flexWrap: "wrap", // Añadido para permitir el ajuste de los elementos
     alignItems: "flex-start",
     justifyContent: "space-between",
@@ -90,6 +115,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: "black",
+    fontWeight: "bold", // Esto hará que el texto de la etiqueta sea en negrita
   },
   value: {
     color: "gray",
@@ -97,6 +123,9 @@ const styles = StyleSheet.create({
   empleoItem: {
     width: "33.33%", // Cada elemento ocupará un tercio del espacio
     padding: 5, // Añade un poco de espacio alrededor de cada elemento
+  },
+  row: {
+    flexDirection: "row",
   },
 });
 
@@ -106,6 +135,10 @@ const MyDocument = ({ solicitud }) => {
   const fecha_nacimiento = new Date(solicitud.fecha_nacimiento);
   const ingreso = new Date(solicitud.ingreso);
   const baja = new Date(solicitud.baja);
+  const ingreso2 = new Date(solicitud.ingreso2);
+  const baja2 = new Date(solicitud.baja2);
+  const ingreso3 = new Date(solicitud.ingreso3);
+  const baja3 = new Date(solicitud.baja3);
   // Define an array of month names
   const monthNames = [
     "Enero",
@@ -138,6 +171,22 @@ const MyDocument = ({ solicitud }) => {
     monthNames[baja.getMonth()]
   } ${baja.getDate()}, ${baja.getFullYear()}`;
 
+  const formattedIngreso2 = `${
+    monthNames[ingreso2.getMonth()]
+  } ${ingreso2.getDate()}, ${ingreso2.getFullYear()}`;
+
+  const formattedBaja2 = `${
+    monthNames[baja2.getMonth()]
+  } ${baja2.getDate()}, ${baja2.getFullYear()}`;
+
+  const formattedIngreso3 = `${
+    monthNames[ingreso3.getMonth()]
+  } ${ingreso3.getDate()}, ${ingreso3.getFullYear()}`;
+
+  const formattedBaja3 = `${
+    monthNames[baja3.getMonth()]
+  } ${baja3.getDate()}, ${baja3.getFullYear()}`;
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -146,116 +195,322 @@ const MyDocument = ({ solicitud }) => {
           <Image
             style={styles.logo}
             alt="SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México"
-            src="/SYL talento especialistas en Reclutamiento de personal para vacantes de empresas en México.png"
+            src="/SYL_TALENTO_LOGO_PDF.jpeg"
           />
         </View>
         <View style={styles.element}>
           <Text style={styles.title}>DATOS PERSONALES</Text>
         </View>
         <View style={styles.section}>
-          <Text>Puesto a solicitar: {solicitud.puesto}</Text>
-          <Text>Fecha: {formattedDate}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Puesto solicitado: </Text>
+            <Text style={styles.value}>{solicitud.puesto}</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Fecha: </Text>
+            <Text style={styles.value}>{formattedDate}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Apellido Paterno: {solicitud.paterno}</Text>
-          <Text>Apellido Materno: {solicitud.materno}</Text>
-          <Text>Nombre (s): {solicitud.nombre}</Text>
-          <Text>Edad: {solicitud.edad}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Apellido Paterno: </Text>
+            <Text style={styles.value}>{solicitud.paterno}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Apellido Materno: </Text>
+            <Text style={styles.value}>{solicitud.materno}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Nombre(s): </Text>
+            <Text style={styles.value}>{solicitud.nombre}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Edad: </Text>
+            <Text style={styles.value}>{solicitud.edad}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text style={styles.label}>Calle: </Text>
-          <Text style={styles.value}>{solicitud.calle}</Text>
-          <Text>Numero: {solicitud.numero}</Text>
-          <Text>Colonia: {solicitud.colonia}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Calle: </Text>
+            <Text style={styles.value}>{solicitud.calle}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Número:</Text>
+            <Text style={styles.value}>{solicitud.numero}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Colonia:</Text>
+            <Text style={styles.value}>{solicitud.colonia}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Telefono Celular: {solicitud.celular}</Text>
-          <Text>Telefono de Emergencia: {solicitud.emergencia}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Teléfono Celular: </Text>
+            <Text style={styles.value}>{solicitud.celular}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Teléfono de Emergencia: </Text>
+            <Text style={styles.value}>{solicitud.emergencia}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>RFC: {solicitud.rfc}</Text>
-          <Text>IMSS: {solicitud.imss}</Text>
-          <Text>CURP: {solicitud.curp}</Text>
-          <Text>SEXO: {solicitud.genero}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>RFC: </Text>
+            <Text style={styles.value}>{solicitud.rfc}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>IMSS: </Text>
+            <Text style={styles.value}>{solicitud.imss}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>CURP: </Text>
+            <Text style={styles.value}>{solicitud.curp}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Género: </Text>
+            <Text style={styles.value}>{solicitud.genero}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Credencial de Elector: {solicitud.elector}</Text>
-          <Text>No. De crendencial: {solicitud.numero_credencial}</Text>
-          <Text>Correo Electronico: {solicitud.correo}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Credencial de Elector: </Text>
+            <Text style={styles.value}>{solicitud.elector}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>No. De credencial: </Text>
+            <Text style={styles.value}>{solicitud.numero_credencial}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Correo Electrónico: </Text>
+            <Text style={styles.value}>{solicitud.correo}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Lugar de Nacimiento: {solicitud.lugar_nacimiento}</Text>
-          <Text>Fecha de Nacimiento: {formattedFechaNacimiento}</Text>
-          <Text>Nacionalidad: {solicitud.nacionalidad}</Text>
-          <Text>Infonavit: {solicitud.infonavit}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Lugar de Nacimiento: </Text>
+            <Text style={styles.value}>{solicitud.lugar_nacimiento}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Fecha de Nacimiento: </Text>
+            <Text style={styles.value}>{formattedFechaNacimiento}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Nacionalidad: </Text>
+            <Text style={styles.value}>{solicitud.nacionalidad}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Infonavit: </Text>
+            <Text style={styles.value}>{solicitud.infonavit}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Estado Civil: {solicitud.civil}</Text>
-          <Text>Cuenta con cartilla Militar: {solicitud.militar}</Text>
-          <Text>No. De Cartilla Militar: {solicitud.numero_cartilla}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Estado Civil: </Text>
+            <Text style={styles.value}>{solicitud.civil}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Cuenta con cartilla Militar: </Text>
+            <Text style={styles.value}>{solicitud.militar}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>No. De Cartilla Militar: </Text>
+            <Text style={styles.value}>{solicitud.numero_cartilla}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Estatura: {solicitud.estatura}</Text>
-          <Text>Peso: {solicitud.peso}</Text>
-          <Text>
-            Padece de alguna enfermedad cronica: {solicitud.enfermedad}
-          </Text>
-          <Text>Que tipo de tratamiento recibe?: {solicitud.tratamiento}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Estatura: </Text>
+            <Text style={styles.value}>{solicitud.estatura}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Peso: </Text>
+            <Text style={styles.value}>{solicitud.peso}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>
+              ¿Padece alguna enfermedad crónica?:{" "}
+            </Text>
+            <Text style={styles.value}>{solicitud.enfermedad}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>¿Qué tipo de tratamiento recibe?: </Text>
+            <Text style={styles.value}>{solicitud.tratamiento}</Text>
+          </View>
         </View>
+
         <View style={styles.element}>
           <Text style={styles.title}>ESCOLARIDAD</Text>
         </View>
         <View style={styles.section}>
-          <Text>Nivel de escolaridad: {solicitud.escolaridad}</Text>
-          <Text>Documento: {solicitud.documento}</Text>
-          <Text>Carrera: {solicitud.carrera}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Nivel de escolaridad: </Text>
+            <Text style={styles.value}>{solicitud.escolaridad}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Documento: </Text>
+            <Text style={styles.value}>{solicitud.documento}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Carrera: </Text>
+            <Text style={styles.value}>{solicitud.carrera}</Text>
+          </View>
         </View>
+
         <View style={styles.element}>
           <Text style={styles.title}>DISPONIBILIDAD</Text>
         </View>
         <View style={styles.section}>
-          <Text>
-            Puede trabajar en turnos diferentes?: {solicitud.turno_rotativo}
-          </Text>
-          <Text>Puede trabajar en fin de semana?: {solicitud.fin_semana}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>
+              ¿Puede trabajar en turnos diferentes?:{" "}
+            </Text>
+            <Text style={styles.value}>{solicitud.turno_rotativo}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>
+              ¿Puede trabajar en fin de semana?:{" "}
+            </Text>
+            <Text style={styles.value}>{solicitud.fin_semana}</Text>
+          </View>
         </View>
+
         <View style={styles.element}>
-          <Text style={styles.title}>Experincia Laboral</Text>
+          <Text style={styles.title}>EXPERIENCIA LABORAL</Text>
         </View>
         <View style={styles.section}>
-          <Text>Experiencia: {solicitud.experiencia}</Text>
-          <Text>Funciones principales: {solicitud.funciones} </Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Experiencia: </Text>
+            <Text style={styles.value}>{solicitud.experiencia}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Funciones principales: </Text>
+            <Text style={styles.value}>{solicitud.funciones}</Text>
+          </View>
         </View>
+
         <View style={styles.section}>
-          <Text>Software principales: {solicitud.software} </Text>
-          <Text>Herramientas principales: {solicitud.maquinas}</Text>
+          <View style={styles.row}>
+            <Text style={styles.label}>Software principales: </Text>
+            <Text style={styles.value}>{solicitud.software}</Text>
+          </View>
+
+          <View style={styles.row}>
+            <Text style={styles.label}>Herramientas principales: </Text>
+            <Text style={styles.value}>{solicitud.maquinas}</Text>
+          </View>
         </View>
         <View style={styles.element}>
           <Text style={styles.title}>EMPLEO ANTERIOR</Text>
         </View>
         <View style={styles.container}>
           <View style={styles.sectionEmpleos}>
-            <Text>Nombre de la empresa: {solicitud.empresa}</Text>
-            <Text>Direccion: {solicitud.empresa_direccion}</Text>
-            <Text>Telefono: {solicitud.empresa_telefono}</Text>
-            <Text>Puesto desempeñado: {solicitud.empresa_puesto} </Text>
-            <Text>Fecha de ingreso: {formattedIngreso} </Text>
-            <Text>Fecha de baja: {formattedBaja}</Text>
-            <Text>Sueldo semanal: {solicitud.sueldo} </Text>
-            <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe}</Text>
-            <Text>Motivo de su separacion: {solicitud.motivo} </Text>
+            <View style={styles.row}>
+              <Text style={styles.label}>Nombre de la empresa: </Text>
+              <Text style={styles.value}>{solicitud.empresa}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Dirección: </Text>
+              <Text style={styles.value}>{solicitud.empresa_direccion}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Teléfono: </Text>
+              <Text style={styles.value}>{solicitud.empresa_telefono}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Puesto desempeñado: </Text>
+              <Text style={styles.value}>{solicitud.empresa_puesto}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Fecha de ingreso: </Text>
+              <Text style={styles.value}>{formattedIngreso}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Fecha de baja: </Text>
+              <Text style={styles.value}>{formattedBaja}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Sueldo semanal: </Text>
+              <Text style={styles.value}>{solicitud.sueldo}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Nombre del jefe inmediato: </Text>
+              <Text style={styles.value}>{solicitud.empresa_jefe}</Text>
+            </View>
+            <View style={styles.row}>
+              <Text style={styles.label}>Motivo de su separación: </Text>
+              <Text style={styles.value}>{solicitud.motivo}</Text>
+            </View>
           </View>
+
           {solicitud.empresa2 ? (
             <View style={styles.sectionEmpleos}>
-              <Text>Nombre de la empresa: {solicitud.empresa2}</Text>
-              <Text>Direccion: {solicitud.empresa_direccion2}</Text>
-              <Text>Telefono: {solicitud.empresa_telefono2}</Text>
-              <Text>Puesto desempeñado: {solicitud.empresa_puesto2} </Text>
-              <Text>Fecha de ingreso: {formattedIngreso} </Text>
-              <Text>Fecha de baja: {formattedBaja}</Text>
-              <Text>Sueldo semanal: {solicitud.sueldo2} </Text>
-              <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe2}</Text>
-              <Text>Motivo de su separacion: {solicitud.motivo2} </Text>
+              <View style={styles.row}>
+                <Text style={styles.label}>Nombre de la empresa: </Text>
+                <Text style={styles.value}>{solicitud.empresa2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Dirección: </Text>
+                <Text style={styles.value}>{solicitud.empresa_direccion2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Teléfono: </Text>
+                <Text style={styles.value}>{solicitud.empresa_telefono2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Puesto desempeñado: </Text>
+                <Text style={styles.value}>{solicitud.empresa_puesto2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Fecha de ingreso: </Text>
+                <Text style={styles.value}>{formattedIngreso2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Fecha de baja: </Text>
+                <Text style={styles.value}>{formattedBaja2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Sueldo semanal: </Text>
+                <Text style={styles.value}>{solicitud.sueldo2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Nombre del jefe inmediato: </Text>
+                <Text style={styles.value}>{solicitud.empresa_jefe2}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Motivo de su separación: </Text>
+                <Text style={styles.value}>{solicitud.motivo2}</Text>
+              </View>
             </View>
           ) : (
             <View style={styles.sectionEmpleos}>
@@ -264,15 +519,42 @@ const MyDocument = ({ solicitud }) => {
           )}
           {solicitud.empresa3 ? (
             <View style={styles.sectionEmpleos}>
-              <Text>Nombre de la empresa: {solicitud.empresa3}</Text>
-              <Text>Direccion: {solicitud.empresa_direccion3}</Text>
-              <Text>Telefono: {solicitud.empresa_telefono3}</Text>
-              <Text>Puesto desempeñado: {solicitud.empresa_puesto3} </Text>
-              <Text>Fecha de ingreso: {formattedIngreso} </Text>
-              <Text>Fecha de baja: {formattedBaja}</Text>
-              <Text>Sueldo semanal: {solicitud.sueldo3} </Text>
-              <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe3}</Text>
-              <Text>Motivo de su separacion: {solicitud.motivo3} </Text>
+              <View style={styles.row}>
+                <Text style={styles.label}>Nombre de la empresa: </Text>
+                <Text style={styles.value}>{solicitud.empresa3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Dirección: </Text>
+                <Text style={styles.value}>{solicitud.empresa_direccion3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Teléfono: </Text>
+                <Text style={styles.value}>{solicitud.empresa_telefono3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Puesto desempeñado: </Text>
+                <Text style={styles.value}>{solicitud.empresa_puesto3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Fecha de ingreso: </Text>
+                <Text style={styles.value}>{formattedIngreso3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Fecha de baja: </Text>
+                <Text style={styles.value}>{formattedBaja3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Sueldo semanal: </Text>
+                <Text style={styles.value}>{solicitud.sueldo3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Nombre del jefe inmediato: </Text>
+                <Text style={styles.value}>{solicitud.empresa_jefe3}</Text>
+              </View>
+              <View style={styles.row}>
+                <Text style={styles.label}>Motivo de su separación: </Text>
+                <Text style={styles.value}>{solicitud.motivo3}</Text>
+              </View>
             </View>
           ) : (
             <View style={styles.sectionEmpleos}>
@@ -282,33 +564,31 @@ const MyDocument = ({ solicitud }) => {
         </View>
         <View style={styles.recuadroContainer}>
           <View style={styles.recuadro}>
-            <Text style={styles.titleRecuadro}>INFORMACION VERIDICA</Text>
+            <Text style={styles.titleRecuadro}>INFORMACIÓN VERÍDICA</Text>
             <Text>
               Bajo protesta de decir verdad, declaro que la información que les
-              estoy proporcionando es total y completamente veridica, toda vez
-              que estoy consciente de que en caso de brindar informacion falsa y
+              estoy proporcionando es total y completamente verídica, toda vez
+              que estoy consciente de que en caso de brindar información falsa y
               ser contratado, la empresa se reserva el derecho de rescindirme de
-              mis labores de manera y justificada segun lo estipulado en el
-              articulo 47 de la Ley Federal del Trabajo vigente.
+              mis labores de manera justificada según lo estipulado en el
+              artículo 47 de la Ley Federal del Trabajo vigente.
             </Text>
           </View>
-          <View style={styles.recuadro}>
+          <View style={styles.recuadro2}>
             <Text style={styles.titleRecuadro}>AVISO DE PRIVACIDAD</Text>
             <Text>
               SYL TALENTO S.A. DE C.V. y las empresas que pertenecen al grupo,
-              Declara la empresa en este acto que es responsable de recabar los
+              declara la empresa en este acto que es responsable de recabar los
               datos personales del Titular, para que les de seguridad
-              administrativas, tecnicas y fusucas que permiten proteger los
-              datos personales contra daño, informacion personal sera utilizada
-              para los procesos de Reclutamiento, Seleccion y Evaluaciones los
-              departamentos de Recursos Humanos de los clientes de esta empresa.
-            </Text>
-            <Text>
-              Asimismo, le informamos que sus datos personales pueden ser
-              transferidos y tratados dentro y fuera del país, por personas
-              distintas a esta empresa. En ese sentido, su información puede ser
-              compartida con los clientes de esta empresa exclusivamente para
-              los fines ya indicados
+              administrativas, técnicas y físicas que permitan proteger los
+              datos personales contra daño. La información personal será
+              utilizada para los procesos de Reclutamiento, Selección y
+              Evaluaciones de los departamentos de Recursos Humanos de los
+              clientes de esta empresa. Asimismo, le informamos que sus datos
+              personales pueden ser transferidos y tratados dentro y fuera del
+              país, por personas distintas a esta empresa. En ese sentido, su
+              información puede ser compartida con los clientes de esta empresa
+              exclusivamente para los fines ya indicados.
             </Text>
           </View>
         </View>

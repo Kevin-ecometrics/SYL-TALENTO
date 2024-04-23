@@ -111,7 +111,7 @@ function Page() {
                       rel="noopener noreferrer"
                       className="rounded-md bg-blue-500 hover:bg-blue-700 text-white px-4 py-2"
                     >
-                      Ver solicitud
+                      Solicitud
                     </a>
                   </td>
                 </tr>

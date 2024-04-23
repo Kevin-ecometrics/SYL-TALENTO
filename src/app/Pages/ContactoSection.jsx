@@ -10,12 +10,42 @@ import {
 import { Card, CardBody, Input, Button, Textarea } from "@nextui-org/react";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
+import Whatsapp from "../Components/WhatsappWidget";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 function ContactoSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
+  const contents = [
+    {
+      horario: "8:30am a 17:00hrs",
+      telefono: "664-734-2954",
+      ubicacion: "Centro, Tijuana, Baja California",
+      contacto: "contacto@syltalento.com",
+      href: "https://www.facebook.com/SYLTalento1",
+    },
+    {
+      horario: "7:00am a 16:00hrs",
+      telefono: " 686-697-2822",
+      ubicacion: "Blvd. Lázaro Cárdenas 3099, Nuevo Mexicali",
+      contacto: "contacto@syltalento.com",
+      href: "https://www.facebook.com/profile.php?id=100063574134270&mibextid=ZbWKwL",
+    },
+    // puedes agregar más contenidos aquí
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const incrementIndex = () => {
+    setIndex((index + 1) % contents.length);
+  };
+
+  const decrementIndex = () => {
+    setIndex((index - 1 + contents.length) % contents.length);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -66,6 +96,7 @@ function ContactoSection() {
       id="contacto"
       className="flex flex-col items-center justify-center max-w-6xl min-h-screen py-2 mx-auto bg-white border-t-2 border-black"
     >
+      <Whatsapp />
       <Toaster position="bottom-right" reverseOrder={true} />
       <main className="flex flex-col items-center w-full px-4 mt-20 space-y-8 text-center bg-white sm:mt-20">
         <h1 className="mx-auto text-5xl font-bold tracking-normal text-transparent max-w-1xl font-display sm:text-7xl bg-clip-text bg-gradient-to-r from-blue-500 via-red-500 to-orange-500">
@@ -77,28 +108,39 @@ function ContactoSection() {
           futuro del reclutamiento.{" "}
         </h3>
         <div className="flex flex-col items-center sm:justify-between w-full gap-8 space-y-4 sm:flex-row sm:space-y-0">
+          <button
+            className="md:hidden block mb-4 bg-blue-500 text-white px-4 py-2 rounded-xl shadow-black hover:bg-blue-700"
+            onClick={incrementIndex}
+          >
+            Cambiar contenido
+          </button>
+          <FaArrowLeft
+            className="w-12 h-12 text-blue-500 hidden md:block"
+            onClick={decrementIndex}
+          />
+
           <div className="flex-col items-center flex-1 w-full gap-8 space-y-4 sm:flex-row sm:space-y-0">
             <div className="flex-1 space-y-8  text-black">
               <div className="flex items-center justify-center md:justify-start space-x-4">
                 <ClockIcon className="w-8 h-8 text-black" />
-                <span>Horario: 8:30 am a 17:00hrs</span>
+                <span>Horario: {contents[index].horario}</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
                 <DevicePhoneMobileIcon className="w-8 h-8 text-blue-500" />
-                <span>664-734-2954</span>
+                <span>{contents[index].telefono}</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
                 <MapPinIcon className="w-8 h-8 text-red-500" />
-                <span>Centro, Tijuana, Baja California</span>
+                <span>{contents[index].ubicacion}</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
                 <EnvelopeIcon className="w-8 h-8 text-orange-500" />
-                <span>contacto@syltalento.com</span>
+                <span>{contents[index].contacto}</span>
               </div>
               <div className="flex items-center justify-center md:justify-start space-x-4">
                 <Link
                   target="_blank"
-                  href="https://www.facebook.com/SYLTalento1"
+                  href={contents[index].href}
                   title="Facebook de Syl Talento"
                 >
                   <Image
@@ -186,6 +228,10 @@ function ContactoSection() {
               </CardBody>
             </Card>
           </div>
+          <FaArrowRight
+            className="w-12 h-12 text-blue-500 hidden md:block"
+            onClick={incrementIndex}
+          />
         </div>
       </main>
     </div>

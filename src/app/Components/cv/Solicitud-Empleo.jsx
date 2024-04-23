@@ -70,7 +70,7 @@ function page() {
       if (activeSectionIndex === sections.length - 1) {
         try {
           await axios.post(
-            "http://localhost:3001/api/solicitudes_empleo",
+            "https://syltalento.com/api/solicitudes_empleo",
             updatedFormData
           );
           // console.log(response.data);
@@ -88,7 +88,7 @@ function page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3001/vacantes");
+      const response = await axios.get("https://syltalento.com/vacantes");
       setOptions(response.data);
     };
 

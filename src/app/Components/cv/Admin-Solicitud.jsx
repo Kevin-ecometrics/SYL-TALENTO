@@ -35,7 +35,7 @@ function ClienteSolicitud() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/api/solicitudes_empleo"
+          "https://syltalento.com/api/solicitudes_empleo"
         );
         setSolicitud(response.data);
       } catch (error) {
@@ -49,7 +49,7 @@ function ClienteSolicitud() {
   useEffect(() => {
     const fetchPuestos = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/vacantes");
+        const response = await axios.get("https://syltalento.com/vacantes");
         setPuestos(response.data);
       } catch (error) {
         console.error(error);
@@ -73,7 +73,7 @@ function ClienteSolicitud() {
     ) {
       try {
         await axios.delete(
-          `http://localhost:3001/api/solicitudes_empleo/${id}`
+          `https://syltalento.com/api/solicitudes_empleo/${id}`
         );
         setSolicitud(solicitud.filter((solicitud) => solicitud.id !== id));
       } catch (error) {
