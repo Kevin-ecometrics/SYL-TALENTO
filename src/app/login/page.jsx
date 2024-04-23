@@ -36,7 +36,7 @@ function LoginPage() {
 
     if (userKey === secretKey) {
       try {
-        const response = await axios.post("http://localhost:3001/api/create", {
+        const response = await axios.post("https://syltalento.com/api/create", {
           email,
           password,
         });
@@ -60,7 +60,7 @@ function LoginPage() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/login",
+        "https://syltalento.com/api/login",
         {
           email: event.target.email.value,
           password: event.target.password.value,

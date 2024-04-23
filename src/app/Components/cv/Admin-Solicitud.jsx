@@ -73,7 +73,7 @@ function ClienteSolicitud() {
     ) {
       try {
         await axios.delete(
-          `htttp://localhost:3001/api/solicitudes_empleo/${id}`
+          `http://localhost:3001/api/solicitudes_empleo/${id}`
         );
         setSolicitud(solicitud.filter((solicitud) => solicitud.id !== id));
       } catch (error) {

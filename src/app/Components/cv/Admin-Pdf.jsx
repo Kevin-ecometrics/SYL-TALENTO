@@ -10,10 +10,14 @@ import {
 
 // Create styles
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   page: {
     flexDirection: "column",
     backgroundColor: "#FFFFFF",
-    padding: 30,
+    paddingHorizontal: 20,
   },
   header: {
     flexDirection: "row",
@@ -30,10 +34,11 @@ const styles = StyleSheet.create({
     height: 100,
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     textAlign: "left",
     marginBottom: 10,
     marginTop: 10,
+    color: "#000", // Hace que el color del texto
   },
   section: {
     flexDirection: "row",
@@ -43,7 +48,8 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderRadius: 1,
     marginBottom: 0,
-    fontSize: 10,
+    fontSize: 8,
+    color: "gray",
     padding: 5,
   },
   recuadroContainer: {
@@ -59,14 +65,38 @@ const styles = StyleSheet.create({
     marginRight: 2,
     marginBottom: 10,
     marginLeft: 2,
-    fontSize: 9,
+    fontSize: 8,
   },
   titleRecuadro: {
-    fontSize: 10,
+    fontSize: 16,
     textAlign: "center",
     marginBottom: 4,
     fontWeight: "bold",
     color: "#000", // Hace que el color del texto sea negro
+  },
+  sectionEmpleos: {
+    flex: 1,
+    padding: 10,
+    flexDirection: "row", // Cambiado de 'column' a 'row'
+    flexWrap: "wrap", // Añadido para permitir el ajuste de los elementos
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 1,
+    marginBottom: 0,
+    fontSize: 8,
+    padding: 5,
+  },
+  label: {
+    color: "black",
+  },
+  value: {
+    color: "gray",
+  },
+  empleoItem: {
+    width: "33.33%", // Cada elemento ocupará un tercio del espacio
+    padding: 5, // Añade un poco de espacio alrededor de cada elemento
   },
 });
 
@@ -133,7 +163,8 @@ const MyDocument = ({ solicitud }) => {
           <Text>Edad: {solicitud.edad}</Text>
         </View>
         <View style={styles.section}>
-          <Text>Calle: {solicitud.calle}</Text>
+          <Text style={styles.label}>Calle: </Text>
+          <Text style={styles.value}>{solicitud.calle}</Text>
           <Text>Numero: {solicitud.numero}</Text>
           <Text>Colonia: {solicitud.colonia}</Text>
         </View>
@@ -189,22 +220,65 @@ const MyDocument = ({ solicitud }) => {
           <Text>Puede trabajar en fin de semana?: {solicitud.fin_semana}</Text>
         </View>
         <View style={styles.element}>
+          <Text style={styles.title}>Experincia Laboral</Text>
+        </View>
+        <View style={styles.section}>
+          <Text>Experiencia: {solicitud.experiencia}</Text>
+          <Text>Funciones principales: {solicitud.funciones} </Text>
+        </View>
+        <View style={styles.section}>
+          <Text>Software principales: {solicitud.software} </Text>
+          <Text>Herramientas principales: {solicitud.maquinas}</Text>
+        </View>
+        <View style={styles.element}>
           <Text style={styles.title}>EMPLEO ANTERIOR</Text>
         </View>
-        <View style={styles.section}>
-          <Text>Nombre de la empresa: {solicitud.empresa}</Text>
-          <Text>Direccion: {solicitud.empresa_direccion}</Text>
-          <Text>Telefono: {solicitud.empresa_telefono}</Text>
-        </View>
-        <View style={styles.section}>
-          <Text>Puesto desempeñado: {solicitud.empresa_puesto} </Text>
-          <Text>Fecha de ingreso: {formattedIngreso} </Text>
-          <Text>Fecha de baja: {formattedBaja}</Text>
-        </View>
-        <View style={styles.section}>
-          <Text>Sueldo semanal: {solicitud.sueldo} </Text>
-          <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe}</Text>
-          <Text>Motivo de su separacion: {solicitud.motivo} </Text>
+        <View style={styles.container}>
+          <View style={styles.sectionEmpleos}>
+            <Text>Nombre de la empresa: {solicitud.empresa}</Text>
+            <Text>Direccion: {solicitud.empresa_direccion}</Text>
+            <Text>Telefono: {solicitud.empresa_telefono}</Text>
+            <Text>Puesto desempeñado: {solicitud.empresa_puesto} </Text>
+            <Text>Fecha de ingreso: {formattedIngreso} </Text>
+            <Text>Fecha de baja: {formattedBaja}</Text>
+            <Text>Sueldo semanal: {solicitud.sueldo} </Text>
+            <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe}</Text>
+            <Text>Motivo de su separacion: {solicitud.motivo} </Text>
+          </View>
+          {solicitud.empresa2 ? (
+            <View style={styles.sectionEmpleos}>
+              <Text>Nombre de la empresa: {solicitud.empresa2}</Text>
+              <Text>Direccion: {solicitud.empresa_direccion2}</Text>
+              <Text>Telefono: {solicitud.empresa_telefono2}</Text>
+              <Text>Puesto desempeñado: {solicitud.empresa_puesto2} </Text>
+              <Text>Fecha de ingreso: {formattedIngreso} </Text>
+              <Text>Fecha de baja: {formattedBaja}</Text>
+              <Text>Sueldo semanal: {solicitud.sueldo2} </Text>
+              <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe2}</Text>
+              <Text>Motivo de su separacion: {solicitud.motivo2} </Text>
+            </View>
+          ) : (
+            <View style={styles.sectionEmpleos}>
+              <Text>No se proporcionó información para un empleo anterior</Text>
+            </View>
+          )}
+          {solicitud.empresa3 ? (
+            <View style={styles.sectionEmpleos}>
+              <Text>Nombre de la empresa: {solicitud.empresa3}</Text>
+              <Text>Direccion: {solicitud.empresa_direccion3}</Text>
+              <Text>Telefono: {solicitud.empresa_telefono3}</Text>
+              <Text>Puesto desempeñado: {solicitud.empresa_puesto3} </Text>
+              <Text>Fecha de ingreso: {formattedIngreso} </Text>
+              <Text>Fecha de baja: {formattedBaja}</Text>
+              <Text>Sueldo semanal: {solicitud.sueldo3} </Text>
+              <Text>Nombre del jefe inmediato: {solicitud.empresa_jefe3}</Text>
+              <Text>Motivo de su separacion: {solicitud.motivo3} </Text>
+            </View>
+          ) : (
+            <View style={styles.sectionEmpleos}>
+              <Text>No se proporcionó información para un empleo anterior</Text>
+            </View>
+          )}
         </View>
         <View style={styles.recuadroContainer}>
           <View style={styles.recuadro}>

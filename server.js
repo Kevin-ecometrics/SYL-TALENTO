@@ -185,7 +185,14 @@ app.post("/api/solicitudes_empleo", (req, res) => {
   const formData = req.body;
   const sql = `
   INSERT INTO solicitudes_empleo (
-    calle, carrera, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rfc, tratamiento, turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, baja, sueldo, empresa_jefe, motivo,       nombre_padre,
+    calle, carrera, celular, ciudad, civil, colonia, correo, cp, curp, documento, edad, elector, emergencia, enfermedad, 
+    escolaridad, estado, estatura, fecha_nacimiento, fin_semana, genero, imss, infonavit, lugar_nacimiento, materno, 
+    militar, nacionalidad, nombre, numero, numero_cartilla, numero_credencial, paterno, peso, rfc, tratamiento, 
+    turno_rotativo, vacante_id, created_at, empresa, empresa_direccion, empresa_telefono, empresa_puesto, ingreso, 
+    baja, sueldo, empresa_jefe, motivo, 
+    empresa2, empresa_direccion2, empresa_telefono2, empresa_puesto2, ingreso2, baja2, sueldo2, empresa_jefe2, motivo2, 
+    empresa3, empresa_direccion3, empresa_telefono3, empresa_puesto3, ingreso3, baja3, sueldo3, empresa_jefe3, motivo3, 
+    nombre_padre,
     vive_padre,
     finado_padre,
     domicilio_padre,
@@ -201,8 +208,12 @@ app.post("/api/solicitudes_empleo", (req, res) => {
     domicilio_esposa,
     ocupacion_esposa,
     nombre_hijos,
-    edad_hijos
-  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    edad_hijos,
+    experiencia,
+    funciones,
+    software,
+    maquinas
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 `;
 
   db.query(
@@ -253,6 +264,24 @@ app.post("/api/solicitudes_empleo", (req, res) => {
       formData.sueldo,
       formData.empresa_jefe,
       formData.motivo,
+      formData.empresa2,
+      formData.empresa_direccion2,
+      formData.empresa_telefono2,
+      formData.empresa_puesto2,
+      formData.ingreso2,
+      formData.baja2,
+      formData.sueldo2,
+      formData.empresa_jefe2,
+      formData.motivo2,
+      formData.empresa3,
+      formData.empresa_direccion3,
+      formData.empresa_telefono3,
+      formData.empresa_puesto3,
+      formData.ingreso3,
+      formData.baja3,
+      formData.sueldo3,
+      formData.empresa_jefe3,
+      formData.motivo3,
       formData.nombre_padre,
       formData.vive_padre,
       formData.finado_padre,
@@ -270,6 +299,10 @@ app.post("/api/solicitudes_empleo", (req, res) => {
       formData.ocupacion_esposa,
       formData.nombre_hijos,
       formData.edad_hijos,
+      formData.experiencia,
+      formData.funciones,
+      formData.software,
+      formData.maquinas,
     ],
     (error, results) => {
       if (error) {

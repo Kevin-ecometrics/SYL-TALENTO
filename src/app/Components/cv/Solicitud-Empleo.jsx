@@ -30,6 +30,7 @@ function page() {
   const [showMadre, setShowMadre] = useState("");
   const [showEsposa, setShowEsposa] = useState("");
   const [showHijos, setShowHijos] = useState("");
+  const [showEmpleos, setShowEmpleos] = useState("");
   const [elector, setElector] = useState("");
   const [nacionalidad, setNacionalidad] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +42,7 @@ function page() {
   const sections = [
     "Datos personales",
     "Escolaridad",
-    // "Experiencia laboral",
+    "Experiencia laboral",
     "Disponibilidad",
     "Empleos anteriores",
   ];
@@ -1402,6 +1403,7 @@ function page() {
                         name="escolaridad"
                         id="escolaridad"
                         defaultValue={formData.escolaridad || ""}
+                        required
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       >
                         <option disabled value="">
@@ -1415,6 +1417,7 @@ function page() {
                     </div>
                     <div className="relative z-0 w-full mb-5 group">
                       <select
+                        required
                         name="documento"
                         id="documento"
                         defaultValue={formData.documento || ""}
@@ -1430,19 +1433,110 @@ function page() {
                       </select>
                     </div>{" "}
                     <div className="relative z-0 w-full mb-5 group">
-                      <input
+                      <select
                         name="carrera"
                         id="carrera"
                         defaultValue={formData.documento || ""}
                         required
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                      />
-                      <label
-                        htmlFor="carrera"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       >
-                        Carrera
-                      </label>
+                        <option disabled value="">
+                          Carrera cursada
+                        </option>
+                        <option value="Actuaría">Actuaría</option>
+                        <option value="Administración y gestión empresarial">
+                          Administración y gestión empresarial
+                        </option>
+                        <option value="Antropología">Antropología</option>
+                        <option value="Artes plásticas">Artes plásticas</option>
+                        <option value="Biblioteconomía">Biblioteconomía</option>
+                        <option value="Biología">Biología</option>
+                        <option value="Biología marina">Biología marina</option>
+                        <option value="Biotecnología">Biotecnología</option>
+                        <option value="Contabilidad">Contabilidad</option>
+                        <option value="Danza">Danza</option>
+                        <option value="Desarrollo de videojuegos">
+                          Desarrollo de videojuegos
+                        </option>
+                        <option value="Desarrollo software">
+                          Desarrollo software
+                        </option>
+                        <option value="Diseño automotriz">
+                          Diseño automotriz
+                        </option>
+                        <option value="Diseño de interiores">
+                          Diseño de interiores
+                        </option>
+                        <option value="Diseño gráfico">Diseño gráfico</option>
+                        <option value="Diseño industrial">
+                          Diseño industrial
+                        </option>
+                        <option value="Ecología y ciencias ambientales">
+                          Ecología y ciencias ambientales
+                        </option>
+                        <option value="Economía">Economía</option>
+                        <option value="Enfermería general y obstetricia">
+                          Enfermería general y obstetricia
+                        </option>
+                        <option value="Filosofía">Filosofía</option>
+                        <option value="Física">Física</option>
+                        <option value="Gastronomía">Gastronomía</option>
+                        <option value="Geólogo">Geólogo</option>
+                        <option value="Historia">Historia</option>
+                        <option value="Idiomas y lenguas extranjeras">
+                          Idiomas y lenguas extranjeras
+                        </option>
+                        <option value="Informática">Informática</option>
+                        <option value="Ingeniería aeroespacial y mecánica">
+                          Ingeniería aeroespacial y mecánica
+                        </option>
+                        <option value="Ingeniería biomédica">
+                          Ingeniería biomédica
+                        </option>
+                        <option value="Ingeniería civil">
+                          Ingeniería civil
+                        </option>
+                        <option value="Ingeniería electrónica">
+                          Ingeniería electrónica
+                        </option>
+                        <option value="ingeniería en aeronáutica">
+                          Ingeniería en aeronáutica
+                        </option>
+                        <option value="Ingeniería en agronomía">
+                          Ingeniería en agronomía
+                        </option>
+                        <option value="Ingeniería en electricidad">
+                          Ingeniería en electricidad
+                        </option>
+                        <option value="Ingeniería en energías renovables">
+                          Ingeniería en energías renovables
+                        </option>
+                        <option value="Ingeniería en sistemas">
+                          Ingeniería en sistemas
+                        </option>
+                        <option value="Ingeniería mecatrónica">
+                          Ingeniería mecatrónica
+                        </option>
+                        <option value="Literatura">Literatura</option>
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Medicina">Medicina</option>
+                        <option value="Mercadotecnia">Mercadotecnia</option>
+                        <option value="Música">Música</option>
+                        <option value="Negocios y comercio">
+                          Negocios y comercio
+                        </option>
+                        <option value="Pedagogía">Pedagogía</option>
+                        <option value="Periodismo">Periodismo</option>
+                        <option value="Publicidad">Publicidad</option>
+                        <option value="Química">Química</option>
+                        <option value="Teatro">Teatro</option>
+                        <option value="Terapia y rehabilitación">
+                          Terapia y rehabilitación
+                        </option>
+                        <option value="Topógrafo">Topógrafo</option>
+                        <option value="Turismo">Turismo</option>
+                        <option value="Veterinaria">Veterinaria</option>
+                      </select>
                     </div>{" "}
                     <button
                       className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl"
@@ -1453,8 +1547,91 @@ function page() {
                   </form>{" "}
                 </section>
               )}
-              {/* {activeSectionIndex === 2 && <section></section>} */}
               {activeSectionIndex === 2 && (
+                <section>
+                  <h1 className="text-4xl text-center mb-2">
+                    Experiencia Laboral
+                  </h1>
+                  <hr className="mb-4" />
+                  <form onSubmit={handleSubmit}>
+                    <div className="relative z-0 w-full mb-5 mt-4 group">
+                      <input
+                        type="text"
+                        name="experiencia"
+                        id="experiencia"
+                        defaultValue={formData.experiencia || ""}
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
+                      <label
+                        htmlFor="experiencia"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Experiencia
+                      </label>
+                    </div>
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="text"
+                        name="funciones"
+                        id="funciones"
+                        defaultValue={formData.funciones || ""}
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
+                      <label
+                        htmlFor="funciones"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Funciones que domina
+                      </label>
+                    </div>
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="text"
+                        name="software"
+                        id="software"
+                        defaultValue={formData.software || ""}
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
+                      <label
+                        htmlFor="software"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Software que domina
+                      </label>
+                    </div>
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="text"
+                        name="maquinas"
+                        id="maquinas"
+                        defaultValue={formData.maquinas || ""}
+                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
+                      <label
+                        htmlFor="maquinas"
+                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Maquinas de oficina o taller que sepa manejar
+                      </label>
+                    </div>
+                    <button
+                      className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl"
+                      type="submit"
+                    >
+                      Enviar
+                    </button>
+                  </form>
+                </section>
+              )}
+              {activeSectionIndex === 3 && (
                 <section>
                   <h1 className="text-4xl text-center mb-2">Disponibilidad</h1>
                   <hr className="mb-4" />
@@ -1498,194 +1675,1119 @@ function page() {
                   </form>{" "}
                 </section>
               )}{" "}
-              {activeSectionIndex === 3 && (
+              {activeSectionIndex === 4 && (
                 <section>
                   <h1 className="text-4xl text-center mb-2">
                     Empleos Anteriores
                   </h1>
                   <hr className="mb-4" />
-                  <label>Actual o ultimo:</label>{" "}
-                  <form onSubmit={handleSubmit}>
-                    <div className="relative z-0 w-full mb-5 mt-4 group">
-                      <input
-                        type="text"
-                        name="empresa"
-                        id="empresa"
-                        defaultValue={formData.empresa || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="empresa"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Nombre de la empresa
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="empresa_direccion"
-                        id="empresa_direccion"
-                        defaultValue={formData.empresa_direccion || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="empresa_direccion"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Direccion
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="empresa_telefono"
-                        id="empresa_telefono"
-                        defaultValue={formData.empresa_telefono || ""}
-                        maxLength={13}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          if (/[^0-9]/g.test(value)) {
-                            alert(
-                              "Por favor, ingrese solo números en el campo de teléfono."
-                            );
-                            e.target.value = value.replace(/[^0-9]/g, "");
-                          }
-                        }}
-                      />
-                      <label
-                        htmlFor="empresa_telefono"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Telefono
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="empresa_puesto"
-                        id="empresa_puesto"
-                        defaultValue={formData.empresa_puesto || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="empresa_puesto"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Puesto desempeñado
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="date"
-                        name="ingreso"
-                        id="ingreso"
-                        defaultValue={formData.ingreso || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="ingreso"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Fecha de ingreso
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="date"
-                        name="baja"
-                        id="baja"
-                        defaultValue={formData.baja || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="baja"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Fecha de baja
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="sueldo"
-                        id="sueldo"
-                        defaultValue={formData.sueldo || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                        inputMode="numeric"
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          if (/[^0-9]/g.test(value)) {
-                            alert(
-                              "Por favor, ingrese solo números en el campo de sueldo."
-                            );
-                            e.target.value = value.replace(/[^0-9]/g, "");
-                          }
-                        }}
-                      />
-                      <label
-                        htmlFor="sueldo"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Sueldo semanal
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="empresa_jefe"
-                        id="empresa_jefe"
-                        defaultValue={formData.empresa_jefe || ""}
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                      />
-                      <label
-                        htmlFor="empresa_jefe"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Nombre del jefe inmediato
-                      </label>
-                    </div>
-                    <div className="relative z-0 w-full mb-5 group">
-                      <input
-                        type="text"
-                        name="motivo"
-                        id="motivo"
-                        className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" "
-                        required
-                        defaultValue={formData.motivo || ""}
-                      />
-                      <label
-                        htmlFor="motivo"
-                        className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                      >
-                        Motivo de su separacion
-                      </label>
-                    </div>
-                    <button
-                      className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl"
-                      type="submit"
+                  <label>Actual o ultimos trabajos</label>{" "}
+                  <div className="relative z-0 w-full mb-5 group">
+                    <select
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      value={showEmpleos}
+                      onChange={(e) => setShowEmpleos(e.target.value)}
                     >
-                      Enviar
-                    </button>
-                  </form>{" "}
+                      <option disabled value="">
+                        Empleos anteriores
+                      </option>
+                      <option value="1">1 trabajo</option>
+                      <option value="2">2 trabajo</option>
+                      <option value="3">3 trabajo</option>
+                    </select>
+                  </div>
+                  {showEmpleos === "1" ? (
+                    <form className="px-4" onSubmit={handleSubmit}>
+                      <div className="relative z-0 w-full mb-5 mt-4 group ">
+                        <input
+                          type="text"
+                          name="empresa"
+                          id="empresa"
+                          defaultValue={formData.empresa || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="empresa"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Nombre de la empresa
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="empresa_direccion"
+                          id="empresa_direccion"
+                          defaultValue={formData.empresa_direccion || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="empresa_direccion"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Direccion
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="empresa_telefono"
+                          id="empresa_telefono"
+                          defaultValue={formData.empresa_telefono || ""}
+                          maxLength={13}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (/[^0-9]/g.test(value)) {
+                              alert(
+                                "Por favor, ingrese solo números en el campo de teléfono."
+                              );
+                              e.target.value = value.replace(/[^0-9]/g, "");
+                            }
+                          }}
+                        />
+                        <label
+                          htmlFor="empresa_telefono"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Telefono
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="empresa_puesto"
+                          id="empresa_puesto"
+                          defaultValue={formData.empresa_puesto || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="empresa_puesto"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Puesto desempeñado
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="date"
+                          name="ingreso"
+                          id="ingreso"
+                          defaultValue={formData.ingreso || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="ingreso"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Fecha de ingreso
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="date"
+                          name="baja"
+                          id="baja"
+                          defaultValue={formData.baja || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="baja"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Fecha de baja
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="sueldo"
+                          id="sueldo"
+                          defaultValue={formData.sueldo || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                          inputMode="numeric"
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            if (/[^0-9]/g.test(value)) {
+                              alert(
+                                "Por favor, ingrese solo números en el campo de sueldo."
+                              );
+                              e.target.value = value.replace(/[^0-9]/g, "");
+                            }
+                          }}
+                        />
+                        <label
+                          htmlFor="sueldo"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Sueldo semanal
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="empresa_jefe"
+                          id="empresa_jefe"
+                          defaultValue={formData.empresa_jefe || ""}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                        />
+                        <label
+                          htmlFor="empresa_jefe"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Nombre del jefe inmediato
+                        </label>
+                      </div>
+                      <div className="relative z-0 w-full mb-5 group">
+                        <input
+                          type="text"
+                          name="motivo"
+                          id="motivo"
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          required
+                          defaultValue={formData.motivo || ""}
+                        />
+                        <label
+                          htmlFor="motivo"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Motivo de su separacion
+                        </label>
+                      </div>
+                      <button
+                        className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl"
+                        type="submit"
+                      >
+                        Enviar
+                      </button>
+                    </form>
+                  ) : showEmpleos === "2" ? (
+                    <section>
+                      <form
+                        className="grid grid-cols-1 md:grid-cols-2 px-4 gap-4"
+                        onSubmit={handleSubmit}
+                      >
+                        <div>
+                          <div className="relative z-0 w-full mb-5 mt-4 group">
+                            <input
+                              type="text"
+                              name="empresa"
+                              id="empresa"
+                              defaultValue={formData.empresa || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre de la empresa
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_direccion"
+                              id="empresa_direccion"
+                              defaultValue={formData.empresa_direccion || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_direccion"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Direccion
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_telefono"
+                              id="empresa_telefono"
+                              defaultValue={formData.empresa_telefono || ""}
+                              maxLength={13}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de teléfono."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="empresa_telefono"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Telefono
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_puesto"
+                              id="empresa_puesto"
+                              defaultValue={formData.empresa_puesto || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_puesto"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Puesto desempeñado
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="ingreso"
+                              id="ingreso"
+                              defaultValue={formData.ingreso || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="ingreso"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de ingreso
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="baja"
+                              id="baja"
+                              defaultValue={formData.baja || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="baja"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de baja
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="sueldo"
+                              id="sueldo"
+                              defaultValue={formData.sueldo || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              inputMode="numeric"
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de sueldo."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="sueldo"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Sueldo semanal
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_jefe"
+                              id="empresa_jefe"
+                              defaultValue={formData.empresa_jefe || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_jefe"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre del jefe inmediato
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="motivo"
+                              id="motivo"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              defaultValue={formData.motivo || ""}
+                            />
+                            <label
+                              htmlFor="motivo"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Motivo de su separacion
+                            </label>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="relative z-0 w-full mb-5 mt-4 group">
+                            <input
+                              type="text"
+                              name="empresa2"
+                              id="empresa2"
+                              defaultValue={formData.empresa2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre de la empresa
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_direccion2"
+                              id="empresa_direccion2"
+                              defaultValue={formData.empresa_direccion2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_direccion2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Direccion
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_telefono2"
+                              id="empresa_telefono2"
+                              defaultValue={formData.empresa_telefono2 || ""}
+                              maxLength={13}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de teléfono."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="empresa_telefono2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Telefono
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_puesto2"
+                              id="empresa_puesto2"
+                              defaultValue={formData.empresa_puesto2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_puesto2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Puesto desempeñado
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="ingreso2"
+                              id="ingreso2"
+                              defaultValue={formData.ingreso2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="ingreso2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de ingreso
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="baja2"
+                              id="baja2"
+                              defaultValue={formData.baja2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="baja2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de baja
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="sueldo2"
+                              id="sueldo2"
+                              defaultValue={formData.sueldo2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              inputMode="numeric"
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de sueldo."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="sueldo2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Sueldo semanal
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_jefe2"
+                              id="empresa_jefe2"
+                              defaultValue={formData.empresa_jefe2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_jefe2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre del jefe inmediato
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="motivo2"
+                              id="motivo2"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              defaultValue={formData.motivo2 || ""}
+                            />
+                            <label
+                              htmlFor="motivo2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Motivo de su separacion
+                            </label>
+                          </div>
+                        </div>
+                        <button
+                          className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl md:col-span-2"
+                          type="submit"
+                        >
+                          Enviar
+                        </button>
+                      </form>
+                    </section>
+                  ) : showEmpleos === "3" ? (
+                    <section>
+                      <form
+                        className="grid grid-cols-1 md:grid-cols-3 px-4 gap-4"
+                        onSubmit={handleSubmit}
+                      >
+                        <div>
+                          <div className="relative z-0 w-full mb-5 mt-4 group">
+                            <input
+                              type="text"
+                              name="empresa"
+                              id="empresa"
+                              defaultValue={formData.empresa || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre de la empresa
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_direccion"
+                              id="empresa_direccion"
+                              defaultValue={formData.empresa_direccion || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_direccion"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Direccion
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_telefono"
+                              id="empresa_telefono"
+                              defaultValue={formData.empresa_telefono || ""}
+                              maxLength={13}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de teléfono."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="empresa_telefono"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Telefono
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_puesto"
+                              id="empresa_puesto"
+                              defaultValue={formData.empresa_puesto || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_puesto"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Puesto desempeñado
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="ingreso"
+                              id="ingreso"
+                              defaultValue={formData.ingreso || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="ingreso"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de ingreso
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="baja"
+                              id="baja"
+                              defaultValue={formData.baja || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="baja"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de baja
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="sueldo"
+                              id="sueldo"
+                              defaultValue={formData.sueldo || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              inputMode="numeric"
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de sueldo."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="sueldo"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Sueldo semanal
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_jefe"
+                              id="empresa_jefe"
+                              defaultValue={formData.empresa_jefe || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_jefe"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre del jefe inmediato
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="motivo"
+                              id="motivo"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              defaultValue={formData.motivo || ""}
+                            />
+                            <label
+                              htmlFor="motivo"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Motivo de su separacion
+                            </label>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="relative z-0 w-full mb-5 mt-4 group">
+                            <input
+                              type="text"
+                              name="empresa2"
+                              id="empresa2"
+                              defaultValue={formData.empresa2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre de la empresa
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_direccion2"
+                              id="empresa_direccion2"
+                              defaultValue={formData.empresa_direccion2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_direccion2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Direccion
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_telefono2"
+                              id="empresa_telefono2"
+                              defaultValue={formData.empresa_telefono2 || ""}
+                              maxLength={13}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de teléfono."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="empresa_telefono2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Telefono
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_puesto2"
+                              id="empresa_puesto2"
+                              defaultValue={formData.empresa_puesto2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_puesto2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Puesto desempeñado
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="ingreso2"
+                              id="ingreso2"
+                              defaultValue={formData.ingreso2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="ingreso2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de ingreso
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="baja2"
+                              id="baja2"
+                              defaultValue={formData.baja2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="baja2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de baja
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="sueldo2"
+                              id="sueldo2"
+                              defaultValue={formData.sueldo2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              inputMode="numeric"
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de sueldo."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="sueldo2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Sueldo semanal
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_jefe2"
+                              id="empresa_jefe2"
+                              defaultValue={formData.empresa_jefe2 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_jefe2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre del jefe inmediato
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="motivo2"
+                              id="motivo2"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              defaultValue={formData.motivo2 || ""}
+                            />
+                            <label
+                              htmlFor="motivo2"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Motivo de su separacion
+                            </label>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="relative z-0 w-full mb-5 mt-4 group">
+                            <input
+                              type="text"
+                              name="empresa3"
+                              id="empresa3"
+                              defaultValue={formData.empresa3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre de la empresa
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_direccion3"
+                              id="empresa_direccion3"
+                              defaultValue={formData.empresa_direccion3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_direccion3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Direccion
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_telefono3"
+                              id="empresa_telefono3"
+                              defaultValue={formData.empresa_telefono3 || ""}
+                              maxLength={13}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de teléfono."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="empresa_telefono3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Telefono
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_puesto3"
+                              id="empresa_puesto3"
+                              defaultValue={formData.empresa_puesto3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_puesto3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Puesto desempeñado
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="ingreso3"
+                              id="ingreso3"
+                              defaultValue={formData.ingreso3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="ingreso3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de ingreso
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="date"
+                              name="baja3"
+                              id="baja3"
+                              defaultValue={formData.baja3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="baja3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Fecha de baja
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="sueldo3"
+                              id="sueldo3"
+                              defaultValue={formData.sueldo3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              inputMode="numeric"
+                              onChange={(e) => {
+                                const value = e.target.value;
+                                if (/[^0-9]/g.test(value)) {
+                                  alert(
+                                    "Por favor, ingrese solo números en el campo de sueldo."
+                                  );
+                                  e.target.value = value.replace(/[^0-9]/g, "");
+                                }
+                              }}
+                            />
+                            <label
+                              htmlFor="sueldo3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Sueldo semanal
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="empresa_jefe3"
+                              id="empresa_jefe3"
+                              defaultValue={formData.empresa_jefe3 || ""}
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                            />
+                            <label
+                              htmlFor="empresa_jefe3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Nombre del jefe inmediato
+                            </label>
+                          </div>
+                          <div className="relative z-0 w-full mb-5 group">
+                            <input
+                              type="text"
+                              name="motivo3"
+                              id="motivo3"
+                              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                              placeholder=" "
+                              required
+                              defaultValue={formData.motivo3 || ""}
+                            />
+                            <label
+                              htmlFor="motivo3"
+                              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >
+                              Motivo de su separacion
+                            </label>
+                          </div>
+                        </div>
+                        <button
+                          className="bg-blue-500 px-4 py-2 text-white w-full rounded-xl md:col-span-3"
+                          type="submit"
+                        >
+                          Enviar
+                        </button>
+                      </form>
+                    </section>
+                  ) : (
+                    <section>
+                      <h1 className="font-bold text-2xl">
+                        Seleccione una opcion de trabajo para continuar
+                      </h1>
+                    </section>
+                  )}
                 </section>
               )}{" "}
               {isModalOpen && (

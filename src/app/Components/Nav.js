@@ -16,8 +16,7 @@ function Nav() {
   const [activeSection, setActiveSection] = useState("");
 
   const menuItems = [
-    { name: "Inicio", link: "#inicio", title: "Inicio" },
-    { name: "Nosotros", link: "#nosotros", title: "Nosotros" },
+    { name: "Valores", link: "#nosotros", title: "Nosotros" },
     { name: "Servicios", link: "#servicios", title: "Servicios" },
     { name: "Quienes Somos", link: "#quienesSomos", title: "Quienes Somos" },
     { name: "Clientes", link: "#clientes", title: "Clientes" },
@@ -101,6 +100,26 @@ function Nav() {
             </Link>
           </NavbarItem>
         ))}
+        <NavbarItem>
+          <Link
+            className="hover:text-blue-500 px-4"
+            color="foreground"
+            size="lg"
+            href="/cv"
+            title="Vacantes de SYL Talento "
+          >
+            Vacantes
+          </Link>
+          <Link
+            className="hover:text-blue-500"
+            color="foreground"
+            size="lg"
+            href="/login"
+            title="Login de SYL Talento "
+          >
+            Login
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu isOpen={isMenuOpen}>
